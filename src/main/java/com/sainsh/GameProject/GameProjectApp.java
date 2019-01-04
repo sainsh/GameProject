@@ -1,3 +1,5 @@
+package com.sainsh.GameProject;
+
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 
@@ -10,6 +12,7 @@ public class GameProjectApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
-
+        gameSettings.setIntroEnabled(false);
+        gameSettings.setMenuEnabled(false);
     }
 }
