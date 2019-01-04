@@ -7,9 +7,10 @@
     <groupId>sainsh</groupId>
     <artifactId>GameProject</artifactId>
     <version>0.1-SNAPSHOT</version>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <source.version>1.8</source.version>
+        <source.version>11</source.version>
 
         <!-- plugins -->
         <maven.compiler.version>3.8.0</maven.compiler.version>
@@ -29,7 +30,7 @@
         <dependency>
             <groupId>com.github.almasb</groupId>
             <artifactId>fxgl</artifactId>
-            <version>${fxgl.version}</version>
+            <version>0.5.4</version>
         </dependency>
     </dependencies>
 
@@ -58,7 +59,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.sainsh.GameProject.GameProjectApp</mainClass>
+                                    <mainClass>com.sainsh.GameProject.GameProject.GameProjectApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
