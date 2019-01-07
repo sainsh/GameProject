@@ -1,21 +1,43 @@
+import com.almasb.fxgl.app.DSLKt;
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.extra.entity.components.AttractableComponent;
 import com.almasb.fxgl.extra.entity.components.AttractorComponent;
-import com.almasb.fxgl.input.Input;
-import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.input.*;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.scene.FXGLMenu;
+import com.almasb.fxgl.scene.SceneFactory;
+import com.almasb.fxgl.scene.menu.FXGLDefaultMenu;
+import com.almasb.fxgl.scene.menu.MenuType;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.ui.InGamePanel;
+import com.almasb.fxgl.ui.InGameWindow;
+import com.almasb.fxgl.ui.UI;
+import com.almasb.fxgl.ui.UIController;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -29,8 +51,11 @@ public class GameProjectApp extends GameApplication {
         gameSettings.setHeight(900);
         gameSettings.setTitle("New Earth");
         gameSettings.setVersion("0.1");
+        gameSettings.setMenuEnabled(true);
 
     }
+
+
 
     private enum Type {
         PLAYER, ENEMY
@@ -79,9 +104,35 @@ public class GameProjectApp extends GameApplication {
             protected void onAction() {
                 player.removeComponent(AttractorComponent.class);
             }
-        }, KeyCode.F);
+        }, KeyCode.W);
+
+        getInput().addAction(new UserAction("Open/Close Panel") {
+            @Override
+            protected void onActionBegin() {
+                if (panel.isOpen())
+                    panel.close();
+                else
+                    panel.open();
+            }
+        }, KeyCode.TAB);
+
+        input.addInputMapping(new InputMapping("Open", KeyCode.F));
 
 
+    }
+
+    @OnUserAction(name = "Open", type = ActionType.ON_ACTION_BEGIN)
+    public void openWindow() {
+        // 1. create in-game window
+        InGameWindow window = new InGameWindow("Window Title");
+
+        // 2. set properties
+        window.setPrefSize(300, 200);
+        window.setPosition(400, 300);
+        window.setBackgroundColor(Color.LIGHTBLUE);
+
+        // 3. attach to game scene as UI node
+        getGameScene().addUINode(window);
     }
 
 
@@ -91,9 +142,10 @@ public class GameProjectApp extends GameApplication {
 
 
     }
-
+    private InGamePanel panel;
     private Entity player;
     private Entity enemy;
+
 
 
     @Override
@@ -119,7 +171,18 @@ public class GameProjectApp extends GameApplication {
 
         getGameWorld().addEntities(player, enemy);
 
+        panel = new InGamePanel();
+
+        Text text = getUIFactory().newText("Hello from Panel");
+        text.setTranslateX(50);
+        text.setTranslateY(50);
+        panel.getChildren().add(text);
+
+        getGameScene().addUINode(panel);
+
     }
+
+
 
 
     @Override
@@ -132,7 +195,12 @@ public class GameProjectApp extends GameApplication {
 
         getGameScene().addUINode(textPixels); // add to the scene graph
 
+
+
+
     }
+
+
 
     @Override
     protected void initPhysics() {
