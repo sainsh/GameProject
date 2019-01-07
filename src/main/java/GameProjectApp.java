@@ -1,4 +1,3 @@
-import Common.EnemyControl;
 import Common.PlayerControl;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
@@ -6,28 +5,23 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.extra.entity.components.AttractableComponent;
 import com.almasb.fxgl.extra.entity.components.AttractorComponent;
-import com.almasb.fxgl.gameplay.rpg.quest.Quest;
-import com.almasb.fxgl.gameplay.rpg.quest.QuestObjective;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.physics.*;
-import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
-import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.scene.Viewport;
 import com.almasb.fxgl.settings.GameSettings;
-import com.almasb.fxgl.settings.MenuItem;
 import com.almasb.fxgl.ui.InGamePanel;
 import com.almasb.fxgl.ui.InGameWindow;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.Map;
 
 
@@ -42,7 +36,6 @@ public class GameProjectApp extends GameApplication {
     private Entity player;
     private Entity enemy;
     private PlayerControl playerControl;
-    private EnemyControl enemyControl;
 
 
     @Override
@@ -53,8 +46,7 @@ public class GameProjectApp extends GameApplication {
         gameSettings.setTitle("New Earth");
         gameSettings.setVersion("0.1");
         gameSettings.setMenuEnabled(true);
-       // gameSettings.setEnabledMenuItems(EnumSet.allOf(MenuItem.class)); //use for save/load later
-
+        // gameSettings.setEnabledMenuItems(EnumSet.allOf(MenuItem.class)); //use for save/load later
 
 
     }
@@ -123,6 +115,7 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onActionEnd() {
                 openWindow();
+
             }
         }, KeyCode.E);
 
@@ -164,19 +157,17 @@ public class GameProjectApp extends GameApplication {
                 .at(200, 200)
                 .bbox(new HitBox("Player_Body", BoundingShape.box(25, 25)))
                 .viewFromNode(new Rectangle(25, 25, Color.BLUE))
-                .with(new AttractorComponent(50, 1000))
+                .with(new AttractorComponent(50, 300))
                 .with(playerControl)
                 .with(new CollidableComponent(true))
                 .build();
 
-        enemyControl = new EnemyControl(player.getPosition());
 
         enemy = Entities.builder()
                 .type(Type.ENEMY)
                 .at(600, 600)
                 .viewFromNodeWithBBox(getAssetLoader().loadTexture("brick.png", 25, 25))
                 .with(new AttractableComponent(25))
-                .with(enemyControl)
                 .with(new CollidableComponent(true))
                 .build();
 
@@ -185,22 +176,13 @@ public class GameProjectApp extends GameApplication {
 
 
         panel = new InGamePanel();
-
-        Text text = getUIFactory().newText("Hello from Panel");
-        text.setTranslateX(50);
-        text.setTranslateY(50);
-        panel.getChildren().add(text);
         panel.getChildren().add(new QuestPane(300, 300));
 
         getGameScene().addUINode(panel);
 
-        getGameplay().getQuestManager().addQuest(new Quest("TestQuest", Arrays.asList(
-                new QuestObjective("TestObjective", new SimpleIntegerProperty(0), 3)
-        )));
-
         Viewport viewPort = getGameScene().getViewport();
-        viewPort.bindToEntity(player,0,0);
-        viewPort.setBounds(200,100,1000,700);
+        viewPort.bindToEntity(player, -100, -200);
+        viewPort.setBounds(200, 100, 1000, 700);
 
     }
 
@@ -216,15 +198,11 @@ public class GameProjectApp extends GameApplication {
         getGameScene().addUINode(textPixels); // add to the scene graph
 
 
-
-
     }
 
 
     @Override
     protected void initPhysics() {
-        // 3. get physics world and register a collision handler
-        // between Type.PLAYER and Type.ENEMY
 
         PhysicsWorld physics = getPhysicsWorld();
 
@@ -244,7 +222,7 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollision(Entity player, Entity enemy) {
                 System.out.println("On Collision");
-                player.translateTowards(new Point2D(enemy.getX()+100,enemy.getY()+100),10);
+                player.translateTowards(new Point2D(enemy.getX() + 100, enemy.getY() + 100), 10);
             }
 
             @Override
@@ -252,6 +230,24 @@ public class GameProjectApp extends GameApplication {
                 System.out.println("On Collision End");
             }
         });
+    }
+
+    @Override
+    public void onUpdate(double tpf) {
+
+        if (enemy.getPosition().distance(player.getPosition()) > 500) {
+            if (player.hasComponent(AttractorComponent.class))
+                player.removeComponent(AttractorComponent.class);
+            if (enemy.getPosition() != new Point2D(600, 600)) {
+                enemy.translateTowards(new Point2D(600, 600), 1);
+            }
+        } else {
+            if (!player.hasComponent(AttractorComponent.class)) {
+                player.addComponent(new AttractorComponent(150, 300));
+            }
+
+        }
+
     }
 
 
