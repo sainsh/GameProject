@@ -4,7 +4,7 @@ public class Config {
 
     private final int tileSize = 64;
     private int mapWidth = 20;
-    private int mapHeight = 20;
+    private int mapHeight = 13;
 
     public int getTileSize() {
         return tileSize;
