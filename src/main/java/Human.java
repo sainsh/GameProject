@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human {
+public class Human implements Race{
 
     private int startHealth;
     private int startMana;

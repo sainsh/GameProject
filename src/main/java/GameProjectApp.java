@@ -14,6 +14,11 @@ import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
 import com.almasb.fxgl.ui.InGameWindow;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 
@@ -43,6 +48,7 @@ public class GameProjectApp extends GameApplication {
     private AStarGrid grid;
 
     private Player player;
+    private Race race;
 
     public AStarGrid getGrid() {
         return grid;
@@ -143,7 +149,7 @@ public class GameProjectApp extends GameApplication {
 
         grid = new AStarGrid(mapWidth, mapHeight);
 
-        initBackground();
+       // initBackground();
 
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
@@ -157,18 +163,7 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void chooseChar() {
 
-
-        HBox raceBox = new HBox(
-                getUIFactory().newButton("Human \n start health: +20 \n start mana: +2 \n proficiencies: \n light armor \n light and one-handed weapons"),
-                getUIFactory().newButton("Elf \n comming soon"),
-                getUIFactory().newButton("Dwarf \n comming soon")
-
-        );
-
-        getDisplay().showBox("choose a race", raceBox);
-    }
 
     private void initBackground() {
 
@@ -190,6 +185,47 @@ public class GameProjectApp extends GameApplication {
 
     @Override
     protected void initUI() {
+
+        HBox raceBox = new HBox();
+        Button humanBTN = new Button("Human \n start health: +20 \n start mana: +2 \n proficiencies: \n light armor \n light and one-handed weapons",getAssetLoader().loadTexture("roma-kupriyanov-14.jpg",200,300));
+        humanBTN.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                getGameScene().removeUINode(raceBox);
+                race = new Human();
+                chooseClass();
+            }
+        });
+
+        raceBox.getChildren().add(humanBTN);
+        raceBox.setPrefWidth(1000);
+
+        raceBox.setTranslateX(0);
+        raceBox.setTranslateY(100);
+
+       getGameScene().addUINode(raceBox);
+
+    }
+
+    private void chooseClass() {
+
+        HBox classBox = new HBox();
+        Button warriorBTN = new Button("Warrior \n start health: 100 \n start mana: 10 \n proficiencies: light, medium and heavy armor \n all weapons \n start equiptment: \n random weapon \n medium armor",getAssetLoader().loadTexture("tiefling soldier melee.jpg",200,300));
+        warriorBTN.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                getGameScene().removeUINode(classBox);
+                player = new Player(new Warrior(),race);
+            }
+        });
+
+        classBox.getChildren().add(warriorBTN);
+        classBox.setPrefWidth(1000);
+
+        classBox.setTranslateX(0);
+        classBox.setTranslateY(100);
+
+        getGameScene().addUINode(classBox);
 
     }
 

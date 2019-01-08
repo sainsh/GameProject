@@ -7,7 +7,7 @@ public class Warrior implements Profession{
     private int startMana;
     private List<String> armorProficiencies;
     private List<String> weaponProficiencies;
-    private List<Equipment> startingEquiptment;
+    private List<Equipment> startingEquipment;
 
 
     public Warrior() {
@@ -23,9 +23,9 @@ public class Warrior implements Profession{
         weaponProficiencies.add("one-handend");
         weaponProficiencies.add("two-handed");
         weaponProficiencies.add("ranged");
-        startingEquiptment = new ArrayList<>();
-        startingEquiptment.add(new Weapon((int)(Math.random()*4)));
-        startingEquiptment.add(new Armor("medium"));
+        startingEquipment = new ArrayList<>();
+        startingEquipment.add(new Weapon((int)(Math.random()*4)));
+        startingEquipment.add(new Armor("medium"));
     }
 
     public int getStartHealth() {
@@ -60,11 +60,11 @@ public class Warrior implements Profession{
         this.weaponProficiencies = weaponProficiencies;
     }
 
-    public List<Equipment> getStartingEquiptment() {
-        return startingEquiptment;
+    public List<Equipment> getStartingEquipment() {
+        return startingEquipment;
     }
 
-    public void setStartingEquiptment(List<Equipment> startingEquiptment) {
-        this.startingEquiptment = startingEquiptment;
+    public void setStartingEquipment(List<Equipment> startingEquipment) {
+        this.startingEquipment = startingEquipment;
     }
 }
