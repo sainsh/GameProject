@@ -1,26 +1,21 @@
+import Common.Config;
 import Common.PlayerControl;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
-import com.almasb.fxgl.extra.entity.components.AttractableComponent;
-import com.almasb.fxgl.extra.entity.components.AttractorComponent;
+import com.almasb.fxgl.entity.RenderLayer;
+import com.almasb.fxgl.extra.ai.pathfinding.AStarGrid;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsWorld;
-import com.almasb.fxgl.scene.Viewport;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
 import com.almasb.fxgl.ui.InGameWindow;
-import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+import javafx.scene.layout.*;
 
 import java.util.Map;
 
@@ -31,22 +26,40 @@ public class GameProjectApp extends GameApplication {
         PLAYER, ENEMY
     }
 
+    private boolean paused = true;
+    private InGameWindow newGameWindow;
+
 
     private InGamePanel panel;
-    private Entity player;
+    private Entity playerEnt;
     private Entity enemy;
     private PlayerControl playerControl;
+
+    private Config config;
+    private int tileSize;
+    private int mapHeight;
+    private int mapWidth;
+
+    private AStarGrid grid;
+
+    private Player player;
+
+    public AStarGrid getGrid() {
+        return grid;
+    }
 
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
 
+
         gameSettings.setWidth(1440);
         gameSettings.setHeight(900);
         gameSettings.setTitle("New Earth");
         gameSettings.setVersion("0.1");
-        gameSettings.setMenuEnabled(true);
+        // gameSettings.setMenuEnabled(true);
         // gameSettings.setEnabledMenuItems(EnumSet.allOf(MenuItem.class)); //use for save/load later
+        gameSettings.setCloseConfirmation(false);
 
 
     }
@@ -59,87 +72,61 @@ public class GameProjectApp extends GameApplication {
         input.addAction(new UserAction("Move Left") {
             @Override
             protected void onAction() {
-                playerControl.left();
-                getGameState().increment("pixelsMoved", +5);
+                if (!paused) {
+                    playerControl.left();
+
+                }
             }
         }, KeyCode.LEFT);
 
         input.addAction(new UserAction("Move Right") {
             @Override
             protected void onAction() {
-                playerControl.right();
-                getGameState().increment("pixelsMoved", +5);
+                if (!paused) {
+                    playerControl.right();
+
+                }
             }
         }, KeyCode.RIGHT);
 
         input.addAction(new UserAction("Move Up") {
             @Override
             protected void onAction() {
-                playerControl.up();
-                getGameState().increment("pixelsMoved", +5);
+                if (!paused) {
+                    playerControl.up();
+
+                }
             }
         }, KeyCode.UP);
 
         input.addAction(new UserAction("Move Down") {
             @Override
             protected void onAction() {
-                playerControl.down();
-                getGameState().increment("pixelsMoved", +5);
-            }
-        }, KeyCode.DOWN);
+                if (!paused) {
+                    playerControl.down();
 
-
-        input.addAction(new UserAction("Stop Enemy") {
-            @Override
-            protected void onActionEnd() {
-                if (player.hasComponent(AttractorComponent.class)) {
-
-                    player.removeComponent(AttractorComponent.class);
-                } else {
-                    player.addComponent(new AttractorComponent(150, 1000));
                 }
             }
-        }, KeyCode.W);
+        }, KeyCode.DOWN);
 
         getInput().addAction(new UserAction("Open/Close Panel") {
             @Override
             protected void onActionEnd() {
-                if (panel.isOpen())
-                    panel.close();
-                else
-                    panel.open();
+                if (paused) {
+                    if (panel.isOpen())
+                        panel.close();
+                    else
+                        panel.open();
+                }
             }
         }, KeyCode.TAB);
 
-        input.addAction(new UserAction("Open Window") {
-            @Override
-            protected void onActionEnd() {
-                openWindow();
 
-            }
-        }, KeyCode.E);
-
-
-    }
-
-
-    public void openWindow() {
-        // 1. create in-game window
-        InGameWindow window = new InGameWindow("Window Title");
-
-        // 2. set properties
-        window.setPrefSize(300, 200);
-        window.setPosition(400, 300);
-        window.setBackgroundColor(Color.LIGHTBLUE);
-
-        // 3. attach to game scene as UI node
-        getGameScene().addUINode(window);
     }
 
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("pixelsMoved", 0);
 
 
     }
@@ -149,30 +136,17 @@ public class GameProjectApp extends GameApplication {
     protected void initGame() {
 
 
-        playerControl = new PlayerControl();
+        config = new Config();
+        tileSize = config.getTileSize();
+        mapHeight = config.getMapHeight();
+        mapWidth = config.getMapWidth();
+
+        grid = new AStarGrid(mapWidth, mapHeight);
+
+        initBackground();
 
 
-        player = Entities.builder()
-                .type(Type.PLAYER)
-                .at(200, 200)
-                .bbox(new HitBox("Player_Body", BoundingShape.box(25, 25)))
-                .viewFromNode(new Rectangle(25, 25, Color.BLUE))
-                .with(new AttractorComponent(50, 300))
-                .with(playerControl)
-                .with(new CollidableComponent(true))
-                .build();
-
-
-        enemy = Entities.builder()
-                .type(Type.ENEMY)
-                .at(600, 600)
-                .viewFromNodeWithBBox(getAssetLoader().loadTexture("brick.png", 25, 25))
-                .with(new AttractableComponent(25))
-                .with(new CollidableComponent(true))
-                .build();
-
-
-        getGameWorld().addEntities(player, enemy);
+        getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
 
 
         panel = new InGamePanel();
@@ -180,23 +154,42 @@ public class GameProjectApp extends GameApplication {
 
         getGameScene().addUINode(panel);
 
-        Viewport viewPort = getGameScene().getViewport();
-        viewPort.bindToEntity(player, -100, -200);
-        viewPort.setBounds(200, 100, 1000, 700);
 
+    }
+
+    private void chooseChar() {
+
+
+        HBox raceBox = new HBox(
+                getUIFactory().newButton("Human \n start health: +20 \n start mana: +2 \n proficiencies: \n light armor \n light and one-handed weapons"),
+                getUIFactory().newButton("Elf \n comming soon"),
+                getUIFactory().newButton("Dwarf \n comming soon")
+
+        );
+
+        getDisplay().showBox("choose a race", raceBox);
+    }
+
+    private void initBackground() {
+
+        Entity bg = Entities.builder().buildAndAttach(getGameWorld());
+
+        Region region = new Region();
+        region.setPrefSize(mapWidth * tileSize, mapHeight * tileSize);
+
+        BackgroundImage bgImg = new BackgroundImage(getAssetLoader().loadTexture(
+                "map of inner saisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+
+        region.setBackground(new Background(bgImg));
+        bg.getViewComponent().setView(region);
+
+        bg.getViewComponent().setRenderLayer(new RenderLayer("BACKGROUND", 0));
     }
 
 
     @Override
     protected void initUI() {
-        Text textPixels = new Text();
-        textPixels.setTranslateX(50); // x = 50
-        textPixels.setTranslateY(100); // y = 100
-
-        textPixels.textProperty().bind(getGameState().intProperty("pixelsMoved").asString());
-
-        getGameScene().addUINode(textPixels); // add to the scene graph
-
 
     }
 
@@ -222,7 +215,6 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollision(Entity player, Entity enemy) {
                 System.out.println("On Collision");
-                player.translateTowards(new Point2D(enemy.getX() + 100, enemy.getY() + 100), 10);
             }
 
             @Override
@@ -230,24 +222,6 @@ public class GameProjectApp extends GameApplication {
                 System.out.println("On Collision End");
             }
         });
-    }
-
-    @Override
-    public void onUpdate(double tpf) {
-
-        if (enemy.getPosition().distance(player.getPosition()) > 500) {
-            if (player.hasComponent(AttractorComponent.class))
-                player.removeComponent(AttractorComponent.class);
-            if (enemy.getPosition() != new Point2D(600, 600)) {
-                enemy.translateTowards(new Point2D(600, 600), 1);
-            }
-        } else {
-            if (!player.hasComponent(AttractorComponent.class)) {
-                player.addComponent(new AttractorComponent(150, 300));
-            }
-
-        }
-
     }
 
 
