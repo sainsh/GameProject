@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Warrior implements Profession{
 
+    private String name = "Warrior";
     private int startHealth;
     private int startMana;
     private List<String> armorProficiencies;
@@ -66,5 +67,13 @@ public class Warrior implements Profession{
 
     public void setStartingEquipment(List<Equipment> startingEquipment) {
         this.startingEquipment = startingEquipment;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -10,4 +10,6 @@ public interface Race {
     List<String> getArmorProficiencies();
 
     List<String> getWeaponProficiencies();
+
+    String getName();
 }

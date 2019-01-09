@@ -7,6 +7,7 @@ public class Armor implements Equipment {
 
 
     public Armor(String type) {
+        this.type = type;
 
         if (type.equals("light")) {
             hitpoints = 20;
@@ -59,5 +60,10 @@ public class Armor implements Equipment {
 
     public void setArmorBonus(int armorBonus) {
         this.armorBonus = armorBonus;
+    }
+
+    @Override
+    public String getName() {
+        return getType()+" armor";
     }
 }

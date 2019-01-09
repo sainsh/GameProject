@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Human implements Race{
 
+    private String name = "Human";
     private int startHealth;
     private int startMana;
     private List<String> weaponProficiencies;
@@ -50,5 +51,13 @@ public class Human implements Race{
 
     public void setArmorProficiencies(List<String> armorProficiencies) {
         this.armorProficiencies = armorProficiencies;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

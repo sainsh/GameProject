@@ -4,7 +4,6 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.RenderLayer;
-import com.almasb.fxgl.extra.ai.pathfinding.AStarGrid;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
@@ -13,13 +12,11 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
-import com.almasb.fxgl.ui.InGameWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.util.Map;
@@ -27,32 +24,23 @@ import java.util.Map;
 
 public class GameProjectApp extends GameApplication {
 
-    private enum Type {
-        PLAYER, ENEMY
-    }
 
     private boolean paused = true;
-    private InGameWindow newGameWindow;
+    private String tempVar = "";
 
 
     private InGamePanel panel;
     private Entity playerEnt;
     private Entity enemy;
-    private PlayerControl playerControl;
 
     private Config config;
     private int tileSize;
     private int mapHeight;
     private int mapWidth;
 
-    private AStarGrid grid;
 
     private Player player;
     private Race race;
-
-    public AStarGrid getGrid() {
-        return grid;
-    }
 
 
     @Override
@@ -66,6 +54,7 @@ public class GameProjectApp extends GameApplication {
         // gameSettings.setMenuEnabled(true);
         // gameSettings.setEnabledMenuItems(EnumSet.allOf(MenuItem.class)); //use for save/load later
         gameSettings.setCloseConfirmation(false);
+        gameSettings.setConfigClass(Config.class);
 
 
     }
@@ -73,59 +62,6 @@ public class GameProjectApp extends GameApplication {
 
     @Override
     protected void initInput() {
-        Input input = getInput(); // get input service
-
-        input.addAction(new UserAction("Move Left") {
-            @Override
-            protected void onAction() {
-                if (!paused) {
-                    playerControl.left();
-
-                }
-            }
-        }, KeyCode.LEFT);
-
-        input.addAction(new UserAction("Move Right") {
-            @Override
-            protected void onAction() {
-                if (!paused) {
-                    playerControl.right();
-
-                }
-            }
-        }, KeyCode.RIGHT);
-
-        input.addAction(new UserAction("Move Up") {
-            @Override
-            protected void onAction() {
-                if (!paused) {
-                    playerControl.up();
-
-                }
-            }
-        }, KeyCode.UP);
-
-        input.addAction(new UserAction("Move Down") {
-            @Override
-            protected void onAction() {
-                if (!paused) {
-                    playerControl.down();
-
-                }
-            }
-        }, KeyCode.DOWN);
-
-        getInput().addAction(new UserAction("Open/Close Panel") {
-            @Override
-            protected void onActionEnd() {
-                if (paused) {
-                    if (panel.isOpen())
-                        panel.close();
-                    else
-                        panel.open();
-                }
-            }
-        }, KeyCode.TAB);
 
 
     }
@@ -137,7 +73,7 @@ public class GameProjectApp extends GameApplication {
         vars.put("Player ArmorBonus", "Armor: 10");
         vars.put("Player Race", "default");
         vars.put("Player Class", "default");
-        vars.put("Player Armors","default");
+        vars.put("Player Armors", "default");
         vars.put("Player Weapons", "default");
         vars.put("Player Equipment", "default");
 
@@ -154,10 +90,9 @@ public class GameProjectApp extends GameApplication {
         mapHeight = config.getMapHeight();
         mapWidth = config.getMapWidth();
 
-        grid = new AStarGrid(mapWidth, mapHeight);
+        getGameWorld().addEntityFactory(new GameProjectFactory());
 
         initBackground();
-
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
 
@@ -193,7 +128,9 @@ public class GameProjectApp extends GameApplication {
     protected void initUI() {
 
         HBox raceBox = new HBox();
-        Button humanBTN = new Button("Human \n start health: +20 \n start mana: +2 \n proficiencies: \n light armor \n light and one-handed weapons", getAssetLoader().loadTexture("roma-kupriyanov-14.jpg", 200, 300));
+        Button humanBTN = new Button("Human \n start health: +20 \n start mana: +2 \n proficiencies: " +
+                "\n light armor \n light and one-handed weapons",
+                getAssetLoader().loadTexture("roma-kupriyanov-14.jpg", 200, 300));
         humanBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -212,7 +149,6 @@ public class GameProjectApp extends GameApplication {
         raceBox.getChildren().add(dwarfBTN);
 
         raceBox.setPrefWidth(1000);
-
         raceBox.setTranslateX(0);
         raceBox.setTranslateY(100);
 
@@ -224,7 +160,9 @@ public class GameProjectApp extends GameApplication {
     private void chooseClass() {
 
         HBox classBox = new HBox();
-        Button warriorBTN = new Button("Warrior \n start health: 100 \n start mana: 10 \n proficiencies: light, medium and heavy armor \n all weapons \n start equipment: \n random weapon \n medium armor", getAssetLoader().loadTexture("tiefling soldier melee.jpg", 200, 300));
+        Button warriorBTN = new Button("Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
+                "\n light, medium and heavy armor \n all weapons \n start equipment: \n random weapon \n medium armor",
+                getAssetLoader().loadTexture("tiefling soldier melee.jpg", 200, 300));
         warriorBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -235,8 +173,8 @@ public class GameProjectApp extends GameApplication {
 
                 VBox playerInfo = new VBox();
 
-                playerInfo.setTranslateX(getGameScene().getWidth()/6*5);
-                playerInfo.setTranslateY(getGameScene().getHeight()/10);
+                playerInfo.setTranslateX(getGameScene().getWidth() / 6 * 5);
+                playerInfo.setTranslateY(getGameScene().getHeight() / 10);
 
                 Text playerHealth = new Text();
                 playerHealth.textProperty().bind(getGameState().stringProperty("Player Health"));
@@ -254,7 +192,22 @@ public class GameProjectApp extends GameApplication {
                 playerClass.textProperty().bind(getGameState().stringProperty("Player Class"));
                 playerInfo.getChildren().add(playerClass);
 
+                Text playerEquipment = new Text();
+                playerEquipment.textProperty().bind(getGameState().stringProperty("Player Equipment"));
+                playerInfo.getChildren().add(playerEquipment);
+
                 getGameScene().addUINode(playerInfo);
+
+
+                getGameWorld().setLevelFromMap("firstTestMap.json");
+
+                playerEnt = getGameWorld().spawn("player", 50, 50);
+
+                initNewInput();
+
+
+                paused = false;
+
 
             }
         });
@@ -275,13 +228,90 @@ public class GameProjectApp extends GameApplication {
 
     }
 
+    private void initNewInput() {
+
+        Input input = getInput(); // get input service
+
+        input.addAction(new UserAction("Move Left") {
+            @Override
+            protected void onAction() {
+                if (!paused) {
+                    playerEnt.getComponent(PlayerControl.class).left();
+
+
+                }
+            }
+        }, KeyCode.LEFT);
+
+        input.addAction(new UserAction("Move Right") {
+            @Override
+            protected void onAction() {
+                if (!paused) {
+                    playerEnt.getComponent(PlayerControl.class).right();
+
+                }
+            }
+        }, KeyCode.RIGHT);
+
+        input.addAction(new UserAction("Move Up") {
+            @Override
+            protected void onAction() {
+                if (!paused) {
+                    playerEnt.getComponent(PlayerControl.class).up();
+
+                }
+            }
+        }, KeyCode.UP);
+
+        input.addAction(new UserAction("Move Down") {
+            @Override
+            protected void onAction() {
+                if (!paused) {
+                    playerEnt.getComponent(PlayerControl.class).down();
+
+                }
+            }
+        }, KeyCode.DOWN);
+
+        getInput().addAction(new UserAction("Open/Close Panel") {
+            @Override
+            protected void onActionEnd() {
+                if (paused) {
+                    if (panel.isOpen())
+                        panel.close();
+                    else
+                        panel.open();
+                }
+            }
+        }, KeyCode.TAB);
+
+
+    }
+
+    @Override
+    protected void onUpdate(double tdf) {
+        if (player != null) {
+            getGameState().stringProperty("Player Health").set("Health: " + player.getHealth() + "/" + player.getMaxHealth());
+            tempVar = "";
+            for (Equipment n : player.getEquipment()) {
+                tempVar += n.getName() + "\n";
+
+            }
+            getGameState().stringProperty("Player Equipment").set(tempVar);
+            getGameState().stringProperty("Player ArmorBonus").set("Armor Bonus: " + player.getArmorBonus());
+            getGameState().stringProperty("Player Race").set(player.getRace().getName());
+            getGameState().stringProperty("Player Class").set(player.getProfession().getName());
+        }
+    }
+
 
     @Override
     protected void initPhysics() {
 
         PhysicsWorld physics = getPhysicsWorld();
+        physics.setGravity(0, 0);
 
-        physics.addCollisionHandler(new CollisionHandler(Type.PLAYER, Type.ENEMY) {
+        physics.addCollisionHandler(new CollisionHandler(GameProjectType.PLAYER, GameProjectType.ENEMY) {
             @Override
             protected void onHitBoxTrigger(Entity player, Entity enemy, HitBox playerBox, HitBox enemyBox) {
                 System.out.println(playerBox.getName() + " X " + enemyBox.getName());

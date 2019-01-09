@@ -7,38 +7,48 @@
 package Common;
 
 import com.almasb.fxgl.entity.component.Component;
-import com.almasb.fxgl.entity.component.Required;
-import com.almasb.fxgl.entity.components.PositionComponent;
+import com.almasb.fxgl.physics.PhysicsComponent;
 
 /**
  * @author Almas Baimagambetov (AlmasB) (almaslvl@gmail.com)
  */
-@Required(PositionComponent.class)
-public class PlayerControl extends Component{
 
-    private PositionComponent position;
+public class PlayerControl extends Component {
+
+
+    private PhysicsComponent physics;
+
 
     private double speed = 0;
+
+    public PlayerControl(PhysicsComponent physics) {
+        this.physics = physics;
+
+    }
+
 
     @Override
     public void onUpdate(double tpf) {
         speed = tpf * 60;
+
     }
 
     public void up() {
-        position.translateY(-5 * speed);
+        physics.setLinearVelocity(0, -100);
+
+
     }
 
     public void down() {
-        position.translateY(5 * speed);
+        physics.setLinearVelocity(0, 100);
     }
 
     public void left() {
-        position.translateX(-5 * speed);
+        physics.setLinearVelocity(-100, 0);
     }
 
     public void right() {
-        position.translateX(5 * speed);
+        physics.setLinearVelocity(100, 0);
     }
 
 

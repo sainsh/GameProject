@@ -3,8 +3,8 @@ package Common;
 public class Config {
 
     private final int tileSize = 64;
-    private int mapWidth = 20;
-    private int mapHeight = 13;
+    private int mapWidth = 15;
+    private int mapHeight = 10;
 
     public int getTileSize() {
         return tileSize;

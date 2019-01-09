@@ -4,7 +4,9 @@ import java.util.List;
 public class Player {
 
     private int health;
+    private int maxHealth;
     private int mana;
+    private int armorBonus = 10;
     private Profession profession;
     private Race race;
     private int exp;
@@ -17,6 +19,7 @@ public class Player {
         this.profession = profession;
         this.race = race;
         this.health = profession.getStartHealth() + race.getStartHealth();
+        this.maxHealth = this.health;
         this.mana = profession.getStartMana() + race.getStartMana();
         for (String proficiency : profession.getArmorProficiencies()) {
             armorProficiencies.add(proficiency);
@@ -63,6 +66,12 @@ public class Player {
 
         }
 
+        for(Equipment item : equipment){
+            if(item.getClass() == Armor.class){
+                armorBonus += ((Armor) item).getArmorBonus();
+            }
+        }
+
 
     }
 
@@ -104,5 +113,45 @@ public class Player {
 
     public void setExp(int exp) {
         this.exp = exp;
+    }
+
+    public List<String> getArmorProficiencies() {
+        return armorProficiencies;
+    }
+
+    public void setArmorProficiencies(List<String> armorProficiencies) {
+        this.armorProficiencies = armorProficiencies;
+    }
+
+    public List<String> getWeaponProficiencies() {
+        return weaponProficiencies;
+    }
+
+    public void setWeaponProficiencies(List<String> weaponProficiencies) {
+        this.weaponProficiencies = weaponProficiencies;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public int getArmorBonus() {
+        return armorBonus;
+    }
+
+    public void setArmorBonus(int armorBonus) {
+        this.armorBonus = armorBonus;
     }
 }

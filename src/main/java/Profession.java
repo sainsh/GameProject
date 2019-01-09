@@ -11,4 +11,6 @@ public interface Profession {
     List<String> getWeaponProficiencies();
 
     List<Equipment> getStartingEquipment();
+
+    String getName();
 }
