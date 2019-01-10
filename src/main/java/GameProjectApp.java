@@ -32,6 +32,7 @@ public class GameProjectApp extends GameApplication {
     private InGamePanel panel;
     private Entity playerEnt;
     private Entity enemy;
+    private VBox playerInfo;
 
     private Config config;
     private int tileSize;
@@ -171,32 +172,7 @@ public class GameProjectApp extends GameApplication {
 
                 player = new Player(new Warrior(), race);
 
-                VBox playerInfo = new VBox();
-
-                playerInfo.setTranslateX(getGameScene().getWidth() / 6 * 5);
-                playerInfo.setTranslateY(getGameScene().getHeight() / 10);
-
-                Text playerHealth = new Text();
-                playerHealth.textProperty().bind(getGameState().stringProperty("Player Health"));
-                playerInfo.getChildren().add(playerHealth);
-
-                Text playerArmorBonus = new Text();
-                playerArmorBonus.textProperty().bind(getGameState().stringProperty("Player ArmorBonus"));
-                playerInfo.getChildren().add(playerArmorBonus);
-
-                Text playerRace = new Text();
-                playerRace.textProperty().bind(getGameState().stringProperty("Player Race"));
-                playerInfo.getChildren().add(playerRace);
-
-                Text playerClass = new Text();
-                playerClass.textProperty().bind(getGameState().stringProperty("Player Class"));
-                playerInfo.getChildren().add(playerClass);
-
-                Text playerEquipment = new Text();
-                playerEquipment.textProperty().bind(getGameState().stringProperty("Player Equipment"));
-                playerInfo.getChildren().add(playerEquipment);
-
-                getGameScene().addUINode(playerInfo);
+                createPlayerInfo();
 
 
                 getGameWorld().setLevelFromMap("firstTestMap.json");
@@ -322,6 +298,8 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 System.out.println("On Collision Begin");
+
+                battle(enemy);
             }
 
             @Override
@@ -334,6 +312,45 @@ public class GameProjectApp extends GameApplication {
                 System.out.println("On Collision End");
             }
         });
+    }
+
+    private void battle(Entity enemy) {
+
+        getGameScene().removeUINode(playerInfo);
+        getGameWorld().setLevelFromMap("TestBattleMap.json");
+
+    }
+
+    private void createPlayerInfo(){
+
+        playerInfo = new VBox();
+
+        playerInfo.setTranslateX(getGameScene().getWidth() / 6 * 5);
+        playerInfo.setTranslateY(getGameScene().getHeight() / 10);
+
+        Text playerHealth = new Text();
+        playerHealth.textProperty().bind(getGameState().stringProperty("Player Health"));
+        playerInfo.getChildren().add(playerHealth);
+
+        Text playerArmorBonus = new Text();
+        playerArmorBonus.textProperty().bind(getGameState().stringProperty("Player ArmorBonus"));
+        playerInfo.getChildren().add(playerArmorBonus);
+
+        Text playerRace = new Text();
+        playerRace.textProperty().bind(getGameState().stringProperty("Player Race"));
+        playerInfo.getChildren().add(playerRace);
+
+        Text playerClass = new Text();
+        playerClass.textProperty().bind(getGameState().stringProperty("Player Class"));
+        playerInfo.getChildren().add(playerClass);
+
+        Text playerEquipment = new Text();
+        playerEquipment.textProperty().bind(getGameState().stringProperty("Player Equipment"));
+        playerInfo.getChildren().add(playerEquipment);
+
+        getGameScene().addUINode(playerInfo);
+
+
     }
 
 

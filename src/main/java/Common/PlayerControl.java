@@ -6,6 +6,7 @@
 
 package Common;
 
+import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
@@ -15,11 +16,14 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 
 public class PlayerControl extends Component {
 
+    private static final float SPEED_DECAY = 0.66f;
 
     private PhysicsComponent physics;
 
 
-    private double speed = 0;
+    private float speed = 0;
+
+    private Vec2 velocity = new Vec2();
 
     public PlayerControl(PhysicsComponent physics) {
         this.physics = physics;
@@ -29,26 +33,30 @@ public class PlayerControl extends Component {
 
     @Override
     public void onUpdate(double tpf) {
-        speed = tpf * 60;
+        speed = (float)tpf * 600;
+
+        velocity.mulLocal(SPEED_DECAY);
+
+        physics.setBodyLinearVelocity(velocity);
 
     }
 
     public void up() {
-        physics.setLinearVelocity(0, -100);
-
-
+        velocity.set(0,speed);
     }
 
     public void down() {
-        physics.setLinearVelocity(0, 100);
+        velocity.set(0,-speed);
+
     }
 
     public void left() {
-        physics.setLinearVelocity(-100, 0);
+        velocity.set(-speed,0);
+
     }
 
     public void right() {
-        physics.setLinearVelocity(100, 0);
+        velocity.set(speed,0);
     }
 
 
