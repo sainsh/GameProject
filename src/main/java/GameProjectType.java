@@ -1,4 +1,4 @@
 public enum GameProjectType {
-    PLAYER, ENEMY, HOUSE
+    PLAYER, ENEMY, HOUSE, BORDER
 
 }

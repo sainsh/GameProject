@@ -56,4 +56,15 @@ public class GameProjectFactory implements EntityFactory {
 
 
     }
+
+    @Spawns("border")
+    public Entity newBorder(SpawnData data){
+
+        return Entities.builder()
+                .type(GameProjectType.BORDER)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"),data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
 }

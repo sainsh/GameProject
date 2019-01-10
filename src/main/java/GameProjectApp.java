@@ -1,5 +1,6 @@
 import Common.Config;
 import Common.PlayerControl;
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -252,7 +253,7 @@ public class GameProjectApp extends GameApplication {
         getInput().addAction(new UserAction("Open/Close Panel") {
             @Override
             protected void onActionEnd() {
-                if (paused) {
+                if (!paused) {
                     if (panel.isOpen())
                         panel.close();
                     else
@@ -267,7 +268,9 @@ public class GameProjectApp extends GameApplication {
     @Override
     protected void onUpdate(double tdf) {
         if (player != null) {
+
             getGameState().stringProperty("Player Health").set("Health: " + player.getHealth() + "/" + player.getMaxHealth());
+
             tempVar = "";
             for (Equipment n : player.getEquipment()) {
                 tempVar += n.getName() + "\n";
@@ -316,12 +319,29 @@ public class GameProjectApp extends GameApplication {
 
     private void battle(Entity enemy) {
 
-        getGameScene().removeUINode(playerInfo);
+        //getGameScene().removeUINode(playerInfo);
+        paused = true;
         getGameWorld().setLevelFromMap("TestBattleMap.json");
+        createBattleUI();
+
 
     }
 
-    private void createPlayerInfo(){
+    private void createBattleUI() {
+
+        VBox battleControls = new VBox(
+                getUIFactory().newButton("attack".toUpperCase()),
+                getUIFactory().newButton("defend".toUpperCase()),
+                getUIFactory().newButton("Magic".toUpperCase()),
+                getUIFactory().newButton("items".toUpperCase())
+
+        );
+        battleControls.setTranslateY(0);
+        battleControls.setTranslateX(getGameScene().getWidth() / 3 * 2);
+        getGameScene().addUINode(battleControls);
+    }
+
+    private void createPlayerInfo() {
 
         playerInfo = new VBox();
 
