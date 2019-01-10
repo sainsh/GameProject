@@ -15,6 +15,8 @@ import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -32,8 +34,9 @@ public class GameProjectApp extends GameApplication {
 
     private InGamePanel panel;
     private Entity playerEnt;
-    private Entity enemy;
+    private Entity enemyEnt;
     private VBox playerInfo;
+
 
     private Config config;
     private int tileSize;
@@ -43,6 +46,7 @@ public class GameProjectApp extends GameApplication {
 
     private Player player;
     private Race race;
+    private Enemy enemy;
 
 
     @Override
@@ -322,6 +326,7 @@ public class GameProjectApp extends GameApplication {
         //getGameScene().removeUINode(playerInfo);
         paused = true;
         getGameWorld().setLevelFromMap("TestBattleMap.json");
+        playerEnt = getGameWorld().spawn("player",704.0,320.0);
         createBattleUI();
 
 
@@ -338,7 +343,30 @@ public class GameProjectApp extends GameApplication {
         );
         battleControls.setTranslateY(0);
         battleControls.setTranslateX(getGameScene().getWidth() / 3 * 2);
+
+        for (Node node : battleControls.getChildren()) {
+            if (node instanceof Button) {
+                if (((Button) node).getText().equals("attack".toUpperCase())) {
+                    ((Button) node).setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("player attacked!");
+                           // Point2D point = new Point2D(playerEnt.getX(),playerEnt.getY());
+                            //playerEnt.getComponent(PlayerControl.class).moveTowards(getGameWorld().getEntitiesByType(GameProjectType.ENEMY).get(1));
+                            //System.out.println(point);
+
+                            System.out.println("player dealt " + player.attack(enemy) + "damage to enemy" );
+
+                        }
+                    });
+
+                }
+            }
+
+        }
+
         getGameScene().addUINode(battleControls);
+
     }
 
     private void createPlayerInfo() {

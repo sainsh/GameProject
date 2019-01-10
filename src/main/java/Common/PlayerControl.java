@@ -7,6 +7,7 @@
 package Common;
 
 import com.almasb.fxgl.core.math.Vec2;
+import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 
@@ -59,5 +60,10 @@ public class PlayerControl extends Component {
         velocity.set(speed,0);
     }
 
+    public void moveTowards(Entity enemy){
 
+        //velocity.set((float) enemy.getX()*-1,(float)enemy.getY());
+
+        //velocity.set(enemy.get)
+    }
 }

@@ -35,6 +35,5 @@
   <object id="1" type="enemy" x="192" y="128" width="64" height="64"/>
   <object id="2" type="enemy" x="192" y="320" width="64" height="64"/>
   <object id="3" type="enemy" x="192" y="512" width="64" height="64"/>
-  <object id="4" type="player" x="704" y="320" width="64" height="64"/>
  </objectgroup>
 </map>

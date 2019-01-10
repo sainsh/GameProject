@@ -62,17 +62,6 @@
                  "width":64,
                  "x":192,
                  "y":512
-                }, 
-                {
-                 "height":64,
-                 "id":4,
-                 "name":"",
-                 "rotation":0,
-                 "type":"player",
-                 "visible":true,
-                 "width":64,
-                 "x":704,
-                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",

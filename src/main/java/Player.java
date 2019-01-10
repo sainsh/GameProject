@@ -154,4 +154,18 @@ public class Player {
     public void setArmorBonus(int armorBonus) {
         this.armorBonus = armorBonus;
     }
+
+    public String attack(Enemy enemy) {
+
+        for (Equipment item: getEquipment()) {
+
+            if(item instanceof Weapon){
+                return enemy.getDamaged(((Weapon)item).getDamage());
+            }
+
+        }
+
+        return "no weapons";
+
+    }
 }
