@@ -1,19 +1,17 @@
 package Components.Races;
 
-import Components.Races.Race;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Human implements Race {
 
-    private String name = "Components.Races.Human";
+    private String name = "Human";
     private int startHealth;
     private int startMana;
     private List<String> weaponProficiencies;
     private List<String> armorProficiencies;
 
-    public Human(){
+    public Human() {
         startHealth = 20;
         startMana = 2;
         weaponProficiencies = new ArrayList<>();

@@ -1,6 +1,5 @@
 package Components.Equipment;
 
-import Components.Equipment.Equipment;
 
 public class Weapon implements Equipment {
 
@@ -27,13 +26,13 @@ public class Weapon implements Equipment {
     private String determineName(String type) {
 
         if (type.equals(randomType[0])) {
-            return lightWeapons[(int) (Math.random() * (lightWeapons.length-1))];
+            return lightWeapons[(int) (Math.random() * (lightWeapons.length - 1))];
         } else if (type.equals(randomType[1])) {
-            return oneHandedWeapons[(int)(Math.random()*(oneHandedWeapons.length-1))];
-        } else if (type.equals(randomType[2])){
-            return twoHandedWeapons[(int)(Math.random()*(twoHandedWeapons.length-1))];
-        }else{
-            return rangedWeapons[(int)(Math.random()*(rangedWeapons.length-1))];
+            return oneHandedWeapons[(int) (Math.random() * (oneHandedWeapons.length - 1))];
+        } else if (type.equals(randomType[2])) {
+            return twoHandedWeapons[(int) (Math.random() * (twoHandedWeapons.length - 1))];
+        } else {
+            return rangedWeapons[(int) (Math.random() * (rangedWeapons.length - 1))];
         }
     }
 

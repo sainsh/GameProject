@@ -12,4 +12,12 @@ public class RaceComponent extends Component {
         this.race = race;
 
     }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
+    }
 }

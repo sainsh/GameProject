@@ -3,14 +3,13 @@ package Components.Professions;
 import Components.Equipment.Armor;
 import Components.Equipment.Equipment;
 import Components.Equipment.Weapon;
-import Components.Professions.Profession;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Warrior implements Profession {
 
-    private String name = "Components.Professions.Warrior";
+    private String name = "Warrior";
     private int startHealth;
     private int startMana;
     private List<String> armorProficiencies;
@@ -32,7 +31,7 @@ public class Warrior implements Profession {
         weaponProficiencies.add("two-handed");
         weaponProficiencies.add("ranged");
         startingEquipment = new ArrayList<>();
-        startingEquipment.add(new Weapon((int)(Math.random()*4)));
+        startingEquipment.add(new Weapon((int) (Math.random() * 4)));
         startingEquipment.add(new Armor("medium"));
     }
 

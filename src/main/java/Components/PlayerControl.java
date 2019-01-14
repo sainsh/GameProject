@@ -14,6 +14,8 @@ import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
+import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import javafx.geometry.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +104,7 @@ public class PlayerControl extends Component {
 
 
     }
+
 
     public int getHealth() {
         return health;
@@ -219,4 +222,18 @@ public class PlayerControl extends Component {
 
         //velocity.set(enemy.get)
     }
+
+    public void setPosition(float x, float y){
+        Point2D point = new Point2D(x,y);
+
+        getEntity().removeComponent(PhysicsComponent.class);
+
+        getEntity().setPosition(point);
+
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+        getEntity().addComponent(physics);
+
+    }
+
 }

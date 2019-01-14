@@ -5,6 +5,7 @@ import Components.Equipment.Equipment;
 import Components.Player;
 import Components.PlayerControl;
 import Components.ProfessionComponent;
+import Components.Professions.Profession;
 import Components.Professions.Warrior;
 import Components.RaceComponent;
 import Components.Races.Human;
@@ -14,6 +15,7 @@ import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.entity.components.IrremovableComponent;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
@@ -28,6 +30,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -50,7 +53,6 @@ public class GameProjectApp extends GameApplication {
 
     private InGamePanel panel;
     private Entity playerEnt;
-    private Entity enemyEnt;
     private VBox playerInfo;
 
 
@@ -60,9 +62,6 @@ public class GameProjectApp extends GameApplication {
     private int mapWidth;
 
 
-    private Player player;
-    private Race race;
-    private Enemy enemy;
     private List<Enemy> enemies = new ArrayList<>();
     private ObjectProperty<Entity> selected = new SimpleObjectProperty<>();
 
@@ -93,14 +92,13 @@ public class GameProjectApp extends GameApplication {
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("Components.Player Health", "health: 0/0");
-        vars.put("Components.Player ArmorBonus", "Components.Components.Equipment.Equipment.Armor: 10");
-        vars.put("Components.Player Components.Races.Race", "default");
-        vars.put("Components.Player Class", "default");
-        vars.put("Components.Player Armors", "default");
-        vars.put("Components.Player Weapons", "default");
-        vars.put("Components.Player Components.Equipment.Equipment", "default");
-
+        vars.put("Health", "health: 0/0");
+        vars.put("ArmorBonus", "Armor: 10");
+        vars.put("Race", "default");
+        vars.put("Class", "default");
+        vars.put("Armors", "default");
+        vars.put("Weapons", "default");
+        vars.put("Equipment", "default");
 
 
     }
@@ -193,24 +191,27 @@ public class GameProjectApp extends GameApplication {
 
                 getGameScene().removeUINode(classBox);
 
+
+                getGameWorld().setLevelFromMap("firstTestMap.json");
+
                 PhysicsComponent physics = new PhysicsComponent();
                 physics.setBodyType(BodyType.DYNAMIC);
+                Profession profession = new Warrior();
 
                 playerEnt = Entities.builder()
                         .type(GameProjectType.PLAYER)
+                        .at(4 * tileSize, 4 * tileSize)
                         .viewFromNodeWithBBox(new Rectangle(64, 64, Color.BLUE))
-                        .with(new PlayerControl(physics))
+                        .with(new PlayerControl(physics, profession, race))
                         .with(physics)
                         .with(new CollidableComponent(true))
-                        .with(new ProfessionComponent(new Warrior()))
+                        .with(new ProfessionComponent(profession))
                         .with(new RaceComponent(race))
+                        .with(new IrremovableComponent())
                         .buildAndAttach();
 
 
                 createPlayerInfo();
-
-
-                getGameWorld().setLevelFromMap("firstTestMap.json");
 
 
                 initNewInput();
@@ -296,26 +297,32 @@ public class GameProjectApp extends GameApplication {
         }, KeyCode.TAB);
 
 
-
-
     }
 
     @Override
     protected void onUpdate(double tdf) {
-        if (player != null) {
+        if (playerEnt != null) {
+            if (!paused) {
 
-            getGameState().stringProperty("Components.Player Health").set("Health: " + player.getHealth() + "/" + player.getMaxHealth());
+                updatePlayerInfo();
 
-            tempVar = "";
-            for (Equipment n : player.getEquipment()) {
-                tempVar += n.getName() + "\n";
 
             }
-            getGameState().stringProperty("Components.Player Components.Equipment.Equipment").set(tempVar);
-            getGameState().stringProperty("Components.Player ArmorBonus").set("Components.Components.Equipment.Equipment.Armor Bonus: " + player.getArmorBonus());
-            getGameState().stringProperty("Components.Player Components.Races.Race").set(player.getRace().getName());
-            getGameState().stringProperty("Components.Player Class").set(player.getProfession().getName());
         }
+    }
+
+    private void updatePlayerInfo() {
+        getGameState().stringProperty("Health").set("Health: " + playerEnt.getComponent(PlayerControl.class).getHealth() + "/" + playerEnt.getComponent(PlayerControl.class).getMaxHealth());
+
+        tempVar = "";
+        for (Equipment n : playerEnt.getComponent(PlayerControl.class).getEquipment()) {
+            tempVar += n.getName() + "\n";
+
+        }
+        getGameState().stringProperty("Equipment").set(tempVar);
+        getGameState().stringProperty("ArmorBonus").set("Armor Bonus: " + playerEnt.getComponent(PlayerControl.class).getArmorBonus());
+        getGameState().stringProperty("Race").set(playerEnt.getComponent(RaceComponent.class).getRace().getName());
+        getGameState().stringProperty("Class").set(playerEnt.getComponent(ProfessionComponent.class).getProfession().getName());
     }
 
 
@@ -356,11 +363,20 @@ public class GameProjectApp extends GameApplication {
 
 
         paused = true;
+
+
+
         getGameWorld().setLevelFromMap("TestBattleMap.json");
-        playerEnt = getGameWorld().spawn("player", 704.0, 320.0);
+
+
+
+        playerEnt.getComponent(PlayerControl.class).setPosition(tileSize*11,tileSize*5);
+
+
+
 
         for (Entity enemyEnt : getGameWorld().getEntitiesByType(GameProjectType.ENEMY)) {
-                enemies.add(new Brute());
+            enemies.add(new Brute());
 
         }
         enemies.forEach(o -> System.out.println(o));
@@ -373,7 +389,7 @@ public class GameProjectApp extends GameApplication {
 
 
         VBox playerBox = new VBox(10);
-        playerBox.setTranslateX(getWidth()/3*2);
+        playerBox.setTranslateX(getWidth() / 3 * 2);
         playerBox.getChildren().addAll(
                 getUIFactory().newButton("Attack"),
                 getUIFactory().newButton("Defend"),
@@ -384,10 +400,9 @@ public class GameProjectApp extends GameApplication {
         );
         getGameScene().addUINode(playerBox);
 
-        playerBox.getChildren().forEach(o -> ((Button)o).setOnAction(e ->{playerAction(((Button) o).getText());}));
-
-
-
+        playerBox.getChildren().forEach(o -> ((Button) o).setOnAction(e -> {
+            playerAction(((Button) o).getText());
+        }));
 
 
     }
@@ -395,33 +410,33 @@ public class GameProjectApp extends GameApplication {
     private void playerAction(String action) {
         System.out.println(action);
 
-        switch (action){
+        switch (action) {
 
-            case "Attack" :
-                if(getGameWorld().getSelectedEntity().isPresent()) {
+            case "Attack":
+                if (getGameWorld().getSelectedEntity().isPresent()) {
                     System.out.println(getGameWorld().getSelectedEntity().toString());
-                    if(getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLEENEMY){
+                    if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLEENEMY) {
                         Entities.builder()
-                                .at(getGameWorld().getSelectedEntity().get().getPosition().getX()-64,getGameWorld().getSelectedEntity().get().getPosition().getY()-64)
+                                .at(getGameWorld().getSelectedEntity().get().getPosition().getX() - 64, getGameWorld().getSelectedEntity().get().getPosition().getY() - 64)
                                 .viewFromAnimatedTexture("explosion.png", 48, Duration.seconds(0.5), false, true)
                                 .buildAndAttach(getGameWorld());
 
-
-                    }else{
+                        updatePlayerInfo();
+                    } else {
                         System.out.println("no valid target is selected");
                     }
 
-                } else{
+                } else {
                     System.out.println("no target selected");
                 }
                 break;
-            case "Defend" :
+            case "Defend":
 
                 break;
-            case "Magic" :
+            case "Magic":
                 break;
 
-            case "Item" :
+            case "Item":
                 break;
 
         }
@@ -436,23 +451,23 @@ public class GameProjectApp extends GameApplication {
         playerInfo.setTranslateY(getGameScene().getHeight() / 10);
 
         Text playerHealth = new Text();
-        playerHealth.textProperty().bind(getGameState().stringProperty("Components.Player Health"));
+        playerHealth.textProperty().bind(getGameState().stringProperty("Health"));
         playerInfo.getChildren().add(playerHealth);
 
         Text playerArmorBonus = new Text();
-        playerArmorBonus.textProperty().bind(getGameState().stringProperty("Components.Player ArmorBonus"));
+        playerArmorBonus.textProperty().bind(getGameState().stringProperty("ArmorBonus"));
         playerInfo.getChildren().add(playerArmorBonus);
 
         Text playerRace = new Text();
-        playerRace.textProperty().bind(getGameState().stringProperty("Components.Player Components.Races.Race"));
+        playerRace.textProperty().bind(getGameState().stringProperty("Race"));
         playerInfo.getChildren().add(playerRace);
 
         Text playerClass = new Text();
-        playerClass.textProperty().bind(getGameState().stringProperty("Components.Player Class"));
+        playerClass.textProperty().bind(getGameState().stringProperty("Class"));
         playerInfo.getChildren().add(playerClass);
 
         Text playerEquipment = new Text();
-        playerEquipment.textProperty().bind(getGameState().stringProperty("Components.Player Components.Equipment.Equipment"));
+        playerEquipment.textProperty().bind(getGameState().stringProperty("Equipment"));
         playerInfo.getChildren().add(playerEquipment);
 
         getGameScene().addUINode(playerInfo);
