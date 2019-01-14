@@ -66,8 +66,8 @@ public class Player {
 
         }
 
-        for(Equipment item : equipment){
-            if(item.getClass() == Armor.class){
+        for (Equipment item : equipment) {
+            if (item.getClass() == Armor.class) {
                 armorBonus += ((Armor) item).getArmorBonus();
             }
         }
@@ -157,10 +157,10 @@ public class Player {
 
     public String attack(Enemy enemy) {
 
-        for (Equipment item: getEquipment()) {
+        for (Equipment item : getEquipment()) {
 
-            if(item instanceof Weapon){
-                return enemy.getDamaged(((Weapon)item).getDamage());
+            if (item instanceof Weapon) {
+                return ((Weapon) item).getDamage() + "damaga, enemy " + enemy.getDamaged(((Weapon) item).getDamage());
             }
 
         }

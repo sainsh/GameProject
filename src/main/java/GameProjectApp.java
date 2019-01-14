@@ -1,6 +1,5 @@
 import Common.Config;
-import Common.PlayerControl;
-import com.almasb.fxgl.app.FXGL;
+import Components.PlayerControl;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -13,15 +12,18 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,6 +49,8 @@ public class GameProjectApp extends GameApplication {
     private Player player;
     private Race race;
     private Enemy enemy;
+    private List<Enemy> enemies = new ArrayList<>();
+    private ObjectProperty<Entity> selected = new SimpleObjectProperty<>();
 
 
     @Override
@@ -82,6 +86,7 @@ public class GameProjectApp extends GameApplication {
         vars.put("Player Armors", "default");
         vars.put("Player Weapons", "default");
         vars.put("Player Equipment", "default");
+
 
 
     }
@@ -254,7 +259,7 @@ public class GameProjectApp extends GameApplication {
             }
         }, KeyCode.DOWN);
 
-        getInput().addAction(new UserAction("Open/Close Panel") {
+        input.addAction(new UserAction("Open/Close Panel") {
             @Override
             protected void onActionEnd() {
                 if (!paused) {
@@ -265,6 +270,8 @@ public class GameProjectApp extends GameApplication {
                 }
             }
         }, KeyCode.TAB);
+
+
 
 
     }
@@ -323,10 +330,16 @@ public class GameProjectApp extends GameApplication {
 
     private void battle(Entity enemy) {
 
-        //getGameScene().removeUINode(playerInfo);
+
         paused = true;
         getGameWorld().setLevelFromMap("TestBattleMap.json");
-        playerEnt = getGameWorld().spawn("player",704.0,320.0);
+        playerEnt = getGameWorld().spawn("player", 704.0, 320.0);
+
+        for (Entity enemyEnt : getGameWorld().getEntitiesByType(GameProjectType.ENEMY)) {
+                enemies.add(new Brute());
+
+        }
+        enemies.forEach(o -> System.out.println(o));
         createBattleUI();
 
 
@@ -334,38 +347,60 @@ public class GameProjectApp extends GameApplication {
 
     private void createBattleUI() {
 
-        VBox battleControls = new VBox(
-                getUIFactory().newButton("attack".toUpperCase()),
-                getUIFactory().newButton("defend".toUpperCase()),
-                getUIFactory().newButton("Magic".toUpperCase()),
-                getUIFactory().newButton("items".toUpperCase())
+
+        VBox playerBox = new VBox(10);
+        playerBox.setTranslateX(getWidth()/3*2);
+        playerBox.getChildren().addAll(
+                getUIFactory().newButton("Attack"),
+                getUIFactory().newButton("Defend"),
+                getUIFactory().newButton("Magic"),
+                getUIFactory().newButton("Item")
+
 
         );
-        battleControls.setTranslateY(0);
-        battleControls.setTranslateX(getGameScene().getWidth() / 3 * 2);
+        getGameScene().addUINode(playerBox);
 
-        for (Node node : battleControls.getChildren()) {
-            if (node instanceof Button) {
-                if (((Button) node).getText().equals("attack".toUpperCase())) {
-                    ((Button) node).setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            System.out.println("player attacked!");
-                           // Point2D point = new Point2D(playerEnt.getX(),playerEnt.getY());
-                            //playerEnt.getComponent(PlayerControl.class).moveTowards(getGameWorld().getEntitiesByType(GameProjectType.ENEMY).get(1));
-                            //System.out.println(point);
+        playerBox.getChildren().forEach(o -> ((Button)o).setOnAction(e ->{playerAction(((Button) o).getText());}));
 
-                            System.out.println("player dealt " + player.attack(enemy) + "damage to enemy" );
 
-                        }
-                    });
 
+
+
+    }
+
+    private void playerAction(String action) {
+        System.out.println(action);
+
+        switch (action){
+
+            case "Attack" :
+                if(getGameWorld().getSelectedEntity().isPresent()) {
+                    System.out.println(getGameWorld().getSelectedEntity().toString());
+                    if(getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLEENEMY){
+                        Entities.builder()
+                                .at(getGameWorld().getSelectedEntity().get().getPosition().getX()-64,getGameWorld().getSelectedEntity().get().getPosition().getY()-64)
+                                .viewFromAnimatedTexture("explosion.png", 48, Duration.seconds(0.5), false, true)
+                                .buildAndAttach(getGameWorld());
+
+
+                    }else{
+                        System.out.println("no valid target is selected");
+                    }
+
+                } else{
+                    System.out.println("no target selected");
                 }
-            }
+                break;
+            case "Defend" :
+
+                break;
+            case "Magic" :
+                break;
+
+            case "Item" :
+                break;
 
         }
-
-        getGameScene().addUINode(battleControls);
 
     }
 

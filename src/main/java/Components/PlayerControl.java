@@ -4,16 +4,12 @@
  * See LICENSE for details.
  */
 
-package Common;
+package Components;
 
 import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
-
-/**
- * @author Almas Baimagambetov (AlmasB) (almaslvl@gmail.com)
- */
 
 public class PlayerControl extends Component {
 
