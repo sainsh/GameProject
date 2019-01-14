@@ -1,15 +1,27 @@
 import Common.Config;
+import Components.EnemyTypes.Brute;
+import Components.EnemyTypes.Enemy;
+import Components.Equipment.Equipment;
+import Components.Player;
 import Components.PlayerControl;
+import Components.ProfessionComponent;
+import Components.Professions.Warrior;
+import Components.RaceComponent;
+import Components.Races.Human;
+import Components.Races.Race;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.RenderLayer;
+import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.settings.GameSettings;
 import com.almasb.fxgl.ui.InGamePanel;
 import javafx.beans.property.ObjectProperty;
@@ -19,6 +31,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -79,13 +93,13 @@ public class GameProjectApp extends GameApplication {
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("Player Health", "health: 0/0");
-        vars.put("Player ArmorBonus", "Armor: 10");
-        vars.put("Player Race", "default");
-        vars.put("Player Class", "default");
-        vars.put("Player Armors", "default");
-        vars.put("Player Weapons", "default");
-        vars.put("Player Equipment", "default");
+        vars.put("Components.Player Health", "health: 0/0");
+        vars.put("Components.Player ArmorBonus", "Components.Components.Equipment.Equipment.Armor: 10");
+        vars.put("Components.Player Components.Races.Race", "default");
+        vars.put("Components.Player Class", "default");
+        vars.put("Components.Player Armors", "default");
+        vars.put("Components.Player Weapons", "default");
+        vars.put("Components.Player Components.Equipment.Equipment", "default");
 
 
 
@@ -146,8 +160,7 @@ public class GameProjectApp extends GameApplication {
             @Override
             public void handle(ActionEvent event) {
                 getGameScene().removeUINode(raceBox);
-                race = new Human();
-                chooseClass();
+                chooseClass(new Human());
             }
         });
         humanBTN.setPrefWidth(400);
@@ -168,10 +181,10 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void chooseClass() {
+    private void chooseClass(Race race) {
 
         HBox classBox = new HBox();
-        Button warriorBTN = new Button("Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
+        Button warriorBTN = new Button("Components.Professions.Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
                 "\n light, medium and heavy armor \n all weapons \n start equipment: \n random weapon \n medium armor",
                 getAssetLoader().loadTexture("tiefling soldier melee.jpg", 200, 300));
         warriorBTN.setOnAction(new EventHandler<ActionEvent>() {
@@ -180,14 +193,25 @@ public class GameProjectApp extends GameApplication {
 
                 getGameScene().removeUINode(classBox);
 
-                player = new Player(new Warrior(), race);
+                PhysicsComponent physics = new PhysicsComponent();
+                physics.setBodyType(BodyType.DYNAMIC);
+
+                playerEnt = Entities.builder()
+                        .type(GameProjectType.PLAYER)
+                        .viewFromNodeWithBBox(new Rectangle(64, 64, Color.BLUE))
+                        .with(new PlayerControl(physics))
+                        .with(physics)
+                        .with(new CollidableComponent(true))
+                        .with(new ProfessionComponent(new Warrior()))
+                        .with(new RaceComponent(race))
+                        .buildAndAttach();
+
 
                 createPlayerInfo();
 
 
                 getGameWorld().setLevelFromMap("firstTestMap.json");
 
-                playerEnt = getGameWorld().spawn("player", 50, 50);
 
                 initNewInput();
 
@@ -280,17 +304,17 @@ public class GameProjectApp extends GameApplication {
     protected void onUpdate(double tdf) {
         if (player != null) {
 
-            getGameState().stringProperty("Player Health").set("Health: " + player.getHealth() + "/" + player.getMaxHealth());
+            getGameState().stringProperty("Components.Player Health").set("Health: " + player.getHealth() + "/" + player.getMaxHealth());
 
             tempVar = "";
             for (Equipment n : player.getEquipment()) {
                 tempVar += n.getName() + "\n";
 
             }
-            getGameState().stringProperty("Player Equipment").set(tempVar);
-            getGameState().stringProperty("Player ArmorBonus").set("Armor Bonus: " + player.getArmorBonus());
-            getGameState().stringProperty("Player Race").set(player.getRace().getName());
-            getGameState().stringProperty("Player Class").set(player.getProfession().getName());
+            getGameState().stringProperty("Components.Player Components.Equipment.Equipment").set(tempVar);
+            getGameState().stringProperty("Components.Player ArmorBonus").set("Components.Components.Equipment.Equipment.Armor Bonus: " + player.getArmorBonus());
+            getGameState().stringProperty("Components.Player Components.Races.Race").set(player.getRace().getName());
+            getGameState().stringProperty("Components.Player Class").set(player.getProfession().getName());
         }
     }
 
@@ -412,23 +436,23 @@ public class GameProjectApp extends GameApplication {
         playerInfo.setTranslateY(getGameScene().getHeight() / 10);
 
         Text playerHealth = new Text();
-        playerHealth.textProperty().bind(getGameState().stringProperty("Player Health"));
+        playerHealth.textProperty().bind(getGameState().stringProperty("Components.Player Health"));
         playerInfo.getChildren().add(playerHealth);
 
         Text playerArmorBonus = new Text();
-        playerArmorBonus.textProperty().bind(getGameState().stringProperty("Player ArmorBonus"));
+        playerArmorBonus.textProperty().bind(getGameState().stringProperty("Components.Player ArmorBonus"));
         playerInfo.getChildren().add(playerArmorBonus);
 
         Text playerRace = new Text();
-        playerRace.textProperty().bind(getGameState().stringProperty("Player Race"));
+        playerRace.textProperty().bind(getGameState().stringProperty("Components.Player Components.Races.Race"));
         playerInfo.getChildren().add(playerRace);
 
         Text playerClass = new Text();
-        playerClass.textProperty().bind(getGameState().stringProperty("Player Class"));
+        playerClass.textProperty().bind(getGameState().stringProperty("Components.Player Class"));
         playerInfo.getChildren().add(playerClass);
 
         Text playerEquipment = new Text();
-        playerEquipment.textProperty().bind(getGameState().stringProperty("Player Equipment"));
+        playerEquipment.textProperty().bind(getGameState().stringProperty("Components.Player Components.Equipment.Equipment"));
         playerInfo.getChildren().add(playerEquipment);
 
         getGameScene().addUINode(playerInfo);

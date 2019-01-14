@@ -1,3 +1,5 @@
+package Components.Equipment;
+
 public class Armor implements Equipment {
 
     private String type;

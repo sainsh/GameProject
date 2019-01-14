@@ -1,9 +1,16 @@
+package Components.Professions;
+
+import Components.Equipment.Armor;
+import Components.Equipment.Equipment;
+import Components.Equipment.Weapon;
+import Components.Professions.Profession;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Warrior implements Profession{
+public class Warrior implements Profession {
 
-    private String name = "Warrior";
+    private String name = "Components.Professions.Warrior";
     private int startHealth;
     private int startMana;
     private List<String> armorProficiencies;

@@ -1,3 +1,7 @@
+package Components.EnemyTypes;
+
+import Components.EnemyTypes.Enemy;
+
 public class Brute implements Enemy {
     
     private int health;

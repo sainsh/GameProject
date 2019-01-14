@@ -1,3 +1,7 @@
+package Components.EnemyTypes;
+
+import Components.EnemyTypes.Enemy;
+
 public class Thug implements Enemy {
 
     private int health;

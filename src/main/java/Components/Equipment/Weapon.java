@@ -1,3 +1,7 @@
+package Components.Equipment;
+
+import Components.Equipment.Equipment;
+
 public class Weapon implements Equipment {
 
     private String name;

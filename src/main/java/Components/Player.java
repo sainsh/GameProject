@@ -1,3 +1,12 @@
+package Components;
+
+import Components.EnemyTypes.Enemy;
+import Components.Equipment.Armor;
+import Components.Equipment.Equipment;
+import Components.Equipment.Weapon;
+import Components.Professions.Profession;
+import Components.Races.Race;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +30,7 @@ public class Player {
         this.health = profession.getStartHealth() + race.getStartHealth();
         this.maxHealth = this.health;
         this.mana = profession.getStartMana() + race.getStartMana();
+
         for (String proficiency : profession.getArmorProficiencies()) {
             armorProficiencies.add(proficiency);
 

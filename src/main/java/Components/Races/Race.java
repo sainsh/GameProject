@@ -1,3 +1,5 @@
+package Components.Races;
+
 import java.util.List;
 
 public interface Race {

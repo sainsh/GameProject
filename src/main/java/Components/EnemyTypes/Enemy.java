@@ -1,3 +1,5 @@
+package Components.EnemyTypes;
+
 public interface Enemy {
 
 

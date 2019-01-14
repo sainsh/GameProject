@@ -1,3 +1,7 @@
+package Components.Professions;
+
+import Components.Equipment.Equipment;
+
 import java.util.List;
 
 public interface Profession {
