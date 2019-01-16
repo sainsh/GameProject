@@ -1,6 +1,6 @@
 package Components.EnemyTypes;
 
-import Components.EnemyTypes.Enemy;
+import javafx.util.Pair;
 
 public class Cultist implements Enemy {
 
@@ -9,14 +9,23 @@ public class Cultist implements Enemy {
     private int maxHealth;
     private int damage;
     private int exp;
+    private int armor;
+
+    public Cultist() {
+        health = 10;
+        maxHealth = health;
+        damage = 3;
+        exp = 10;
+        armor = 10;
+    }
 
     @Override
-    public String getDamaged(int damage) {
-        setHealth(getHealth() - damage);
-        if (getHealth() > 0) {
-            return "" + getHealth();
-        } else{
-            return "dead";
+    public boolean takeDamaged(int damage) {
+        health -= (health - damage);
+        if (health > 0) {
+            return true;
+        } else {
+            return false;
         }
 
     }
@@ -58,6 +67,23 @@ public class Cultist implements Enemy {
 
     @Override
     public void setExp(int exp) {
+
+    }
+
+    @Override
+    public Pair<String, Integer> preferredAttack() {
+        return new Pair<>("magical", damage);
+    }
+
+    @Override
+    public int getArmor() {
+        return armor;
+    }
+
+    @Override
+    public void setArmor(int armor) {
+
+        this.armor = armor;
 
     }
 }

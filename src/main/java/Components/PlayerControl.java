@@ -8,10 +8,10 @@ package Components;
 
 import Components.Equipment.Armor;
 import Components.Equipment.Equipment;
+import Components.Equipment.Weapon;
 import Components.Professions.Profession;
 import Components.Races.Race;
 import com.almasb.fxgl.core.math.Vec2;
-import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
@@ -32,6 +32,8 @@ public class PlayerControl extends Component {
     private List<String> armorProficiencies = new ArrayList<>();
     private List<String> weaponProficiencies = new ArrayList<>();
     private List<Equipment> equipment = new ArrayList<>();
+    private Equipment weapon;
+    private int lvl;
 
     private static final float SPEED_DECAY = 0.66f;
 
@@ -44,7 +46,7 @@ public class PlayerControl extends Component {
 
     public PlayerControl(PhysicsComponent physics, Profession profession, Race race) {
         this.physics = physics;
-        this.profession=profession;
+        this.profession = profession;
         this.race = race;
         this.health = profession.getStartHealth() + race.getStartHealth();
         this.maxHealth = this.health;
@@ -101,6 +103,15 @@ public class PlayerControl extends Component {
             }
         }
 
+        for (Equipment item : equipment) {
+
+            if (item.getClass() == Weapon.class) {
+                weapon = item;
+            }
+
+        }
+
+        lvl = 1;
 
 
     }
@@ -186,11 +197,17 @@ public class PlayerControl extends Component {
         this.armorBonus = armorBonus;
     }
 
+    public Equipment getWeapon() {
+        return weapon;
+    }
 
+    public void setWeapon(Equipment weapon) {
+        this.weapon = weapon;
+    }
 
     @Override
     public void onUpdate(double tpf) {
-        speed = (float)tpf * 600;
+        speed = (float) tpf * 600;
 
         velocity.mulLocal(SPEED_DECAY);
 
@@ -199,32 +216,26 @@ public class PlayerControl extends Component {
     }
 
     public void up() {
-        velocity.set(0,speed);
+        velocity.set(0, speed);
     }
 
     public void down() {
-        velocity.set(0,-speed);
+        velocity.set(0, -speed);
 
     }
 
     public void left() {
-        velocity.set(-speed,0);
+        velocity.set(-speed, 0);
 
     }
 
     public void right() {
-        velocity.set(speed,0);
+        velocity.set(speed, 0);
     }
 
-    public void moveTowards(Entity enemy){
 
-        //velocity.set((float) enemy.getX()*-1,(float)enemy.getY());
-
-        //velocity.set(enemy.get)
-    }
-
-    public void setPosition(float x, float y){
-        Point2D point = new Point2D(x,y);
+    public void setPosition(float x, float y) {
+        Point2D point = new Point2D(x, y);
 
         getEntity().removeComponent(PhysicsComponent.class);
 
@@ -234,6 +245,29 @@ public class PlayerControl extends Component {
         physics.setBodyType(BodyType.DYNAMIC);
         getEntity().addComponent(physics);
 
+    }
+
+    public boolean getDamaged(int dmg) {
+        health -= dmg;
+        if (health <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void gainExp(int exp) {
+        this.exp += exp;
+        if (this.exp >= 10 + Math.pow(lvl-1,2)) {
+            lvl++;
+            armorBonus++;
+            maxHealth += 20;
+            health = maxHealth;
+            mana +=2;
+            ((Weapon) weapon).setDamage(((Weapon) weapon).getDamage() + 2);
+            System.out.println("gained a lvl");
+
+        }
     }
 
 }

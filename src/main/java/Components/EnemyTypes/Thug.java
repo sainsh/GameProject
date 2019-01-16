@@ -1,6 +1,6 @@
 package Components.EnemyTypes;
 
-import Components.EnemyTypes.Enemy;
+import javafx.util.Pair;
 
 public class Thug implements Enemy {
 
@@ -8,14 +8,23 @@ public class Thug implements Enemy {
     private int maxHealth;
     private int damage;
     private int exp;
+    private int armor;
+
+    public Thug() {
+        health = 15;
+        maxHealth = health;
+        damage = 2;
+        exp = 10;
+        armor = 12;
+    }
 
     @Override
-    public String getDamaged(int damage) {
-        setHealth(getHealth() - damage);
-        if (getHealth() > 0) {
-            return "" + getHealth();
-        } else{
-            return "dead";
+    public boolean takeDamaged(int damage) {
+        health -= (health - damage);
+        if (health > 0) {
+            return true;
+        } else {
+            return false;
         }
 
     }
@@ -58,5 +67,20 @@ public class Thug implements Enemy {
     @Override
     public void setExp(int exp) {
 
+    }
+
+    @Override
+    public Pair<String, Integer> preferredAttack() {
+        return new Pair<>("Physical", damage);
+    }
+
+    @Override
+    public int getArmor() {
+        return armor;
+    }
+
+    @Override
+    public void setArmor(int armor) {
+        this.armor = armor;
     }
 }

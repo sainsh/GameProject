@@ -1,19 +1,21 @@
 package Components.EnemyTypes;
 
-import Components.EnemyTypes.Enemy;
+import javafx.util.Pair;
 
 public class Brute implements Enemy {
-    
+
     private int health;
     private int maxHealth;
     private int damage;
     private int exp;
+    private int armor;
 
     public Brute() {
         health = 20;
         maxHealth = health;
         damage = 3;
         exp = 10;
+        armor = 14;
     }
 
     public int getHealth() {
@@ -49,12 +51,28 @@ public class Brute implements Enemy {
     }
 
     @Override
-    public String getDamaged(int damage) {
-        setHealth(getHealth() - damage);
-        if (getHealth() > 0) {
-            return "" + getHealth();
-        } else{
-            return "dead";
+    public Pair<String, Integer> preferredAttack() {
+
+        return new Pair<>("Physical", damage);
+    }
+
+    @Override
+    public int getArmor() {
+        return armor;
+    }
+
+    @Override
+    public void setArmor(int armor) {
+            this.armor=armor;
+    }
+
+    @Override
+    public boolean takeDamaged(int damage) {
+        health -= damage;
+        if (health > 0) {
+            return true;
+        } else {
+            return false;
         }
 
     }

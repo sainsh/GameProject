@@ -170,7 +170,7 @@ public class Player {
         for (Equipment item : getEquipment()) {
 
             if (item instanceof Weapon) {
-                return ((Weapon) item).getDamage() + "damaga, enemy " + enemy.getDamaged(((Weapon) item).getDamage());
+                return ((Weapon) item).getDamage() + "damaga, enemy " + enemy.takeDamaged(((Weapon) item).getDamage());
             }
 
         }

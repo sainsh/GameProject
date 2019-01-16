@@ -1,3 +1,5 @@
+import Components.EnemyComponent;
+import Components.EnemyTypes.Brute;
 import com.almasb.fxgl.entity.*;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.components.SelectableComponent;
@@ -47,8 +49,8 @@ public class GameProjectFactory implements EntityFactory {
                 .from(data)
                 .viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.RED))
                 .with(new PhysicsComponent())
-                .with(new CollidableComponent(true))
                 .with(new SelectableComponent(true))
+                .with(new EnemyComponent(new Brute()))
                 .build();
 
 
@@ -59,6 +61,19 @@ public class GameProjectFactory implements EntityFactory {
 
         return Entities.builder()
                 .type(GameProjectType.BORDER)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
+                .build();
+    }
+
+    @Spawns("warp")
+    public Entity newWarp(SpawnData data) {
+
+        System.out.println(data.toString());
+
+        return Entities.builder()
+                .type(GameProjectType.WARP)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new PhysicsComponent())

@@ -1,9 +1,11 @@
 package Components.EnemyTypes;
 
+import javafx.util.Pair;
+
 public interface Enemy {
 
 
-    String getDamaged(int damage);
+    boolean takeDamaged(int damage);
 
     public int getHealth();
 
@@ -20,5 +22,11 @@ public interface Enemy {
     public int getExp();
 
     public void setExp(int exp);
+
+    public Pair<String, Integer> preferredAttack();
+
+    public int getArmor();
+
+    public void setArmor(int armor);
 
 }
