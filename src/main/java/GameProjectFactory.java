@@ -45,7 +45,7 @@ public class GameProjectFactory implements EntityFactory {
 
 
         return Entities.builder()
-                .type(GameProjectType.BATTLEENEMY)
+                .type(GameProjectType.BATTLE_ENEMY)
                 .from(data)
                 .viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.RED))
                 .with(new PhysicsComponent())
@@ -68,16 +68,36 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("warp")
-    public Entity newWarp(SpawnData data) {
+    public Entity newWarp(SpawnData data,GameProjectType type) {
 
         System.out.println(data.toString());
 
         return Entities.builder()
-                .type(GameProjectType.WARP)
+                .type(type)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
-                .with(new PhysicsComponent())
                 .build();
+    }
+
+    @Spawns("warpN")
+    public Entity newWarpN(SpawnData data){
+
+        return newWarp(data,GameProjectType.WARP_N);
+    }
+    @Spawns("warpS")
+    public Entity newWarpS(SpawnData data){
+
+        return newWarp(data,GameProjectType.WARP_S);
+    }
+    @Spawns("warpE")
+    public Entity newWarpE(SpawnData data){
+
+        return newWarp(data,GameProjectType.WARP_E);
+    }
+    @Spawns("warpW")
+    public Entity newWarpW(SpawnData data){
+
+        return newWarp(data,GameProjectType.WARP_W);
     }
 
 

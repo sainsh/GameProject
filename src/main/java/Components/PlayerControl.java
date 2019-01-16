@@ -258,7 +258,7 @@ public class PlayerControl extends Component {
 
     public void gainExp(int exp) {
         this.exp += exp;
-        if (this.exp >= 10 + Math.pow(lvl-1,2)) {
+        if (this.exp >= 10 + Math.pow(lvl-1,2)*10) {
             lvl++;
             armorBonus++;
             maxHealth += 20;

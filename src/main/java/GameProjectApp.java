@@ -50,6 +50,10 @@ public class GameProjectApp extends GameApplication {
     private Entity playerEnt;
     private VBox playerInfo;
     private Entity tempEnt;
+    private Race race;
+    private Profession profession;
+    private PlayerControl playerControl;
+    private PhysicsComponent physicsComponent;
 
 
     private Config config;
@@ -103,6 +107,7 @@ public class GameProjectApp extends GameApplication {
         vars.put("Armors", "default");
         vars.put("Weapons", "default");
         vars.put("Equipment", "default");
+        vars.put("exp","default");
 
 
     }
@@ -162,7 +167,8 @@ public class GameProjectApp extends GameApplication {
             @Override
             public void handle(ActionEvent event) {
                 getGameScene().removeUINode(raceBox);
-                chooseClass(new Human());
+                race = new Human();
+                chooseClass(race);
             }
         });
         humanBTN.setPrefWidth(400);
@@ -194,24 +200,14 @@ public class GameProjectApp extends GameApplication {
                 getGameScene().removeUINode(classBox);
 
 
-                getGameWorld().setLevelFromMap("secondTestMap.json");
+                getGameWorld().setLevelFromMap("world(0,0).json");
 
-                PhysicsComponent physics = new PhysicsComponent();
-                physics.setBodyType(BodyType.DYNAMIC);
-                Profession profession = new Warrior();
+                physicsComponent = new PhysicsComponent();
+                physicsComponent.setBodyType(BodyType.DYNAMIC);
+                profession = new Warrior();
+                playerControl = new PlayerControl(physicsComponent,profession,race);
 
-                playerEnt = Entities.builder()
-                        .type(GameProjectType.PLAYER)
-                        .at(4 * tileSize, 4 * tileSize)
-                        .viewFromNodeWithBBox(new Rectangle(64, 64, Color.BLUE))
-                        .with(new PlayerControl(physics, profession, race))
-                        .with(physics)
-                        .with(new CollidableComponent(true))
-                        .with(new ProfessionComponent(profession))
-                        .with(new RaceComponent(race))
-                        .with(new IrremovableComponent())
-                        .buildAndAttach();
-
+                createPlayer(1*tileSize,1*tileSize);
 
                 createPlayerInfo();
 
@@ -238,6 +234,19 @@ public class GameProjectApp extends GameApplication {
         getGameScene().addUINode(classBox);
 
 
+    }
+
+    private void createPlayer(double x, double y) {
+        playerEnt = Entities.builder()
+                .type(GameProjectType.PLAYER)
+                .at(x, y )
+                .viewFromNodeWithBBox(new Rectangle(64, 64, Color.BLUE))
+                .with(playerControl)
+                .with(physicsComponent)
+                .with(new CollidableComponent(true))
+                .with(new ProfessionComponent(profession))
+                .with(new RaceComponent(race))
+                .buildAndAttach();
     }
 
     private void initNewInput() {
@@ -305,15 +314,19 @@ public class GameProjectApp extends GameApplication {
     protected void onUpdate(double tdf) {
         if (playerEnt != null) {
             if (!paused) {
-                if (playerEnt.getPosition().getX() > tileSize * 10) {
+                if (playerEnt.getPosition().getX() > tileSize * 15) {
                     getGameWorld().setLevelFromMap("world(" + ++currentWorldX + "," + currentworldY + ").json");
+                    createPlayer(getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getX(),getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getY());
 
                 } else if (playerEnt.getPosition().getX() < 0) {
                     getGameWorld().setLevelFromMap("world(" + --currentWorldX + "," + currentworldY + ").json");
-                } else if (playerEnt.getPosition().getY() > tileSize * 15) {
+                    playerEnt.getComponent(PlayerControl.class).setPosition((float)getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getX()+10,(float)getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getY()+10);
+                } else if (playerEnt.getPosition().getY() > tileSize * 10) {
                     getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + ++currentworldY + ").json");
+                    playerEnt.getComponent(PlayerControl.class).setPosition((float)getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getX(),(float)getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getY());
                 } else if (playerEnt.getPosition().getY() < 0) {
                     getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + --currentworldY + ").json");
+                    playerEnt.getComponent(PlayerControl.class).setPosition((float)getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getX(),(float)getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getY());
                 }
 
                 updatePlayerInfo();
@@ -335,6 +348,7 @@ public class GameProjectApp extends GameApplication {
         getGameState().stringProperty("ArmorBonus").set("Armor Bonus: " + playerEnt.getComponent(PlayerControl.class).getArmorBonus());
         getGameState().stringProperty("Race").set(playerEnt.getComponent(RaceComponent.class).getRace().getName());
         getGameState().stringProperty("Class").set(playerEnt.getComponent(ProfessionComponent.class).getProfession().getName());
+        getGameState().stringProperty("exp").set("exp:" + playerEnt.getComponent(PlayerControl.class).getExp());
     }
 
 
@@ -359,7 +373,7 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 System.out.println("On Collision Begin");
-
+                battle(enemy);
             }
 
             @Override
@@ -369,7 +383,7 @@ public class GameProjectApp extends GameApplication {
 
             @Override
             protected void onCollisionEnd(Entity player, Entity enemy) {
-                battle(enemy);
+
                 System.out.println("On Collision End");
             }
         });
@@ -381,13 +395,11 @@ public class GameProjectApp extends GameApplication {
 
         paused = true;
 
-
         getGameWorld().setLevelFromMap("TestBattleMap.json");
 
-
-        playerEnt.getComponent(PlayerControl.class).setPosition(tileSize * 11, tileSize * 5);
-
         createBattleUI();
+
+        createPlayer(11*tileSize,5*tileSize);
 
 
     }
@@ -424,7 +436,7 @@ public class GameProjectApp extends GameApplication {
                 case "Attack":
 
                     System.out.println(getGameWorld().getSelectedEntity().toString());
-                    if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLEENEMY) {
+                    if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLE_ENEMY) {
 
 
                         if (rollDice(1, 20) >= getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getArmor()) {
@@ -438,7 +450,7 @@ public class GameProjectApp extends GameApplication {
                                 playerEnt.getComponent(PlayerControl.class).gainExp(getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getExp());
                                 getGameWorld().removeEntity(getGameWorld().getSelectedEntity().get());
 
-                                if (getGameWorld().getEntitiesByType(GameProjectType.BATTLEENEMY).isEmpty()) {
+                                if (getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY).isEmpty()) {
 
                                     System.out.println("defeated all enemies");
                                     battleEnd();
@@ -488,14 +500,14 @@ public class GameProjectApp extends GameApplication {
     private void enemyTurn() {
 
 
-        for (Entity enemy : getGameWorld().getEntitiesByType(GameProjectType.BATTLEENEMY)) {
+        for (Entity enemy : getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY)) {
 
             if (rollDice(1, 20) >= playerEnt.getComponent(PlayerControl.class).getArmorBonus()) {
 
                 playerEnt.getComponent(PlayerControl.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue());
                 System.out.println(playerEnt.getComponent(PlayerControl.class).getHealth() + " / " + playerEnt.getComponent(PlayerControl.class).getMaxHealth());
                 Entities.builder()
-                        .at(playerEnt.getX(), playerEnt.getY())
+                        .at(playerEnt.getX()-tileSize, playerEnt.getY()-tileSize)
                         .viewFromAnimatedTexture("explosion.png", 48, Duration.seconds(2), false, true)
                         .buildAndAttach(getGameWorld());
 
@@ -512,9 +524,10 @@ public class GameProjectApp extends GameApplication {
         getPhysicsWorld().clear();
 
         getGameScene().removeUINode(battleMenu);
-        playerEnt.getComponent(PlayerControl.class).setPosition(2 * tileSize, 2 * tileSize);
+
 
         getGameWorld().setLevelFromMap("firstTestMap.json");
+        createPlayer(2*tileSize,2*tileSize);
         paused = false;
         newCollisionHandler();
 
@@ -546,6 +559,10 @@ public class GameProjectApp extends GameApplication {
         Text playerEquipment = new Text();
         playerEquipment.textProperty().bind(getGameState().stringProperty("Equipment"));
         playerInfo.getChildren().add(playerEquipment);
+
+        Text playerExp = new Text();
+        playerExp.textProperty().bind(getGameState().stringProperty("exp"));
+        playerInfo.getChildren().add(playerExp);
 
         getGameScene().addUINode(playerInfo);
 
