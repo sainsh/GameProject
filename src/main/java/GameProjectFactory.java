@@ -100,5 +100,15 @@ public class GameProjectFactory implements EntityFactory {
         return newWarp(data,GameProjectType.WARP_W);
     }
 
+    @Spawns("chest")
+    public Entity newChest(SpawnData data){
+
+        return Entities.builder()
+                .type(GameProjectType.CHEST)
+                .from(data)
+                .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .build();
+    }
+
 
 }

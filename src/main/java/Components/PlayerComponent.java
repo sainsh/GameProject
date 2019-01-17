@@ -20,7 +20,7 @@ import javafx.geometry.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerControl extends Component {
+public class PlayerComponent extends Component {
 
     private int health;
     private int maxHealth;
@@ -44,7 +44,7 @@ public class PlayerControl extends Component {
 
     private Vec2 velocity = new Vec2();
 
-    public PlayerControl(PhysicsComponent physics, Profession profession, Race race) {
+    public PlayerComponent(PhysicsComponent physics, Profession profession, Race race) {
         this.physics = physics;
         this.profession = profession;
         this.race = race;
@@ -234,14 +234,11 @@ public class PlayerControl extends Component {
     }
 
 
-    public void setPosition(float x, float y) {
+    public void setPosition(PhysicsComponent physics,float x, float y) {
+
         Point2D point = new Point2D(x, y);
-
         getEntity().removeComponent(PhysicsComponent.class);
-
         getEntity().setPosition(point);
-
-        PhysicsComponent physics = new PhysicsComponent();
         physics.setBodyType(BodyType.DYNAMIC);
         getEntity().addComponent(physics);
 
@@ -268,6 +265,13 @@ public class PlayerControl extends Component {
             System.out.println("gained a lvl");
 
         }
+    }
+
+    @Override
+    public void onAdded(){
+
+
+        velocity.set(0,0);
     }
 
 }
