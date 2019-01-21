@@ -71,6 +71,8 @@ public class GameProjectApp extends GameApplication {
     private Point2D point;
 
 
+
+
     @Override
     protected void initSettings(GameSettings gameSettings) {
 
@@ -240,7 +242,7 @@ public class GameProjectApp extends GameApplication {
         playerEnt = Entities.builder()
                 .type(GameProjectType.PLAYER)
                 .at(x, y)
-                .viewFromNodeWithBBox(new Rectangle(64, 64, Color.BLUE))
+                .viewFromNodeWithBBox(new Rectangle(tileSize/2, tileSize/2, Color.BLUE))
                 .with(playerComponent)
                 .with(physicsComponent)
                 .with(new CollidableComponent(true))
