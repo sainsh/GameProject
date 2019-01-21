@@ -32,7 +32,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -67,10 +69,11 @@ public class GameProjectApp extends GameApplication {
     private VBox battleMenu;
 
     private int currentWorldX;
-    private int currentworldY;
+    private int currentWorldY;
     private Point2D point;
 
-
+    private List[][] enemies = new List[8][8];
+    private GameWorldEntities gameWorldEntities;
 
 
     @Override
@@ -86,7 +89,7 @@ public class GameProjectApp extends GameApplication {
         gameSettings.setCloseConfirmation(false);
         gameSettings.setConfigClass(Config.class);
         currentWorldX = 0;
-        currentworldY = 0;
+        currentWorldY = 0;
 
 
     }
@@ -109,7 +112,7 @@ public class GameProjectApp extends GameApplication {
         vars.put("Weapons", "default");
         vars.put("Equipment", "default");
         vars.put("exp", "default");
-        vars.put("playerpoint","default");
+        vars.put("playerpoint", "default");
 
 
     }
@@ -127,6 +130,7 @@ public class GameProjectApp extends GameApplication {
         getGameWorld().addEntityFactory(new GameProjectFactory());
 
         initBackground();
+        gameWorldEntities = new GameWorldEntities(tileSize);
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
 
@@ -216,6 +220,8 @@ public class GameProjectApp extends GameApplication {
 
                 initNewInput();
 
+                enemies = gameWorldEntities.loadEnemies();
+
 
                 paused = false;
 
@@ -242,7 +248,7 @@ public class GameProjectApp extends GameApplication {
         playerEnt = Entities.builder()
                 .type(GameProjectType.PLAYER)
                 .at(x, y)
-                .viewFromNodeWithBBox(new Rectangle(tileSize/2, tileSize/2, Color.BLUE))
+                .viewFromNodeWithBBox(new Rectangle(tileSize / 2, tileSize / 2, Color.BLUE))
                 .with(playerComponent)
                 .with(physicsComponent)
                 .with(new CollidableComponent(true))
@@ -319,37 +325,24 @@ public class GameProjectApp extends GameApplication {
         if (playerEnt != null) {
             if (!paused) {
                 if (playerEnt.getCenter().getX() > tileSize * 15) {
-                    getGameWorld().setLevelFromMap("world(" + ++currentWorldX + "," + currentworldY + ").json");
-                    createPlayer(getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getCenter().getY());
-                    playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getCenter());
-                    System.out.println("warp "+getGameWorld().getEntitiesByType(GameProjectType.WARP_W).get(0).getCenter().toString());
-                    System.out.println("player "+playerEnt.getPosition());
+
+                    worldTransition("world(" + ++currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_W);
+
 
                 } else if (playerEnt.getCenter().getX() < 0) {
 
-                    getGameWorld().setLevelFromMap("world(" + --currentWorldX + "," + currentworldY + ").json");
-                    createPlayer(getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getCenter().getY());
-                    playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getCenter());
-                    System.out.println("warp "+getGameWorld().getEntitiesByType(GameProjectType.WARP_E).get(0).getCenter().toString());
-                    System.out.println("player "+playerEnt.getPosition());
+                    worldTransition("world(" + --currentWorldX + "," + currentWorldY + ").json",GameProjectType.WARP_E);
+
 
                 } else if (playerEnt.getCenter().getY() > tileSize * 10) {
 
-                    getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + ++currentworldY + ").json");
+                    worldTransition("world(" + currentWorldX + "," + ++currentWorldY + ").json",GameProjectType.WARP_N);
 
-                    createPlayer(getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getCenter().getY());
-                    playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getCenter());
-                    System.out.println("warp "+getGameWorld().getEntitiesByType(GameProjectType.WARP_N).get(0).getCenter().toString());
-                    System.out.println("player "+playerEnt.getPosition());
 
                 } else if (playerEnt.getCenter().getY() < 0) {
 
-                    getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + --currentworldY + ").json");
+                    worldTransition("world(" + currentWorldX + "," + --currentWorldY + ").json",GameProjectType.WARP_S);
 
-                    createPlayer(getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getCenter().getY());
-                    playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getCenter());
-                    System.out.println("warp "+getGameWorld().getEntitiesByType(GameProjectType.WARP_S).get(0).getCenter().toString());
-                    System.out.println("player "+playerEnt.getPosition());
                 }
 
                 updatePlayerInfo();
@@ -357,6 +350,19 @@ public class GameProjectApp extends GameApplication {
 
             }
         }
+    }
+
+    public void worldTransition(String map, GameProjectType type) {
+
+        getGameWorld().setLevelFromMap(map);
+        createPlayer(getGameWorld().getEntitiesByType(type).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(type).get(0).getCenter().getY());
+        playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(type).get(0).getCenter());
+
+        enemies[currentWorldX][currentWorldY].forEach(
+                e -> getGameWorld().addEntity((Entity) e)
+        );
+
+
     }
 
     private void updatePlayerInfo() {
@@ -372,7 +378,7 @@ public class GameProjectApp extends GameApplication {
         getGameState().stringProperty("Race").set(playerEnt.getComponent(RaceComponent.class).getRace().getName());
         getGameState().stringProperty("Class").set(playerEnt.getComponent(ProfessionComponent.class).getProfession().getName());
         getGameState().stringProperty("exp").set("exp:" + playerEnt.getComponent(PlayerComponent.class).getExp());
-        getGameState().stringProperty("playerpoint").set(""+playerEnt.getCenter());
+        getGameState().stringProperty("playerpoint").set("world(" + currentWorldX + "," + currentWorldY + ")");
     }
 
 
@@ -414,9 +420,9 @@ public class GameProjectApp extends GameApplication {
         physics.addCollisionHandler(new CollisionHandler(GameProjectType.PLAYER, GameProjectType.CHEST) {
             @Override
             protected void onCollisionBegin(Entity player, Entity chest) {
-                
+
                 openChest();
-                
+
             }
         });
     }
@@ -431,13 +437,15 @@ public class GameProjectApp extends GameApplication {
         paused = true;
         point = playerEnt.getPosition();
 
+        getPhysicsWorld().clear();
+
         getGameWorld().setLevelFromMap("TestBattleMap.json");
+
         createPlayer(11 * tileSize, 5 * tileSize);
 
 
+
         createBattleUI();
-
-
 
 
     }
@@ -464,7 +472,7 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void playerAction(String action ) {
+    private void playerAction(String action) {
         System.out.println(action);
 
         if (getGameWorld().getSelectedEntity().isPresent()) {
@@ -564,8 +572,8 @@ public class GameProjectApp extends GameApplication {
         getGameScene().removeUINode(battleMenu);
 
 
-        getGameWorld().setLevelFromMap("world("+currentWorldX+","+currentworldY+").json");
-        getGameWorld().removeEntity(getGameWorld().getEntitiesInRange(new Rectangle2D(point.getX(),point.getY(),point.getX()+tileSize,point.getY()+tileSize)).get(0));
+        getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + currentWorldY + ").json");
+        getGameWorld().removeEntity(getGameWorld().getEntitiesInRange(new Rectangle2D(point.getX(), point.getY(), point.getX() + tileSize, point.getY() + tileSize)).get(0));
         createPlayer(2 * tileSize, 2 * tileSize);
         playerEnt.getComponent(PhysicsComponent.class).reposition(point);
         paused = false;

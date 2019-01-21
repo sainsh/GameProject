@@ -50,7 +50,7 @@ public class GameProjectFactory implements EntityFactory {
                 .viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.RED))
                 .with(new PhysicsComponent())
                 .with(new SelectableComponent(true))
-                .with(new EnemyComponent(new Brute()))
+                .with(new EnemyComponent(new Brute(),1))
                 .build();
 
 
@@ -107,6 +107,7 @@ public class GameProjectFactory implements EntityFactory {
                 .type(GameProjectType.CHEST)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new CollidableComponent(true))
                 .build();
     }
 
