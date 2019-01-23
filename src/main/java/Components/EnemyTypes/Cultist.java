@@ -10,6 +10,7 @@ public class Cultist implements Enemy {
     private int damage;
     private int exp;
     private int armor;
+    private int attackBonus;
 
     public Cultist() {
         health = 10;
@@ -17,6 +18,7 @@ public class Cultist implements Enemy {
         damage = 3;
         exp = 10;
         armor = 10;
+        attackBonus =0;
     }
 
     @Override
@@ -85,5 +87,10 @@ public class Cultist implements Enemy {
 
         this.armor = armor;
 
+    }
+
+    @Override
+    public int getAttackBonus() {
+        return attackBonus;
     }
 }

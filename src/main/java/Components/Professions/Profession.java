@@ -17,4 +17,6 @@ public interface Profession {
     List<Equipment> getStartingEquipment();
 
     String getName();
+
+    int getStartAttackBonus();
 }

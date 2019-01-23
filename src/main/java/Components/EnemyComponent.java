@@ -7,10 +7,12 @@ public class EnemyComponent extends Component {
 
     private Enemy enemy;
     private int number;
+    private int index;
 
-    public EnemyComponent(Enemy enemy,int number){
+    public EnemyComponent(Enemy enemy, int number, int index) {
         this.enemy = enemy;
         this.number = number;
+        this.index = index;
     }
 
     public Enemy getEnemy() {
@@ -27,5 +29,13 @@ public class EnemyComponent extends Component {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

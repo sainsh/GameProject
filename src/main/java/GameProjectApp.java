@@ -1,9 +1,15 @@
 import Common.Config;
-import Components.*;
+import Components.EnemyComponent;
+import Components.EnemyTypes.Brute;
+import Components.EnemyTypes.Cultist;
+import Components.EnemyTypes.Thug;
 import Components.Equipment.Equipment;
 import Components.Equipment.Weapon;
+import Components.PlayerComponent;
+import Components.ProfessionComponent;
 import Components.Professions.Profession;
 import Components.Professions.Warrior;
+import Components.RaceComponent;
 import Components.Races.Human;
 import Components.Races.Race;
 import com.almasb.fxgl.app.GameApplication;
@@ -11,6 +17,7 @@ import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.entity.components.SelectableComponent;
 import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
@@ -24,15 +31,14 @@ import com.almasb.fxgl.ui.InGamePanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import javafx.util.Pair;
 
 import java.util.List;
 import java.util.Map;
@@ -74,6 +80,9 @@ public class GameProjectApp extends GameApplication {
 
     private List[][] enemies = new List[8][8];
     private GameWorldEntities gameWorldEntities;
+
+    private int currentEnemyIndex;
+    private EnemyComponent enemyComponent;
 
 
     @Override
@@ -130,7 +139,7 @@ public class GameProjectApp extends GameApplication {
         getGameWorld().addEntityFactory(new GameProjectFactory());
 
         initBackground();
-        gameWorldEntities = new GameWorldEntities(tileSize);
+        gameWorldEntities = new GameWorldEntities();
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
 
@@ -331,17 +340,17 @@ public class GameProjectApp extends GameApplication {
 
                 } else if (playerEnt.getCenter().getX() < 0) {
 
-                    worldTransition("world(" + --currentWorldX + "," + currentWorldY + ").json",GameProjectType.WARP_E);
+                    worldTransition("world(" + --currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_E);
 
 
                 } else if (playerEnt.getCenter().getY() > tileSize * 10) {
 
-                    worldTransition("world(" + currentWorldX + "," + ++currentWorldY + ").json",GameProjectType.WARP_N);
+                    worldTransition("world(" + currentWorldX + "," + ++currentWorldY + ").json", GameProjectType.WARP_N);
 
 
                 } else if (playerEnt.getCenter().getY() < 0) {
 
-                    worldTransition("world(" + currentWorldX + "," + --currentWorldY + ").json",GameProjectType.WARP_S);
+                    worldTransition("world(" + currentWorldX + "," + --currentWorldY + ").json", GameProjectType.WARP_S);
 
                 }
 
@@ -359,9 +368,79 @@ public class GameProjectApp extends GameApplication {
         playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(type).get(0).getCenter());
 
         enemies[currentWorldX][currentWorldY].forEach(
-                e -> getGameWorld().addEntity((Entity) e)
+                e -> createEnemy(e.toString(), enemies[currentWorldX][currentWorldY].indexOf(e))
         );
 
+        newCollisionHandler();
+
+
+    }
+
+    public void worldTransition(String map, Point2D point) {
+
+        getGameWorld().setLevelFromMap(map);
+        createPlayer(point.getX(), point.getY());
+        playerEnt.getComponent(PhysicsComponent.class).reposition(point);
+
+        enemies[currentWorldX][currentWorldY].forEach(
+                e -> createEnemy(e.toString(), enemies[currentWorldX][currentWorldY].indexOf(e))
+        );
+
+        newCollisionHandler();
+    }
+
+    private void createEnemy(String enemy, int i) {
+
+        String[] formatEnemy = enemy.split(",");
+        for (String s : formatEnemy) {
+            System.out.println(s);
+        }
+
+        if (formatEnemy[0].equals("brute")) {
+            createBrute(formatEnemy, i);
+
+
+        } else if (formatEnemy[0].equals("thug")) {
+            createThug(formatEnemy, i);
+
+        } else if (formatEnemy[0].equals("cultist")) {
+            createCultist(formatEnemy, i);
+
+        }
+    }
+
+    private void createCultist(String[] formatEnemy, int i) {
+        Entities.builder()
+                .type(GameProjectType.ENEMY)
+                .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
+                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .with(new EnemyComponent(new Cultist(), Integer.parseInt(formatEnemy[1]), i))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+    }
+
+    private void createThug(String[] formatEnemy, int i) {
+        Entities.builder()
+                .type(GameProjectType.ENEMY)
+                .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
+                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .with(new EnemyComponent(new Thug(), Integer.parseInt(formatEnemy[1]), i))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
+    }
+
+    private void createBrute(String[] formatEnemy, int i) {
+
+        Entities.builder()
+                .type(GameProjectType.ENEMY)
+                .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
+                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .with(new EnemyComponent(new Brute(), Integer.parseInt(formatEnemy[1]), i))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
 
     }
 
@@ -403,6 +482,8 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
                 System.out.println("On Collision Begin");
+                currentEnemyIndex = enemy.getComponent(EnemyComponent.class).getIndex();
+                enemyComponent = enemy.getComponent(EnemyComponent.class);
                 battle(enemy);
             }
 
@@ -437,12 +518,19 @@ public class GameProjectApp extends GameApplication {
         paused = true;
         point = playerEnt.getPosition();
 
-        getPhysicsWorld().clear();
-
-        getGameWorld().setLevelFromMap("TestBattleMap.json");
+        getGameWorld().setLevelFromMap("battleMap.json");
 
         createPlayer(11 * tileSize, 5 * tileSize);
 
+        for (int i = 0; i < enemyComponent.getNumber(); i++) {
+            Entities.builder()
+                    .type(GameProjectType.BATTLE_ENEMY)
+                    .at(point.getX() + i * tileSize, point.getY() + (tileSize * i + tileSize))
+                    .with(enemyComponent)
+                    .with(new SelectableComponent(true))
+                    .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                    .buildAndAttach(getGameWorld());
+        }
 
 
         createBattleUI();
@@ -485,7 +573,7 @@ public class GameProjectApp extends GameApplication {
                     if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLE_ENEMY) {
 
 
-                        if (rollDice(1, 20) >= getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getArmor()) {
+                        if (rollDice(1, 20, playerEnt.getComponent(PlayerComponent.class).getAttackBonus()) >= getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getArmor()) {
 
                             Entities.builder()
                                     .at(getGameWorld().getSelectedEntity().get().getPosition().getX() - 64, getGameWorld().getSelectedEntity().get().getPosition().getY() - 64)
@@ -548,7 +636,7 @@ public class GameProjectApp extends GameApplication {
 
         for (Entity enemy : getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY)) {
 
-            if (rollDice(1, 20) >= playerEnt.getComponent(PlayerComponent.class).getArmorBonus()) {
+            if (rollDice(1, 20, enemy.getComponent(EnemyComponent.class).getEnemy().getAttackBonus()) >= playerEnt.getComponent(PlayerComponent.class).getArmorBonus()) {
 
                 playerEnt.getComponent(PlayerComponent.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue());
                 System.out.println(playerEnt.getComponent(PlayerComponent.class).getHealth() + " / " + playerEnt.getComponent(PlayerComponent.class).getMaxHealth());
@@ -567,17 +655,16 @@ public class GameProjectApp extends GameApplication {
     private void battleEnd() {
 
 
-        getPhysicsWorld().clear();
-
         getGameScene().removeUINode(battleMenu);
 
+        enemies[currentWorldX][currentWorldY].remove(currentEnemyIndex);
 
-        getGameWorld().setLevelFromMap("world(" + currentWorldX + "," + currentWorldY + ").json");
-        getGameWorld().removeEntity(getGameWorld().getEntitiesInRange(new Rectangle2D(point.getX(), point.getY(), point.getX() + tileSize, point.getY() + tileSize)).get(0));
-        createPlayer(2 * tileSize, 2 * tileSize);
-        playerEnt.getComponent(PhysicsComponent.class).reposition(point);
+
+        worldTransition("world(" + currentWorldX + "," + currentWorldY + ").json", point);
+
+
         paused = false;
-        newCollisionHandler();
+
 
     }
 
@@ -621,13 +708,13 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    public int rollDice(int amount, int max) {
+    public int rollDice(int amount, int max, int attackBonus) {
 
         diceRoll = 0;
         for (int i = 1; i <= amount; i++) {
-            diceRoll += dice.nextInt(max) + 1;
+            diceRoll += dice.nextInt(max) + 1 + attackBonus;
         }
-
+        System.out.println(diceRoll);
         return diceRoll;
     }
 

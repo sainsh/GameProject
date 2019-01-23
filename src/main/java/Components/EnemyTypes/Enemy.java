@@ -29,4 +29,6 @@ public interface Enemy {
 
     public void setArmor(int armor);
 
+    int getAttackBonus();
+
 }

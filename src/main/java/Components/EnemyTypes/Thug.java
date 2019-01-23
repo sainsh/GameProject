@@ -9,6 +9,7 @@ public class Thug implements Enemy {
     private int damage;
     private int exp;
     private int armor;
+    private int attackBonus;
 
     public Thug() {
         health = 15;
@@ -16,6 +17,7 @@ public class Thug implements Enemy {
         damage = 2;
         exp = 10;
         armor = 12;
+        attackBonus = 1;
     }
 
     @Override
@@ -83,4 +85,11 @@ public class Thug implements Enemy {
     public void setArmor(int armor) {
         this.armor = armor;
     }
+
+    @Override
+    public int getAttackBonus() {
+        return attackBonus;
+    }
+
+
 }

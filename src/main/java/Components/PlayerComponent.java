@@ -34,6 +34,7 @@ public class PlayerComponent extends Component {
     private List<Equipment> equipment = new ArrayList<>();
     private Equipment weapon;
     private int lvl;
+    private int attackBonus;
 
     private static final float SPEED_DECAY = 0.66f;
 
@@ -112,6 +113,7 @@ public class PlayerComponent extends Component {
         }
 
         lvl = 1;
+        this.attackBonus = profession.getStartAttackBonus();
 
 
     }
@@ -262,6 +264,7 @@ public class PlayerComponent extends Component {
             health = maxHealth;
             mana +=2;
             ((Weapon) weapon).setDamage(((Weapon) weapon).getDamage() + 2);
+            attackBonus++;
             System.out.println("gained a lvl");
 
         }
@@ -274,4 +277,11 @@ public class PlayerComponent extends Component {
         velocity.set(0,0);
     }
 
+    public int getAttackBonus() {
+        return attackBonus;
+    }
+
+    public void setAttackBonus(int attackBonus) {
+        this.attackBonus = attackBonus;
+    }
 }

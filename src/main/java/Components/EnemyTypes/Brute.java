@@ -9,6 +9,7 @@ public class Brute implements Enemy {
     private int damage;
     private int exp;
     private int armor;
+    private int attackBonus;
 
     public Brute() {
         health = 20;
@@ -16,6 +17,7 @@ public class Brute implements Enemy {
         damage = 3;
         exp = 10;
         armor = 14;
+        attackBonus = 2;
     }
 
     public int getHealth() {
@@ -64,6 +66,11 @@ public class Brute implements Enemy {
     @Override
     public void setArmor(int armor) {
             this.armor=armor;
+    }
+
+    @Override
+    public int getAttackBonus() {
+        return attackBonus;
     }
 
     @Override

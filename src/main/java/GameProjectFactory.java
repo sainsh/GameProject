@@ -50,7 +50,7 @@ public class GameProjectFactory implements EntityFactory {
                 .viewFromNodeWithBBox(new Circle(data.<Integer>get("width") / 2, Color.RED))
                 .with(new PhysicsComponent())
                 .with(new SelectableComponent(true))
-                .with(new EnemyComponent(new Brute(),1))
+                .with(new EnemyComponent(new Brute(),1,0))
                 .build();
 
 

@@ -15,6 +15,7 @@ public class Warrior implements Profession {
     private List<String> armorProficiencies;
     private List<String> weaponProficiencies;
     private List<Equipment> startingEquipment;
+    private int startAttackBonus;
 
 
     public Warrior() {
@@ -33,6 +34,7 @@ public class Warrior implements Profession {
         startingEquipment = new ArrayList<>();
         startingEquipment.add(new Weapon((int) (Math.random() * 4)));
         startingEquipment.add(new Armor("medium"));
+        startAttackBonus = 2;
     }
 
     public int getStartHealth() {
@@ -81,5 +83,13 @@ public class Warrior implements Profession {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getStartAttackBonus() {
+        return startAttackBonus;
+    }
+
+    public void setStartAttackBonus(int startAttackBonus) {
+        this.startAttackBonus = startAttackBonus;
     }
 }
