@@ -15,6 +15,8 @@ import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
 
 import java.util.ArrayList;
@@ -31,8 +33,10 @@ public class PlayerComponent extends Component {
     private int exp;
     private List<String> armorProficiencies = new ArrayList<>();
     private List<String> weaponProficiencies = new ArrayList<>();
-    private List<Equipment> equipment = new ArrayList<>();
+    private ObservableList<Equipment> equipment = FXCollections.observableArrayList();
     private Equipment weapon;
+    private Equipment armor;
+    private Equipment shield;
     private int lvl;
     private int attackBonus;
 
@@ -99,9 +103,18 @@ public class PlayerComponent extends Component {
         }
 
         for (Equipment item : equipment) {
-            if (item.getClass() == Armor.class) {
-                armorBonus += ((Armor) item).getArmorBonus();
+            if (item.getClass() == Armor.class && !item.getType().equals("shield")) {
+                armor = item;
+            } else if (item.getClass() == Armor.class && item.getType().equals("shield")) {
+                shield = item;
             }
+        }
+        armorBonus = 10;
+        if (armor != null) {
+            armorBonus += ((Armor) armor).getArmorBonus();
+        }
+        if(shield != null){
+            armorBonus += ((Armor) shield).getArmorBonus();
         }
 
         for (Equipment item : equipment) {
@@ -175,11 +188,11 @@ public class PlayerComponent extends Component {
         this.weaponProficiencies = weaponProficiencies;
     }
 
-    public List<Equipment> getEquipment() {
+    public ObservableList<Equipment> getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(List<Equipment> equipment) {
+    public void setEquipment(ObservableList<Equipment> equipment) {
         this.equipment = equipment;
     }
 
@@ -236,7 +249,7 @@ public class PlayerComponent extends Component {
     }
 
 
-    public void setPosition(PhysicsComponent physics,float x, float y) {
+    public void setPosition(PhysicsComponent physics, float x, float y) {
 
         Point2D point = new Point2D(x, y);
         getEntity().removeComponent(PhysicsComponent.class);
@@ -257,12 +270,12 @@ public class PlayerComponent extends Component {
 
     public void gainExp(int exp) {
         this.exp += exp;
-        if (this.exp >= 10 + Math.pow(lvl-1,2)*10) {
+        if (this.exp >= 10 + Math.pow(lvl - 1, 2) * 10) {
             lvl++;
             armorBonus++;
             maxHealth += 20;
             health = maxHealth;
-            mana +=2;
+            mana += 2;
             ((Weapon) weapon).setDamage(((Weapon) weapon).getDamage() + 2);
             attackBonus++;
             System.out.println("gained a lvl");
@@ -271,10 +284,10 @@ public class PlayerComponent extends Component {
     }
 
     @Override
-    public void onAdded(){
+    public void onAdded() {
 
 
-        velocity.set(0,0);
+        velocity.set(0, 0);
     }
 
     public int getAttackBonus() {
@@ -283,5 +296,21 @@ public class PlayerComponent extends Component {
 
     public void setAttackBonus(int attackBonus) {
         this.attackBonus = attackBonus;
+    }
+
+
+    public void setArmor(Armor item) {
+    }
+
+    public Equipment getArmor() {
+        return armor;
+    }
+
+    public Equipment getShield() {
+        return shield;
+    }
+
+    public void setShield(Equipment shield) {
+        this.shield = shield;
     }
 }

@@ -106,17 +106,6 @@
                  "width":64,
                  "x":192,
                  "y":576
-                }, 
-                {
-                 "height":64,
-                 "id":8,
-                 "name":"",
-                 "rotation":0,
-                 "type":"enemy",
-                 "visible":true,
-                 "width":64,
-                 "x":64,
-                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",

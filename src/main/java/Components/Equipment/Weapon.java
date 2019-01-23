@@ -9,9 +9,9 @@ public class Weapon implements Equipment {
     private int range = 1;
     private String[] randomType = {"light", "one-handed", "two-handed", "ranged"};
     private String[] lightWeapons = {"dagger", "light mace", "short sword", "hand axe"};
-    private String[] oneHandedWeapons = {"long sword", "morningstar", "battleaxe", "light flail"};
-    private String[] twoHandedWeapons = {"great sword", "great axe", "maul", "lance"};
-    private String[] rangedWeapons = {"bow", "crossbow", "javelin", "boomerang"};
+    private String[] oneHandedWeapons = {"long sword", "morningstar", "battleaxe"};
+    private String[] twoHandedWeapons = {"great sword", "great axe", "maul"};
+    private String[] rangedWeapons = {"bow", "crossbow", "boomerang"};
 
 
     public Weapon(int v) {

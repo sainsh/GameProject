@@ -230,6 +230,7 @@ public class GameProjectApp extends GameApplication {
                 initNewInput();
 
                 enemies = gameWorldEntities.loadEnemies();
+                getGameScene().addUINode(new InventoryView(playerComponent, getWidth(), getHeight()));
 
 
                 paused = false;

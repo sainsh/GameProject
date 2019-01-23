@@ -39,7 +39,6 @@
   <object id="5" type="border" x="0" y="0" height="640"/>
   <object id="6" type="warpE" x="896" y="320" width="64" height="64"/>
   <object id="7" type="warpS" x="192" y="576" width="64" height="64"/>
-  <object id="8" type="enemy" x="64" y="384" width="64" height="64"/>
  </objectgroup>
  <layer id="3" name="Tile Layer 3" width="15" height="10">
   <data encoding="csv">
