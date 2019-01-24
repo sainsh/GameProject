@@ -1,4 +1,5 @@
 import Common.Config;
+import Common.GameProjectType;
 import Components.EnemyComponent;
 import Components.EnemyTypes.Brute;
 import Components.EnemyTypes.Cultist;
@@ -12,6 +13,8 @@ import Components.Professions.Warrior;
 import Components.RaceComponent;
 import Components.Races.Human;
 import Components.Races.Race;
+import UI.EquipmentView;
+import UI.InventoryView;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -231,6 +234,7 @@ public class GameProjectApp extends GameApplication {
 
                 enemies = gameWorldEntities.loadEnemies();
                 getGameScene().addUINode(new InventoryView(playerComponent, getWidth(), getHeight()));
+                getGameScene().addUINode(new EquipmentView(playerComponent,getWidth(),getHeight(),tileSize));
 
 
                 paused = false;

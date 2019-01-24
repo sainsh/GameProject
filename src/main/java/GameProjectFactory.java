@@ -1,3 +1,4 @@
+import Common.GameProjectType;
 import Components.EnemyComponent;
 import Components.EnemyTypes.Brute;
 import com.almasb.fxgl.entity.*;

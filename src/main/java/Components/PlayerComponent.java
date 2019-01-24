@@ -6,6 +6,7 @@
 
 package Components;
 
+import Common.EquipPlace;
 import Components.Equipment.Armor;
 import Components.Equipment.Equipment;
 import Components.Equipment.Weapon;
@@ -48,6 +49,7 @@ public class PlayerComponent extends Component {
     private float speed = 0;
 
     private Vec2 velocity = new Vec2();
+
 
     public PlayerComponent(PhysicsComponent physics, Profession profession, Race race) {
         this.physics = physics;
@@ -113,7 +115,7 @@ public class PlayerComponent extends Component {
         if (armor != null) {
             armorBonus += ((Armor) armor).getArmorBonus();
         }
-        if(shield != null){
+        if (shield != null) {
             armorBonus += ((Armor) shield).getArmorBonus();
         }
 
@@ -312,5 +314,21 @@ public class PlayerComponent extends Component {
 
     public void setShield(Equipment shield) {
         this.shield = shield;
+    }
+
+    public void unEquipItem(EquipPlace place) {
+
+        if (place == EquipPlace.BODY) {
+
+            armor = null;
+
+        } else if (place == EquipPlace.RIGHT) {
+
+            weapon = null;
+
+        } else if (place == EquipPlace.LEFT) {
+
+            shield = null;
+        }
     }
 }

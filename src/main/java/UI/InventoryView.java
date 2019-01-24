@@ -1,3 +1,5 @@
+package UI;
+
 import Components.Equipment.Armor;
 import Components.Equipment.Equipment;
 import Components.Equipment.Weapon;
