@@ -13,6 +13,7 @@ import Components.Professions.Warrior;
 import Components.RaceComponent;
 import Components.Races.Human;
 import Components.Races.Race;
+import UI.BasicInfoView;
 import UI.EquipmentView;
 import UI.InventoryView;
 import com.almasb.fxgl.app.GameApplication;
@@ -227,7 +228,7 @@ public class GameProjectApp extends GameApplication {
 
                 createPlayer(1 * tileSize, 1 * tileSize);
 
-                createPlayerInfo();
+               // createPlayerInfo();
 
 
                 initNewInput();
@@ -235,6 +236,7 @@ public class GameProjectApp extends GameApplication {
                 enemies = gameWorldEntities.loadEnemies();
                 getGameScene().addUINode(new InventoryView(playerComponent, getWidth(), getHeight()));
                 getGameScene().addUINode(new EquipmentView(playerComponent,getWidth(),getHeight(),tileSize));
+                getGameScene().addUINode(new BasicInfoView(playerComponent,tileSize));
 
 
                 paused = false;

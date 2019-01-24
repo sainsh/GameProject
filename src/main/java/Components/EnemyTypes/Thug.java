@@ -22,7 +22,7 @@ public class Thug implements Enemy {
 
     @Override
     public boolean takeDamaged(int damage) {
-        health -= (health - damage);
+        health -= damage;
         if (health > 0) {
             return true;
         } else {
@@ -33,42 +33,42 @@ public class Thug implements Enemy {
 
     @Override
     public int getHealth() {
-        return 0;
+        return health;
     }
 
     @Override
     public void setHealth(int health) {
-
+        this.health = health;
     }
 
     @Override
     public int getMaxHealth() {
-        return 0;
+        return maxHealth;
     }
 
     @Override
     public void setMaxHealth(int maxHealth) {
-
+        this.maxHealth = maxHealth;
     }
 
     @Override
     public int getDamage() {
-        return 0;
+        return damage;
     }
 
     @Override
     public void setDamage(int damage) {
-
+        this.damage = damage;
     }
 
     @Override
     public int getExp() {
-        return 0;
+        return exp;
     }
 
     @Override
     public void setExp(int exp) {
-
+        this.exp=exp;
     }
 
     @Override

@@ -25,6 +25,7 @@ public class GameWorldEntities {
         enemies[0][0].add("brute,1,4,6");
         enemies[1][0].add("thug,1,7,5");
         enemies[1][0].add("thug,1,7,6");
+        enemies[2][0].add("cultist,3,4,4");
 
 
         return enemies;

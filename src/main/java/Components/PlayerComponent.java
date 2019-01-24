@@ -16,6 +16,8 @@ import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
@@ -28,6 +30,7 @@ public class PlayerComponent extends Component {
     private int health;
     private int maxHealth;
     private int mana;
+    private int maxMana;
     private int armorBonus = 10;
     private Profession profession;
     private Race race;
@@ -40,6 +43,11 @@ public class PlayerComponent extends Component {
     private Equipment shield;
     private int lvl;
     private int attackBonus;
+
+    private IntegerProperty healthProperty;
+    private IntegerProperty maxHealthProperty;
+    private IntegerProperty manaProperty;
+    private IntegerProperty maxManaProperty;
 
     private static final float SPEED_DECAY = 0.66f;
 
@@ -58,6 +66,7 @@ public class PlayerComponent extends Component {
         this.health = profession.getStartHealth() + race.getStartHealth();
         this.maxHealth = this.health;
         this.mana = profession.getStartMana() + race.getStartMana();
+        this.maxMana = this.mana;
 
         for (String proficiency : profession.getArmorProficiencies()) {
             armorProficiencies.add(proficiency);
@@ -130,6 +139,10 @@ public class PlayerComponent extends Component {
         lvl = 1;
         this.attackBonus = profession.getStartAttackBonus();
 
+        healthProperty = new SimpleIntegerProperty(health);
+        maxHealthProperty = new SimpleIntegerProperty(maxHealth);
+        manaProperty = new SimpleIntegerProperty(mana);
+        maxManaProperty = new SimpleIntegerProperty(maxMana);
 
     }
 
@@ -330,5 +343,53 @@ public class PlayerComponent extends Component {
 
             shield = null;
         }
+    }
+
+    public int getHealthProperty() {
+        return healthProperty.get();
+    }
+
+    public IntegerProperty healthPropertyProperty() {
+        return healthProperty;
+    }
+
+    public void setHealthProperty(int healthProperty) {
+        this.healthProperty.set(healthProperty);
+    }
+
+    public int getMaxHealthProperty() {
+        return maxHealthProperty.get();
+    }
+
+    public IntegerProperty maxHealthPropertyProperty() {
+        return maxHealthProperty;
+    }
+
+    public void setMaxHealthProperty(int maxHealthProperty) {
+        this.maxHealthProperty.set(maxHealthProperty);
+    }
+
+    public int getManaProperty() {
+        return manaProperty.get();
+    }
+
+    public IntegerProperty manaPropertyProperty() {
+        return manaProperty;
+    }
+
+    public void setManaProperty(int manaProperty) {
+        this.manaProperty.set(manaProperty);
+    }
+
+    public int getMaxManaProperty() {
+        return maxManaProperty.get();
+    }
+
+    public IntegerProperty maxManaPropertyProperty() {
+        return maxManaProperty;
+    }
+
+    public void setMaxManaProperty(int maxManaProperty) {
+        this.maxManaProperty.set(maxManaProperty);
     }
 }
