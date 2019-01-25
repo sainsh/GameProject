@@ -1,6 +1,7 @@
 import Common.Config;
 import Common.GameProjectType;
 import Components.EnemyComponent;
+import Components.EnemyTypes.Boss;
 import Components.EnemyTypes.Brute;
 import Components.EnemyTypes.Cultist;
 import Components.EnemyTypes.Thug;
@@ -408,7 +409,20 @@ public class GameProjectApp extends GameApplication {
         } else if (formatEnemy[0].equals("cultist")) {
             createCultist(formatEnemy, i);
 
+        } else if(formatEnemy[0].equals("boss")){
+            createBoss(formatEnemy,i);
         }
+    }
+
+    private void createBoss(String[] formatEnemy, int i) {
+        Entities.builder()
+                .type(GameProjectType.ENEMY)
+                .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
+                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.BLACK))
+                .with(new EnemyComponent(new Boss(), Integer.parseInt(formatEnemy[1]), i))
+                .with(new PhysicsComponent())
+                .with(new CollidableComponent(true))
+                .buildAndAttach(getGameWorld());
     }
 
     private void createCultist(String[] formatEnemy, int i) {
