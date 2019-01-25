@@ -4,7 +4,7 @@ import java.util.List;
 public class GameWorldEntities {
 
     private List[][] enemies = new List[8][8];
-    private int tileSize = 0;
+
 
 
     public GameWorldEntities() {
@@ -26,6 +26,18 @@ public class GameWorldEntities {
         enemies[1][0].add("thug,1,7,5");
         enemies[1][0].add("thug,1,7,6");
         enemies[2][0].add("cultist,3,4,4");
+        enemies[3][0].add("brute,2,5,6");
+        enemies[4][0].add("thug,3,4,6");
+        enemies[4][0].add("thug,2,6,6");
+        enemies[5][0].add("brute,4,10,3");
+        enemies[5][0].add("cultist,2,4,6");
+        enemies[6][0].add("thug,2,6,6");
+        enemies[7][0].add("thug 2,5,5");
+        enemies[7][0].add("thug,3,10,7");
+
+        enemies[0][1].add("cultist,4,7,5");
+        enemies[1][1].add();
+
 
 
         return enemies;

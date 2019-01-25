@@ -6,6 +6,7 @@ import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class BasicInfoView extends InGameWindow {
 
@@ -40,10 +41,25 @@ public class BasicInfoView extends InGameWindow {
         barMPUI.maxValueProperty().bind(playerComponent.maxManaPropertyProperty());
         barMPUI.currentValueProperty().bind(playerComponent.manaPropertyProperty());
 
+        Text exp = new Text();
+        exp.textProperty().bind(playerComponent.expPropertyProperty().asString());
+        exp.setTranslateX(getWidth()/10);
+        exp.setTranslateY(tileSize*3/2);
+
+        Text armorBonus = new Text();
+        armorBonus.textProperty().bind(playerComponent.armorBonusPropertyProperty().asString());
+        armorBonus.setTranslateX(getWidth()/10);
+        armorBonus.setTranslateY(tileSize*2);
+
+        Text attackBonus = new Text();
+        attackBonus.textProperty().bind(playerComponent.attackBonusPropertyProperty().asString());
+        attackBonus.setTranslateX(getWidth()/10);
+        attackBonus.setTranslateY(tileSize*5/2);
+
         Pane uiPane = new Pane();
 
         uiPane.setPrefSize(5*tileSize,3*tileSize);
-        uiPane.getChildren().addAll(barHPUI,barMPUI);
+        uiPane.getChildren().addAll(barHPUI,barMPUI,exp,armorBonus,attackBonus);
 
         setContentPane(uiPane);
     }

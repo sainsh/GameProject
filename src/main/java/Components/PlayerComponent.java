@@ -48,6 +48,10 @@ public class PlayerComponent extends Component {
     private IntegerProperty maxHealthProperty;
     private IntegerProperty manaProperty;
     private IntegerProperty maxManaProperty;
+    private IntegerProperty expProperty;
+    private IntegerProperty armorBonusProperty;
+    private IntegerProperty attackBonusProperty;
+
 
     private static final float SPEED_DECAY = 0.66f;
 
@@ -143,6 +147,9 @@ public class PlayerComponent extends Component {
         maxHealthProperty = new SimpleIntegerProperty(maxHealth);
         manaProperty = new SimpleIntegerProperty(mana);
         maxManaProperty = new SimpleIntegerProperty(maxMana);
+        expProperty = new SimpleIntegerProperty(exp);
+        armorBonusProperty = new SimpleIntegerProperty(armorBonus);
+        attackBonusProperty = new SimpleIntegerProperty(attackBonus);
 
     }
 
@@ -276,6 +283,7 @@ public class PlayerComponent extends Component {
 
     public boolean getDamaged(int dmg) {
         health -= dmg;
+        healthProperty.setValue(health);
         if (health <= 0) {
             return false;
         } else {
@@ -285,15 +293,25 @@ public class PlayerComponent extends Component {
 
     public void gainExp(int exp) {
         this.exp += exp;
+        expProperty.setValue(exp);
         if (this.exp >= 10 + Math.pow(lvl - 1, 2) * 10) {
             lvl++;
             armorBonus++;
             maxHealth += 20;
             health = maxHealth;
             mana += 2;
+            maxMana +=2;
             ((Weapon) weapon).setDamage(((Weapon) weapon).getDamage() + 2);
             attackBonus++;
             System.out.println("gained a lvl");
+
+
+            armorBonusProperty.setValue(armorBonus);
+            maxHealthProperty.setValue(maxHealth);
+            healthProperty.setValue(health);
+            maxManaProperty.setValue(maxMana);
+            manaProperty.setValue(mana);
+            attackBonusProperty.setValue(attackBonus);
 
         }
     }
@@ -391,5 +409,41 @@ public class PlayerComponent extends Component {
 
     public void setMaxManaProperty(int maxManaProperty) {
         this.maxManaProperty.set(maxManaProperty);
+    }
+
+    public int getExpProperty() {
+        return expProperty.get();
+    }
+
+    public IntegerProperty expPropertyProperty() {
+        return expProperty;
+    }
+
+    public void setExpProperty(int expProperty) {
+        this.expProperty.set(expProperty);
+    }
+
+    public int getArmorBonusProperty() {
+        return armorBonusProperty.get();
+    }
+
+    public IntegerProperty armorBonusPropertyProperty() {
+        return armorBonusProperty;
+    }
+
+    public void setArmorBonusProperty(int armorBonusProperty) {
+        this.armorBonusProperty.set(armorBonusProperty);
+    }
+
+    public int getAttackBonusProperty() {
+        return attackBonusProperty.get();
+    }
+
+    public IntegerProperty attackBonusPropertyProperty() {
+        return attackBonusProperty;
+    }
+
+    public void setAttackBonusProperty(int attackBonusProperty) {
+        this.attackBonusProperty.set(attackBonusProperty);
     }
 }
