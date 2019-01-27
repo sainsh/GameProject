@@ -1,6 +1,6 @@
 package Components.Equipment;
 
-public class Armor implements Equipment {
+public class Armor implements Equipment {   //equipment type, armor
 
     private String type;
     private int hitpoints;
@@ -8,7 +8,7 @@ public class Armor implements Equipment {
     private int armorBonus;
 
 
-    public Armor(String type) {
+    public Armor(String type) { //creates an armor based on type
         this.type = type;
 
         if (type.equals("light")) {

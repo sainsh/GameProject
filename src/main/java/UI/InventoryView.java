@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static com.almasb.fxgl.app.DSLKt.texture;
 
-public class InventoryView extends InGameWindow {
+public class InventoryView extends InGameWindow {   //shows the inventory of the player
 
     private Map<Integer, Boolean> slots = new HashMap<>();
     private Pane root = new Pane();
@@ -33,27 +33,27 @@ public class InventoryView extends InGameWindow {
     public InventoryView(PlayerComponent playerComponent, double width, double height) {
         super("Inventory", WindowDecor.MINIMIZE);
 
-        relocate(width - 202, height - 315);
+        relocate(width - 202, height - 315);    //sets position of the window
 
-        setBackgroundColor(Color.LIGHTGREEN);
-        setPrefSize(3 * 64, 4 * 64);
-        setCanResize(false);
-        this.playerComponent = playerComponent;
+        setBackgroundColor(Color.LIGHTGREEN);   //set colour
+        setPrefSize(3 * 64, 4 * 64);    //sets size
+        setCanResize(false);    //player cant change the size of window
+        this.playerComponent = playerComponent; //playerComponent to see inventory
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 30; i++) {  //creates 30 inventory slots
             slots.put(i, true);
         }
 
-        listerner = new ListChangeListener<Equipment>() {
+        listerner = new ListChangeListener<Equipment>() {   //creates listerner to listen to changes in inventory, like new items and removed items
             @Override
             public void onChanged(Change<? extends Equipment> change) {
                 while (change.next()) {
                     if (change.wasAdded()) {
-                        for (Equipment item : change.getAddedSubList()) {
+                        for (Equipment item : change.getAddedSubList()) {       //adds items to inventoryview
                             addItem(item);
                         }
                     } else if (change.wasRemoved()) {
-                        for (Equipment item : change.getRemoved()) {
+                        for (Equipment item : change.getRemoved()) { //removes items from inventoryview
                             for (Iterator<Node> it = root.getChildren().iterator(); it.hasNext(); ) {
                                 Node node = it.next();
 
@@ -74,14 +74,14 @@ public class InventoryView extends InGameWindow {
         };
 
 
-        playerComponent.getEquipment().forEach(this::addItem);
+        playerComponent.getEquipment().forEach(this::addItem);  //runs through list of items the player has
 
-        playerComponent.getEquipment().addListener(listerner);
+        playerComponent.getEquipment().addListener(listerner);  // adds the listener
 
-        setContentPane(root);
+        setContentPane(root);   //adds the inventoryview to pane
     }
 
-    private int getNextFreeSlot() {
+    private int getNextFreeSlot() { //finds the next free slot, used when adding new items, returns -1 if inventory is full
         for (int i = 0; i < 30; i++) {
             if (slots.get(i))
                 return i;
@@ -92,17 +92,17 @@ public class InventoryView extends InGameWindow {
 
     private void addItem(Equipment item) {
         int index = getNextFreeSlot();
-        slots.put(index, false);
+        slots.put(index, false);    //set slot full
 
-        Texture view = texture(item.getName()+".png");
+        Texture view = texture(item.getName()+".png");  //gets the texture from assets corresponding to the item name
         view.resize(64,64);
         view.setFitHeight(64);
-        view.setFitWidth(64);
+        view.setFitWidth(64);   //sets size
 
         view.setUserData(new Pair<>(item, index));
         view.setTranslateX((index % 5) * 40);
         view.setTranslateY((index / 5) * 40);
-        view.setOnMouseClicked(event -> {
+        view.setOnMouseClicked(event -> {   //change equipment to clicked items.
 
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (item instanceof Weapon) {
@@ -117,6 +117,6 @@ public class InventoryView extends InGameWindow {
         view.setCursor(Cursor.HAND);
 
 
-        root.getChildren().add(view);
+        root.getChildren().add(view); //adds the item to the pane
     }
 }

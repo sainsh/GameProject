@@ -2,7 +2,7 @@ package Components.EnemyTypes;
 
 import javafx.util.Pair;
 
-public interface Enemy {
+public interface Enemy {    //interface between enemyEntity and enemy type
 
 
     boolean takeDamaged(int damage);

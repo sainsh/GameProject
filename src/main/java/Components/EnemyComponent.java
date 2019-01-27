@@ -3,11 +3,11 @@ package Components;
 import Components.EnemyTypes.Enemy;
 import com.almasb.fxgl.entity.component.Component;
 
-public class EnemyComponent extends Component {
+public class EnemyComponent extends Component { //used to add connect enemy entities to enemy types
 
     private Enemy enemy;
     private int number;
-    private int index;
+    private int index;  //index in the list of enemies for world map
 
     public EnemyComponent(Enemy enemy, int number, int index) {
         this.enemy = enemy;

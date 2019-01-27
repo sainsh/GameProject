@@ -15,7 +15,7 @@ public class GameProjectFactory implements EntityFactory {
 
 
     @Spawns("house")
-    public Entity newHouse(SpawnData data) {
+    public Entity newHouse(SpawnData data) {    //creates a house entity which is impassable
 
         return Entities.builder()
                 .type(GameProjectType.HOUSE)
@@ -27,7 +27,7 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("enemy")
-    public Entity newEnemy(SpawnData data) {
+    public Entity newEnemy(SpawnData data) {    //creates an enemy. was previously used when enemies where a part of the map files
 
 
         return Entities.builder()
@@ -42,7 +42,7 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("battleEnemy")
-    public Entity newBattleEnemy(SpawnData data) {
+    public Entity newBattleEnemy(SpawnData data) {  //creates a battle enemy, was previously used when enemies where a part of the map files
 
 
         return Entities.builder()
@@ -58,7 +58,7 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("border")
-    public Entity newBorder(SpawnData data) {
+    public Entity newBorder(SpawnData data) {   //creates an impassable border, used for water, big bushes, trees and fences
 
         return Entities.builder()
                 .type(GameProjectType.BORDER)
@@ -69,7 +69,7 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("warp")
-    public Entity newWarp(SpawnData data,GameProjectType type) {
+    public Entity newWarp(SpawnData data,GameProjectType type) {    //creates warp points
 
         System.out.println(data.toString());
 
@@ -79,7 +79,7 @@ public class GameProjectFactory implements EntityFactory {
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .build();
     }
-
+        //these next warps are used to differentiate the different directions
     @Spawns("warpN")
     public Entity newWarpN(SpawnData data){
 
@@ -102,12 +102,13 @@ public class GameProjectFactory implements EntityFactory {
     }
 
     @Spawns("chest")
-    public Entity newChest(SpawnData data){
+    public Entity newChest(SpawnData data){     //creates a chest
 
         return Entities.builder()
                 .type(GameProjectType.CHEST)
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
+                .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
                 .build();
     }

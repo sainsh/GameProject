@@ -2,7 +2,7 @@ package Components.Races;
 
 import java.util.List;
 
-public interface Race {
+public interface Race { //interface between playerEntity/playerComponent and race of player
 
 
     int getStartHealth();

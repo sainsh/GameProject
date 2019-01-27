@@ -22,7 +22,6 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.components.SelectableComponent;
-import com.almasb.fxgl.gameplay.rpg.quest.QuestPane;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -52,7 +51,6 @@ public class GameProjectApp extends GameApplication {
 
 
     private boolean paused = true;
-
 
 
     private InGamePanel panel;
@@ -101,8 +99,8 @@ public class GameProjectApp extends GameApplication {
         // gameSettings.setEnabledMenuItems(EnumSet.allOf(MenuItem.class)); //use for save/load later
         gameSettings.setCloseConfirmation(false);
         gameSettings.setConfigClass(Config.class);
-        currentWorldX = 0;
-        currentWorldY = 0;
+        currentWorldX = 0;      //x coordinate of the world map which is set up as world(x,y).json
+        currentWorldY = 0;      //y coordinate
 
 
     }
@@ -111,23 +109,13 @@ public class GameProjectApp extends GameApplication {
     @Override
     protected void initInput() {
 
-
+        //no initial input
     }
 
 
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        vars.put("Health", "health: 0/0");
-        vars.put("ArmorBonus", "Armor: 10");
-        vars.put("Race", "default");
-        vars.put("Class", "default");
-        vars.put("Armors", "default");
-        vars.put("Weapons", "default");
-        vars.put("Equipment", "default");
-        vars.put("exp", "default");
-        vars.put("playerpoint", "default");
-
-
+        //no gameVars
     }
 
 
@@ -135,23 +123,17 @@ public class GameProjectApp extends GameApplication {
     protected void initGame() {
 
 
-        config = new Config();
-        tileSize = config.getTileSize();
-        mapHeight = config.getMapHeight();
-        mapWidth = config.getMapWidth();
+        config = new Config();      //set config
+        tileSize = config.getTileSize();    //tileSize is 64 px
+        mapHeight = config.getMapHeight();  //map is 10 tiles high
+        mapWidth = config.getMapWidth();    //map is 15 tiles long
 
-        getGameWorld().addEntityFactory(new GameProjectFactory());
+        getGameWorld().addEntityFactory(new GameProjectFactory());  //add factory
 
         initBackground();
-        gameWorldEntities = new GameWorldEntities();
+        gameWorldEntities = new GameWorldEntities();    //get gameWorldEntities, enemies, and 1 boss
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
-
-
-        panel = new InGamePanel();
-        panel.getChildren().add(new QuestPane(300, 300));
-
-        getGameScene().addUINode(panel);
 
 
     }
@@ -166,7 +148,7 @@ public class GameProjectApp extends GameApplication {
 
         BackgroundImage bgImg = new BackgroundImage(getAssetLoader().loadTexture(
                 "map of inner saisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);     //sets a non repeating background for start menu
 
         region.setBackground(new Background(bgImg));
         bg.getViewComponent().setView(region);
@@ -176,7 +158,7 @@ public class GameProjectApp extends GameApplication {
 
 
     @Override
-    protected void initUI() {
+    protected void initUI() {       //sets 3 buttons giving the player 3 choices of races, only 1 is implemented so far
 
         HBox raceBox = new HBox();
         Button humanBTN = new Button("Human \n start health: +20 \n start mana: +2 \n proficiencies: " +
@@ -185,7 +167,7 @@ public class GameProjectApp extends GameApplication {
         humanBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                getGameScene().removeUINode(raceBox);
+                getGameScene().removeUINode(raceBox);   //removed the 3 buttons
                 race = new Human();
                 chooseClass(race);
             }
@@ -206,7 +188,7 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void chooseClass(Race race) {
+    private void chooseClass(Race race) {       //after choosing race, set 3 new buttons to choose profession/class only 1 is implemented
 
         HBox classBox = new HBox();
         Button warriorBTN = new Button("Components.Professions.Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
@@ -216,28 +198,28 @@ public class GameProjectApp extends GameApplication {
             @Override
             public void handle(ActionEvent event) {
 
-                getGameScene().removeUINode(classBox);
+                getGameScene().removeUINode(classBox);  //removes the 3 buttons
 
 
-                getGameWorld().setLevelFromMap("world(0,0).json");
+                getGameWorld().setLevelFromMap("world(0,0).json");  //sets map to first map
 
                 physicsComponent = new PhysicsComponent();
-                physicsComponent.setBodyType(BodyType.DYNAMIC);
+                physicsComponent.setBodyType(BodyType.DYNAMIC); // set bodytype so entity can be interacted with
                 profession = new Warrior();
-                playerComponent = new PlayerComponent(physicsComponent, profession, race);
+                playerComponent = new PlayerComponent(physicsComponent, profession, race);  //sends physics profession and race to new playerComponent which acts as a player
 
-                createPlayer(1 * tileSize, 1 * tileSize);
-
-
-                initNewInput();
-
-                enemies = gameWorldEntities.loadEnemies();
-                getGameScene().addUINode(new InventoryView(playerComponent, getWidth(), getHeight()));
-                getGameScene().addUINode(new EquipmentView(playerComponent, getWidth(), getHeight(), tileSize));
-                getGameScene().addUINode(new BasicInfoView(playerComponent, tileSize));
+                createPlayer(1 * tileSize, 1 * tileSize);   //set a playerEntity at tile 1,1
 
 
-                paused = false;
+                initNewInput(); // sets input for player
+
+                enemies = gameWorldEntities.loadEnemies();      //creates array with enemies
+                getGameScene().addUINode(new InventoryView(playerComponent, getWidth(), getHeight()));  //adds inventory window
+                getGameScene().addUINode(new EquipmentView(playerComponent, getWidth(), getHeight(), tileSize));    //adds equipment window, though does the same as inventory for now
+                getGameScene().addUINode(new BasicInfoView(playerComponent, tileSize)); //adds info window, with HP mana, exp, armor bonus, and attack bonus
+
+
+                paused = false; //enables input
 
 
             }
@@ -258,7 +240,7 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void createPlayer(double x, double y) {
+    private void createPlayer(double x, double y) {     //creates a player entity with player,physics,profession,race and collidable components
         playerEnt = Entities.builder()
                 .type(GameProjectType.PLAYER)
                 .at(x, y)
@@ -273,7 +255,7 @@ public class GameProjectApp extends GameApplication {
 
     }
 
-    private void initNewInput() {
+    private void initNewInput() {       //works only if not paused
 
         Input input = getInput(); // get input service
 
@@ -319,43 +301,31 @@ public class GameProjectApp extends GameApplication {
             }
         }, KeyCode.DOWN);
 
-        input.addAction(new UserAction("Open/Close Panel") {
-            @Override
-            protected void onActionEnd() {
-                if (!paused) {
-                    if (panel.isOpen())
-                        panel.close();
-                    else
-                        panel.open();
-                }
-            }
-        }, KeyCode.TAB);
-
 
     }
 
     @Override
-    protected void onUpdate(double tdf) {
+    protected void onUpdate(double tdf) {   //used to transition to new map
         if (playerEnt != null) {
             if (!paused) {
                 if (playerEnt.getCenter().getX() > tileSize * 15) {
 
-                    worldTransition("world(" + ++currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_W);
+                    worldTransition("world(" + ++currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_W);   //when going right
 
 
                 } else if (playerEnt.getCenter().getX() < 0) {
 
-                    worldTransition("world(" + --currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_E);
+                    worldTransition("world(" + --currentWorldX + "," + currentWorldY + ").json", GameProjectType.WARP_E);   //when going left
 
 
                 } else if (playerEnt.getCenter().getY() > tileSize * 10) {
 
-                    worldTransition("world(" + currentWorldX + "," + ++currentWorldY + ").json", GameProjectType.WARP_N);
+                    worldTransition("world(" + currentWorldX + "," + ++currentWorldY + ").json", GameProjectType.WARP_N);   //when going down
 
 
                 } else if (playerEnt.getCenter().getY() < 0) {
 
-                    worldTransition("world(" + currentWorldX + "," + --currentWorldY + ").json", GameProjectType.WARP_S);
+                    worldTransition("world(" + currentWorldX + "," + --currentWorldY + ").json", GameProjectType.WARP_S);   //when going up
 
                 }
 
@@ -366,20 +336,20 @@ public class GameProjectApp extends GameApplication {
 
     public void worldTransition(String map, GameProjectType type) {
 
-        getGameWorld().setLevelFromMap(map);
-        createPlayer(getGameWorld().getEntitiesByType(type).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(type).get(0).getCenter().getY());
-        playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(type).get(0).getCenter());
+        getGameWorld().setLevelFromMap(map);    //sets new map
+        createPlayer(getGameWorld().getEntitiesByType(type).get(0).getCenter().getX(), getGameWorld().getEntitiesByType(type).get(0).getCenter().getY());   //creates a player entity at the warp point
+        playerEnt.getComponent(PhysicsComponent.class).reposition(getGameWorld().getEntitiesByType(type).get(0).getCenter());   //relocates the player entity to warp point
 
         enemies[currentWorldX][currentWorldY].forEach(
-                e -> createEnemy(e.toString(), enemies[currentWorldX][currentWorldY].indexOf(e))
+                e -> createEnemy(e.toString(), enemies[currentWorldX][currentWorldY].indexOf(e))    //creates all enemies on current map
         );
 
-        newCollisionHandler();
+        newCollisionHandler();  //reinstates the collision handler
 
 
     }
 
-    public void worldTransition(String map, Point2D point) {
+    public void worldTransition(String map, Point2D point) {    // same as above but used when returning from battle
 
         getGameWorld().setLevelFromMap(map);
         createPlayer(point.getX(), point.getY());
@@ -392,9 +362,9 @@ public class GameProjectApp extends GameApplication {
         newCollisionHandler();
     }
 
-    private void createEnemy(String enemy, int i) {
+    private void createEnemy(String enemy, int i) {     //looks up the array at the current world for enemy types
 
-        String[] formatEnemy = enemy.split(",");
+        String[] formatEnemy = enemy.split(",");    //format of enemis: type,number of enemies,x,y
         for (String s : formatEnemy) {
             System.out.println(s);
         }
@@ -409,12 +379,12 @@ public class GameProjectApp extends GameApplication {
         } else if (formatEnemy[0].equals("cultist")) {
             createCultist(formatEnemy, i);
 
-        } else if(formatEnemy[0].equals("boss")){
-            createBoss(formatEnemy,i);
+        } else if (formatEnemy[0].equals("boss")) {
+            createBoss(formatEnemy, i);
         }
     }
 
-    private void createBoss(String[] formatEnemy, int i) {
+    private void createBoss(String[] formatEnemy, int i) {      //creates boss at x,y
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
@@ -425,7 +395,7 @@ public class GameProjectApp extends GameApplication {
                 .buildAndAttach(getGameWorld());
     }
 
-    private void createCultist(String[] formatEnemy, int i) {
+    private void createCultist(String[] formatEnemy, int i) {//creates cultist at x,y
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
@@ -436,7 +406,7 @@ public class GameProjectApp extends GameApplication {
                 .buildAndAttach(getGameWorld());
     }
 
-    private void createThug(String[] formatEnemy, int i) {
+    private void createThug(String[] formatEnemy, int i) {  //creates thug at x,y
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
@@ -447,7 +417,7 @@ public class GameProjectApp extends GameApplication {
                 .buildAndAttach(getGameWorld());
     }
 
-    private void createBrute(String[] formatEnemy, int i) {
+    private void createBrute(String[] formatEnemy, int i) { //creates brute at x,y
 
         Entities.builder()
                 .type(GameProjectType.ENEMY)
@@ -464,15 +434,15 @@ public class GameProjectApp extends GameApplication {
     @Override
     protected void initPhysics() {
 
-        physics = getPhysicsWorld();
-        physics.setGravity(0, 0);
-        newCollisionHandler();
+        physics = getPhysicsWorld();    //retrieves physics world
+        physics.setGravity(0, 0);   //set gravity to 0, since this is a top down view, and entities would fall off the map, if not set to 0
+        newCollisionHandler();  //add collisionhandler
 
 
     }
 
     private void newCollisionHandler() {
-        physics.addCollisionHandler(new CollisionHandler(GameProjectType.PLAYER, GameProjectType.ENEMY) {
+        physics.addCollisionHandler(new CollisionHandler(GameProjectType.PLAYER, GameProjectType.ENEMY) {   //add collision to player and enemy
             @Override
             protected void onHitBoxTrigger(Entity player, Entity enemy, HitBox playerBox, HitBox enemyBox) {
             }
@@ -481,10 +451,9 @@ public class GameProjectApp extends GameApplication {
             // the order of their types passed into constructor
             @Override
             protected void onCollisionBegin(Entity player, Entity enemy) {
-                System.out.println("On Collision Begin");
-                currentEnemyIndex = enemy.getComponent(EnemyComponent.class).getIndex();
+                currentEnemyIndex = enemy.getComponent(EnemyComponent.class).getIndex();    //gets the index of the colliding enemy to remove it later from the array so it doesn't spawn again
                 enemyComponent = enemy.getComponent(EnemyComponent.class);
-                battle(enemy);
+                battle(enemy);  //starts battle
             }
 
             @Override
@@ -502,7 +471,7 @@ public class GameProjectApp extends GameApplication {
             @Override
             protected void onCollisionBegin(Entity player, Entity chest) {
 
-                openChest();
+                openChest();    //colliding with chest isn't implemented yet
 
             }
         });
@@ -515,14 +484,14 @@ public class GameProjectApp extends GameApplication {
     private void battle(Entity enemy) {
 
 
-        paused = true;
-        point = playerEnt.getPosition();
+        paused = true;      //pause player input commands.
+        point = playerEnt.getPosition();    //return point for player when battle ends
 
-        getGameWorld().setLevelFromMap("battleMap.json");
+        getGameWorld().setLevelFromMap("battleMap.json");   // set map to battle map
 
-        createPlayer(11 * tileSize, 5 * tileSize);
+        createPlayer(11 * tileSize, 5 * tileSize);  //adds player entity
 
-        for (int i = 0; i < enemyComponent.getNumber(); i++) {
+        for (int i = 0; i < enemyComponent.getNumber(); i++) {      //creates every enemy in collided enemy
             Entities.builder()
                     .type(GameProjectType.BATTLE_ENEMY)
                     .at(point.getX() + i * tileSize, point.getY() + (tileSize * i + tileSize))
@@ -533,7 +502,7 @@ public class GameProjectApp extends GameApplication {
         }
 
 
-        createBattleUI();
+        createBattleUI();   // add battle commands
 
 
     }
@@ -546,48 +515,48 @@ public class GameProjectApp extends GameApplication {
         battleMenu.getChildren().addAll(
                 getUIFactory().newButton("Attack"),
                 getUIFactory().newButton("Defend")//,
-                // getUIFactory().newButton("Magic"),
+                // getUIFactory().newButton("Magic") //added when magic is implemented for now only physical attack and defend
 
 
         );
         getGameScene().addUINode(battleMenu);
 
         battleMenu.getChildren().forEach(o -> ((Button) o).setOnAction(e -> {
-            playerAction(((Button) o).getText());
+            playerAction(((Button) o).getText());   //adds action to buttons calling plaerAction with choice
         }));
 
 
     }
 
     private void playerAction(String action) {
-        System.out.println(action);
+
         defend = false;
 
-        if (getGameWorld().getSelectedEntity().isPresent()) {
+        if (getGameWorld().getSelectedEntity().isPresent()) {   //player needs to select an enemy to do anything in combat
 
             switch (action) {
 
-                case "Attack":
+                case "Attack":  //if the attack button is clicked
 
-                    System.out.println(getGameWorld().getSelectedEntity().toString());
-                    if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLE_ENEMY) {
+
+                    if (getGameWorld().getSelectedEntity().get().getType() == GameProjectType.BATTLE_ENEMY) {   //if selected is an enemy
 
 
                         if (rollDice(1, 20, playerEnt.getComponent(PlayerComponent.class).getAttackBonus()) >= getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getArmor()) {
-
+                            //checks the result of rollDice with the enemy's armor to see if attack hits the enemy
                             Entities.builder()
                                     .at(getGameWorld().getSelectedEntity().get().getPosition().getX() - 64, getGameWorld().getSelectedEntity().get().getPosition().getY() - 64)
                                     .viewFromAnimatedTexture("explosion.png", 48, Duration.seconds(2), false, true)
-                                    .buildAndAttach(getGameWorld());
+                                    .buildAndAttach(getGameWorld());    //creates an explosion at the enemy if it's hit
 
-                            if (!getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().takeDamaged(((Weapon) playerEnt.getComponent(PlayerComponent.class).getWeapon()).getDamage())) {
-                                playerEnt.getComponent(PlayerComponent.class).gainExp(getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getExp());
-                                getGameWorld().removeEntity(getGameWorld().getSelectedEntity().get());
+                            if (!getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().takeDamaged(((Weapon) playerEnt.getComponent(PlayerComponent.class).getWeapon()).getDamage())) {    //applies damage to enemy and checks if the enemy is dead
+                                playerEnt.getComponent(PlayerComponent.class).gainExp(getGameWorld().getSelectedEntity().get().getComponent(EnemyComponent.class).getEnemy().getExp()); //gives the player exp from the enemy
+                                getGameWorld().removeEntity(getGameWorld().getSelectedEntity().get());  //removes the dead enemy
 
-                                if (getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY).isEmpty()) {
+                                if (getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY).isEmpty()) { //checks if there are any enemies left
 
-                                    System.out.println("defeated all enemies");
-                                    battleEnd();
+
+                                    battleEnd();    //ends the battle
 
 
                                 }
@@ -595,24 +564,24 @@ public class GameProjectApp extends GameApplication {
 
                         } else {
 
-                            System.out.println("didn't hit");
+
                         }
 
-                        enemyTurn();
+                        enemyTurn();    //enemy's turn in combat
 
                     } else {
-                        System.out.println("no valid target");
+
 
                     }
 
 
                     break;
                 case "Defend":
-                    defend = true;
+                    defend = true;  // sets defend true, which halves the damage of the next enemy attack
                     enemyTurn();
 
                     break;
-                case "Magic":
+                case "Magic":   //cant be reached since there is no magic button in battleUI
                     enemyTurn();
                     break;
 
@@ -621,7 +590,7 @@ public class GameProjectApp extends GameApplication {
 
 
         } else {
-            System.out.println("no target selected");
+
         }
 
     }
@@ -630,24 +599,24 @@ public class GameProjectApp extends GameApplication {
     private void enemyTurn() {
 
 
-        for (Entity enemy : getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY)) {
+        for (Entity enemy : getGameWorld().getEntitiesByType(GameProjectType.BATTLE_ENEMY)) {   //every enemy attacks the player
 
-            if (rollDice(1, 20, enemy.getComponent(EnemyComponent.class).getEnemy().getAttackBonus()) >= playerEnt.getComponent(PlayerComponent.class).getArmorBonus()) {
+            if (rollDice(1, 20, enemy.getComponent(EnemyComponent.class).getEnemy().getAttackBonus()) >= playerEnt.getComponent(PlayerComponent.class).getArmorBonus()) {   //rolls to see if it hits
 
-                if(defend){
-                    playerEnt.getComponent(PlayerComponent.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue()/2);
-                }else {
-                    playerEnt.getComponent(PlayerComponent.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue());
+                if (defend) {
+                    playerEnt.getComponent(PlayerComponent.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue() / 2); //halves damage if player defended
+                } else {
+                    playerEnt.getComponent(PlayerComponent.class).getDamaged(enemy.getComponent(EnemyComponent.class).getEnemy().preferredAttack().getValue()); //applies damage to player
                 }
 
-                System.out.println(playerEnt.getComponent(PlayerComponent.class).getHealth() + " / " + playerEnt.getComponent(PlayerComponent.class).getMaxHealth());
+
                 Entities.builder()
                         .at(playerEnt.getX() - tileSize, playerEnt.getY() - tileSize)
                         .viewFromAnimatedTexture("explosion.png", 48, Duration.seconds(2), false, true)
-                        .buildAndAttach(getGameWorld());
+                        .buildAndAttach(getGameWorld());    //adds explosion to player if hit
 
             } else {
-                System.out.println("enemy didn't hit");
+
             }
         }
 
@@ -656,27 +625,27 @@ public class GameProjectApp extends GameApplication {
     private void battleEnd() {
 
 
-        getGameScene().removeUINode(battleMenu);
+        getGameScene().removeUINode(battleMenu);    //removed battleUI buttons
 
-        enemies[currentWorldX][currentWorldY].remove(currentEnemyIndex);
-
-
-        worldTransition("world(" + currentWorldX + "," + currentWorldY + ").json", point);
+        enemies[currentWorldX][currentWorldY].remove(currentEnemyIndex);    //removed the map enemy the player just fought
 
 
-        paused = false;
+        worldTransition("world(" + currentWorldX + "," + currentWorldY + ").json", point); //sets the map back
+
+
+        paused = false; //unpauses the player inputs
 
 
     }
 
 
-    public int rollDice(int amount, int max, int attackBonus) {
+    public int rollDice(int amount, int max, int attackBonus) {     //simulates rolling d20 dice, 20 sided die
 
         diceRoll = 0;
-        for (int i = 1; i <= amount; i++) {
-            diceRoll += dice.nextInt(max) + 1 + attackBonus;
+        for (int i = 1; i <= amount; i++) { //rolls a number of d20's
+            diceRoll += dice.nextInt(max) + 1 + attackBonus;    //adds attack bonus to result
         }
-        System.out.println(diceRoll);
+
         return diceRoll;
     }
 

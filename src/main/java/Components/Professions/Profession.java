@@ -4,7 +4,7 @@ import Components.Equipment.Equipment;
 
 import java.util.List;
 
-public interface Profession {
+public interface Profession {   //interface between playerEntity/playerComponent and profession/class of player
 
     int getStartHealth();
 

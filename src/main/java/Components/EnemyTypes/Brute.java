@@ -2,7 +2,7 @@ package Components.EnemyTypes;
 
 import javafx.util.Pair;
 
-public class Brute implements Enemy {
+public class Brute implements Enemy { //enemy type brute
 
     private int health;
     private int maxHealth;
@@ -56,7 +56,7 @@ public class Brute implements Enemy {
     public Pair<String, Integer> preferredAttack() {
 
         return new Pair<>("Physical", damage);
-    }
+    } //attack of enemy, and damage type
 
     @Override
     public int getArmor() {
@@ -74,7 +74,7 @@ public class Brute implements Enemy {
     }
 
     @Override
-    public boolean takeDamaged(int damage) {
+    public boolean takeDamaged(int damage) { //apply damage from player, return false if dead
         health -= damage;
         if (health > 0) {
             return true;

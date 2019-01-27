@@ -1,5 +1,5 @@
 package Common;
 
-public enum EquipPlace {
+public enum EquipPlace {    //used as equipped items slots
     BODY,RIGHT,LEFT
 }

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameWorldEntities {
+public class GameWorldEntities {    //used to add enemies to map
 
-    private List[][] enemies = new List[8][8];
+    private List[][] enemies = new List[8][8];  // an array of lists the size of the game world
 
 
 
@@ -16,12 +16,12 @@ public class GameWorldEntities {
 
 
         for (int i = 0; i < enemies.length; i++) {
-            for (int j = 0; j < enemies.length; j++) {
+            for (int j = 0; j < enemies.length; j++) {      //creates a list for each part of the array
                 enemies[i][j] = new ArrayList();
             }
         }
         //format: type, number, x, y
-        enemies[0][0].add("brute,1,4,4");
+        enemies[0][0].add("brute,1,4,4");   //creates each enemy with type, number and coordinates to the list for each map of the game world
         enemies[0][0].add("brute,1,4,6");
         enemies[1][0].add("thug,1,7,5");
         enemies[1][0].add("thug,1,7,6");
@@ -97,7 +97,7 @@ public class GameWorldEntities {
         enemies[7][7].add("brute,4,10,9");
         enemies[7][7].add("brute,5,14,5");
 
-        return enemies;
+        return enemies; //returns the array of lists
     }
 
 

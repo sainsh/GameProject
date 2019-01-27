@@ -2,7 +2,7 @@ package Components.EnemyTypes;
 
 import javafx.util.Pair;
 
-public class Cultist implements Enemy {
+public class Cultist implements Enemy { //enemy type cultist
 
 
     private int health;
@@ -22,7 +22,7 @@ public class Cultist implements Enemy {
     }
 
     @Override
-    public boolean takeDamaged(int damage) {
+    public boolean takeDamaged(int damage) { //apply damage from player, return false if dead
         health -= damage;
         if (health > 0) {
             return true;
@@ -75,7 +75,8 @@ public class Cultist implements Enemy {
     @Override
     public Pair<String, Integer> preferredAttack() {
         return new Pair<>("Physical", damage);
-    }
+    }//attack of enemy, and damage type
+
 
     @Override
     public int getArmor() {

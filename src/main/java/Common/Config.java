@@ -1,6 +1,6 @@
 package Common;
 
-public class Config {
+public class Config {   //sets size of map and size of tiles
 
     private final int tileSize = 64;
     private int mapWidth = 15;

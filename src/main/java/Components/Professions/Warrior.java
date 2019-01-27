@@ -7,7 +7,7 @@ import Components.Equipment.Weapon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Warrior implements Profession {
+public class Warrior implements Profession {    // player choice of profession, sets starting stats and items
 
     private String name = "Warrior";
     private int startHealth;

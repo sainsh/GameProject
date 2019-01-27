@@ -3,7 +3,7 @@ package Components.Races;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Race {
+public class Human implements Race {    // race choice of player sets starting stats and items
 
     private String name = "Human";
     private int startHealth;

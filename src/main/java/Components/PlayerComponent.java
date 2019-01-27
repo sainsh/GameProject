@@ -25,7 +25,7 @@ import javafx.geometry.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerComponent extends Component {
+public class PlayerComponent extends Component {    //used to store info about the player and functions of the player
 
     private int health;
     private int maxHealth;
@@ -35,15 +35,15 @@ public class PlayerComponent extends Component {
     private Profession profession;
     private Race race;
     private int exp;
-    private List<String> armorProficiencies = new ArrayList<>();
-    private List<String> weaponProficiencies = new ArrayList<>();
-    private ObservableList<Equipment> equipment = FXCollections.observableArrayList();
+    private List<String> armorProficiencies = new ArrayList<>();    //what armors the player can use
+    private List<String> weaponProficiencies = new ArrayList<>();   //what weapons the player can use
+    private ObservableList<Equipment> equipment = FXCollections.observableArrayList();  //an observable list of items the player has
     private Equipment weapon;
     private Equipment armor;
     private Equipment shield;
     private int lvl;
     private int attackBonus;
-
+    //these properties are used as intermediate for the integer values above
     private IntegerProperty healthProperty;
     private IntegerProperty maxHealthProperty;
     private IntegerProperty manaProperty;
@@ -53,34 +53,34 @@ public class PlayerComponent extends Component {
     private IntegerProperty attackBonusProperty;
 
 
-    private static final float SPEED_DECAY = 0.66f;
+    private static final float SPEED_DECAY = 0.66f; // makes the player movement stop after a small time, so the player doesn't just keep moving until another directional button is pressed
 
     private PhysicsComponent physics;
 
 
     private float speed = 0;
 
-    private Vec2 velocity = new Vec2();
+    private Vec2 velocity = new Vec2(); //used as movement
 
 
     public PlayerComponent(PhysicsComponent physics, Profession profession, Race race) {
         this.physics = physics;
         this.profession = profession;
         this.race = race;
-        this.health = profession.getStartHealth() + race.getStartHealth();
+        this.health = profession.getStartHealth() + race.getStartHealth();  //get starting health from profession/class and race
         this.maxHealth = this.health;
-        this.mana = profession.getStartMana() + race.getStartMana();
+        this.mana = profession.getStartMana() + race.getStartMana();    //get starting mana from prodession/class and race
         this.maxMana = this.mana;
 
-        for (String proficiency : profession.getArmorProficiencies()) {
+        for (String proficiency : profession.getArmorProficiencies()) { //adds proficiencies
             armorProficiencies.add(proficiency);
 
         }
-        for (String proficiency : race.getArmorProficiencies()) {
+        for (String proficiency : race.getArmorProficiencies()) {//adds proficiencies
             armorProficiencies.add(proficiency);
 
         }
-        for (int i = 0; i < armorProficiencies.size(); i++) {
+        for (int i = 0; i < armorProficiencies.size(); i++) {// removed duplicates
             for (int j = 0; j < armorProficiencies.size(); j++) {
 
                 if (j != i) {
@@ -92,11 +92,11 @@ public class PlayerComponent extends Component {
             }
         }
 
-        for (String proficiency : profession.getWeaponProficiencies()) {
+        for (String proficiency : profession.getWeaponProficiencies()) {    //adds proficiencies
             weaponProficiencies.add(proficiency);
 
         }
-        for (String proficiency : race.getWeaponProficiencies()) {
+        for (String proficiency : race.getWeaponProficiencies()) {//adds proficiencies
             weaponProficiencies.add(proficiency);
 
         }
@@ -105,19 +105,19 @@ public class PlayerComponent extends Component {
 
                 if (j != i) {
                     if (weaponProficiencies.get(i).equals(weaponProficiencies.get(j))) {
-                        weaponProficiencies.remove(j);
+                        weaponProficiencies.remove(j);  //removes duplicates
                     }
                 }
 
             }
         }
 
-        for (Equipment item : profession.getStartingEquipment()) {
+        for (Equipment item : profession.getStartingEquipment()) {  //get starting equipment from profession
             equipment.add(item);
 
         }
 
-        for (Equipment item : equipment) {
+        for (Equipment item : equipment) {  //equip armor and shield
             if (item.getClass() == Armor.class && !item.getType().equals("shield")) {
                 armor = item;
             } else if (item.getClass() == Armor.class && item.getType().equals("shield")) {
@@ -125,24 +125,24 @@ public class PlayerComponent extends Component {
             }
         }
         armorBonus = 10;
-        if (armor != null) {
+        if (armor != null) {    //set armor bonus
             armorBonus += ((Armor) armor).getArmorBonus();
         }
-        if (shield != null) {
+        if (shield != null) {   //set armor bonus
             armorBonus += ((Armor) shield).getArmorBonus();
         }
 
         for (Equipment item : equipment) {
 
             if (item.getClass() == Weapon.class) {
-                weapon = item;
+                weapon = item;  //equip weapon
             }
 
         }
 
         lvl = 1;
-        this.attackBonus = profession.getStartAttackBonus();
-
+        this.attackBonus = profession.getStartAttackBonus();    //set staring attack bonus
+        //these set the properties as the integer values of above
         healthProperty = new SimpleIntegerProperty(health);
         maxHealthProperty = new SimpleIntegerProperty(maxHealth);
         manaProperty = new SimpleIntegerProperty(mana);
@@ -152,7 +152,7 @@ public class PlayerComponent extends Component {
         attackBonusProperty = new SimpleIntegerProperty(attackBonus);
 
     }
-
+    //getters and setters
 
     public int getHealth() {
         return health;
@@ -248,10 +248,10 @@ public class PlayerComponent extends Component {
 
         velocity.mulLocal(SPEED_DECAY);
 
-        physics.setBodyLinearVelocity(velocity);
+        physics.setBodyLinearVelocity(velocity);    //slows movement down until stopped,
 
     }
-
+    // the next four are player movement
     public void up() {
         velocity.set(0, speed);
     }
@@ -271,17 +271,8 @@ public class PlayerComponent extends Component {
     }
 
 
-    public void setPosition(PhysicsComponent physics, float x, float y) {
 
-        Point2D point = new Point2D(x, y);
-        getEntity().removeComponent(PhysicsComponent.class);
-        getEntity().setPosition(point);
-        physics.setBodyType(BodyType.DYNAMIC);
-        getEntity().addComponent(physics);
-
-    }
-
-    public boolean getDamaged(int dmg) {
+    public boolean getDamaged(int dmg) {    //applies damage to player, returns true if not dead
         health -= dmg;
         healthProperty.setValue(health);
         if (health <= 0) {
@@ -291,10 +282,10 @@ public class PlayerComponent extends Component {
         }
     }
 
-    public void gainExp(int exp) {
+    public void gainExp(int exp) {  //gain exp from killing enemies
         this.exp += exp;
         expProperty.setValue(this.exp);
-        if (this.exp >= 10 + Math.pow(lvl - 1, 2) * 10) {
+        if (this.exp >= 10 + Math.pow(lvl - 1, 2) * 10) {   //lvl up,
             lvl++;
             armorBonus++;
             maxHealth += 20;
@@ -320,7 +311,7 @@ public class PlayerComponent extends Component {
     public void onAdded() {
 
 
-        velocity.set(0, 0);
+        velocity.set(0, 0); //stop movement when added to entity
     }
 
     public int getAttackBonus() {
@@ -347,7 +338,7 @@ public class PlayerComponent extends Component {
         this.shield = shield;
     }
 
-    public void unEquipItem(EquipPlace place) {
+    public void unEquipItem(EquipPlace place) { //removes item from equipped items
 
         if (place == EquipPlace.BODY) {
 
