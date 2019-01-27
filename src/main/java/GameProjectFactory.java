@@ -71,7 +71,7 @@ public class GameProjectFactory implements EntityFactory {
     @Spawns("warp")
     public Entity newWarp(SpawnData data,GameProjectType type) {    //creates warp points
 
-        System.out.println(data.toString());
+
 
         return Entities.builder()
                 .type(type)

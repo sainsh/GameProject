@@ -294,7 +294,7 @@ public class PlayerComponent extends Component {    //used to store info about t
             maxMana +=2;
             ((Weapon) weapon).setDamage(((Weapon) weapon).getDamage() + 2);
             attackBonus++;
-            System.out.println("gained a lvl");
+
 
 
             armorBonusProperty.setValue(armorBonus);

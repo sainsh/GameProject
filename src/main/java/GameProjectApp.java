@@ -366,7 +366,7 @@ public class GameProjectApp extends GameApplication {
 
         String[] formatEnemy = enemy.split(",");    //format of enemis: type,number of enemies,x,y
         for (String s : formatEnemy) {
-            System.out.println(s);
+
         }
 
         if (formatEnemy[0].equals("brute")) {
@@ -458,13 +458,13 @@ public class GameProjectApp extends GameApplication {
 
             @Override
             protected void onCollision(Entity player, Entity enemy) {
-                System.out.println("On Collision");
+
             }
 
             @Override
             protected void onCollisionEnd(Entity player, Entity enemy) {
 
-                System.out.println("On Collision End");
+
             }
         });
         physics.addCollisionHandler(new CollisionHandler(GameProjectType.PLAYER, GameProjectType.CHEST) {
