@@ -66,6 +66,6 @@ public class Armor implements Equipment {   //equipment type, armor
 
     @Override
     public String getName() {
-        return getType()+"_armor";
+        return getType()+"armor";
     }
 }

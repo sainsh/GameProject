@@ -130,7 +130,7 @@ public class GameProjectApp extends GameApplication {
 
         getGameWorld().addEntityFactory(new GameProjectFactory());  //add factory
 
-        //initBackground();
+        initBackground();
         gameWorldEntities = new GameWorldEntities();    //get gameWorldEntities, enemies, and 1 boss
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
@@ -147,7 +147,7 @@ public class GameProjectApp extends GameApplication {
         region.setPrefSize(mapWidth * tileSize, mapHeight * tileSize);
 
         BackgroundImage bgImg = new BackgroundImage(getAssetLoader().loadTexture(
-                "map_of_inner_saisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
+                "mapofinnersaisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);     //sets a non repeating background for start menu
 
         region.setBackground(new Background(bgImg));
@@ -193,7 +193,7 @@ public class GameProjectApp extends GameApplication {
         HBox classBox = new HBox();
         Button warriorBTN = new Button("GameProject.Components.Professions.Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
                 "\n light, medium and heavy armor \n all weapons \n start equipment: \n random weapon \n medium armor",
-                getAssetLoader().loadTexture("tiefling_soldier_melee.jpg", 200, 300));
+                getAssetLoader().loadTexture("tieflingsoldiermelee.jpg", 200, 300));
         warriorBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
