@@ -1,5 +1,3 @@
-package GameProject;
-
 import GameProject.Common.Config;
 import GameProject.Common.GameProjectType;
 import GameProject.Components.EnemyComponent;
@@ -15,6 +13,8 @@ import GameProject.Components.Professions.Warrior;
 import GameProject.Components.RaceComponent;
 import GameProject.Components.Races.Human;
 import GameProject.Components.Races.Race;
+import GameProject.GameProjectFactory;
+import GameProject.GameWorldEntities;
 import GameProject.UI.BasicInfoView;
 import GameProject.UI.EquipmentView;
 import GameProject.UI.InventoryView;
@@ -147,7 +147,7 @@ public class GameProjectApp extends GameApplication {
         region.setPrefSize(mapWidth * tileSize, mapHeight * tileSize);
 
         BackgroundImage bgImg = new BackgroundImage(getAssetLoader().loadTexture(
-                "map of inner saisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
+                "map_of_inner_saisjo.jpg").getImage(), BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);     //sets a non repeating background for start menu
 
         region.setBackground(new Background(bgImg));
@@ -193,7 +193,7 @@ public class GameProjectApp extends GameApplication {
         HBox classBox = new HBox();
         Button warriorBTN = new Button("GameProject.Components.Professions.Warrior \n start health: 100 \n start mana: 10 \n proficiencies: " +
                 "\n light, medium and heavy armor \n all weapons \n start equipment: \n random weapon \n medium armor",
-                getAssetLoader().loadTexture("tiefling soldier melee.jpg", 200, 300));
+                getAssetLoader().loadTexture("tiefling_soldier_melee.jpg", 200, 300));
         warriorBTN.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

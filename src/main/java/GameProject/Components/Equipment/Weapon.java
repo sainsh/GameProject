@@ -8,9 +8,9 @@ public class Weapon implements Equipment {  //equipment type, weapon
     private int damage;
     private int range = 1;
     private String[] randomType = {"light", "one-handed", "two-handed", "ranged"};  //used to determine type of weapon
-    private String[] lightWeapons = {"dagger", "light mace", "short sword", "hand axe"};    //used too determine type of light weapon
-    private String[] oneHandedWeapons = {"long sword", "morningstar", "battleaxe"};//used too determine type of one-handed weapon
-    private String[] twoHandedWeapons = {"great sword", "great axe", "maul"};//used too determine type of two-handed weapon
+    private String[] lightWeapons = {"dagger", "light_mace", "short_sword", "hand_axe"};    //used too determine type of light weapon
+    private String[] oneHandedWeapons = {"long_sword", "morningstar", "battleaxe"};//used too determine type of one-handed weapon
+    private String[] twoHandedWeapons = {"great_sword", "great_axe", "maul"};//used too determine type of two-handed weapon
     private String[] rangedWeapons = {"bow", "crossbow", "boomerang"};//used too determine type of ranged weapon
 
 

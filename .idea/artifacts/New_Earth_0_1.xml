@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="New Earth 0.1">
+    <output-path>$PROJECT_DIR$/out/artifacts/New_Earth_0_1</output-path>
+    <root id="root">
+      <element id="library" level="project" name="fxgl-0.5.4-uber" />
+      <element id="archive" name="NewEarth.jar">
+        <element id="module-output" name="GameProject" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
