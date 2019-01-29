@@ -130,7 +130,7 @@ public class GameProjectApp extends GameApplication {
 
         getGameWorld().addEntityFactory(new GameProjectFactory());  //add factory
 
-        initBackground();
+        //initBackground();
         gameWorldEntities = new GameWorldEntities();    //get gameWorldEntities, enemies, and 1 boss
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);

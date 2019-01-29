@@ -2,9 +2,11 @@
   <artifact type="jar" name="GameProject:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/GameProject_jar</output-path>
     <root id="archive" name="GameProject.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="GameProject" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar" path-in-jar="/" />
-      <element id="library" level="project" name="fxgl-0.5.4-uber" />
     </root>
   </artifact>
 </component>
