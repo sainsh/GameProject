@@ -26,12 +26,10 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.entity.components.SelectableComponent;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.physics.CollisionHandler;
-import com.almasb.fxgl.physics.HitBox;
-import com.almasb.fxgl.physics.PhysicsComponent;
-import com.almasb.fxgl.physics.PhysicsWorld;
+import com.almasb.fxgl.physics.*;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.settings.GameSettings;
+import com.almasb.fxgl.texture.Texture;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -39,7 +37,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -130,7 +127,7 @@ public class GameProjectApp extends GameApplication {
 
         getGameWorld().addEntityFactory(new GameProjectFactory());  //add factory
 
-        initBackground();
+        //initBackground();
         gameWorldEntities = new GameWorldEntities();    //get gameWorldEntities, enemies, and 1 boss
 
         getGameScene().getViewport().setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
@@ -244,7 +241,8 @@ public class GameProjectApp extends GameApplication {
         playerEnt = Entities.builder()
                 .type(GameProjectType.PLAYER)
                 .at(x, y)
-                .viewFromNodeWithBBox(new Rectangle(tileSize / 2, tileSize / 2, Color.BLUE))
+                .bbox(new HitBox("Player_body",BoundingShape.box(tileSize,tileSize)))
+                .viewFromNode(getAssetLoader().loadTexture("hero.png",tileSize,tileSize))
                 .with(playerComponent)
                 .with(physicsComponent)
                 .with(new CollidableComponent(true))
@@ -388,7 +386,8 @@ public class GameProjectApp extends GameApplication {
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
-                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.BLACK))
+                .bbox(new HitBox("Boss_Body", BoundingShape.box(tileSize,tileSize)))
+                .viewFromNode(getAssetLoader().loadTexture("boss.png",tileSize,tileSize))
                 .with(new EnemyComponent(new Boss(), Integer.parseInt(formatEnemy[1]), i))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
@@ -399,7 +398,8 @@ public class GameProjectApp extends GameApplication {
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
-                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .bbox(new HitBox("Cultist_Body", BoundingShape.box(tileSize,tileSize)))
+                .viewFromNode(getAssetLoader().loadTexture("cultist.png",tileSize,tileSize))
                 .with(new EnemyComponent(new Cultist(), Integer.parseInt(formatEnemy[1]), i))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
@@ -410,7 +410,8 @@ public class GameProjectApp extends GameApplication {
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
-                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .bbox(new HitBox("Thug_Body", BoundingShape.box(tileSize,tileSize)))
+                .viewFromNode(getAssetLoader().loadTexture("thug.png",tileSize,tileSize))
                 .with(new EnemyComponent(new Thug(), Integer.parseInt(formatEnemy[1]), i))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
@@ -422,7 +423,8 @@ public class GameProjectApp extends GameApplication {
         Entities.builder()
                 .type(GameProjectType.ENEMY)
                 .at(Integer.parseInt(formatEnemy[2]) * tileSize, Integer.parseInt(formatEnemy[3]) * tileSize)
-                .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                .bbox(new HitBox("Brute_Body", BoundingShape.box(tileSize,tileSize)))
+                .viewFromNode(getAssetLoader().loadTexture("brute.png",tileSize,tileSize))
                 .with(new EnemyComponent(new Brute(), Integer.parseInt(formatEnemy[1]), i))
                 .with(new PhysicsComponent())
                 .with(new CollidableComponent(true))
@@ -487,9 +489,27 @@ public class GameProjectApp extends GameApplication {
         paused = true;      //pause player input commands.
         point = playerEnt.getPosition();    //return point for player when battle ends
 
+        String enemyTexture = "brute.png"; //default enemy texture
+
+        if(enemy.getComponent(EnemyComponent.class).getEnemy() instanceof Brute){   // sets the texture of the enemy based on it's class
+            enemyTexture = "brute.png";
+
+        } else if ( enemy.getComponent(EnemyComponent.class).getEnemy() instanceof Thug){
+            enemyTexture = "thug.png";
+
+        } else if ( enemy.getComponent(EnemyComponent.class).getEnemy() instanceof  Cultist){
+            enemyTexture ="cultist.png";
+
+        } else if( enemy.getComponent(EnemyComponent.class).getEnemy() instanceof Boss){
+            enemyTexture = "boss.png";
+
+        }
+
         getGameWorld().setLevelFromMap("battleMap.json");   // set map to battle map
 
         createPlayer(11 * tileSize, 5 * tileSize);  //adds player entity
+
+
 
         for (int i = 0; i < enemyComponent.getNumber(); i++) {      //creates every enemy in collided enemy
             Entities.builder()
@@ -497,7 +517,8 @@ public class GameProjectApp extends GameApplication {
                     .at(point.getX() + i * tileSize, point.getY() + (tileSize * i + tileSize))
                     .with(enemyComponent)
                     .with(new SelectableComponent(true))
-                    .viewFromNodeWithBBox(new Circle(tileSize / 2, Color.RED))
+                    .bbox(new HitBox("enemyBody",BoundingShape.box(tileSize,tileSize)))
+                    .viewFromNode(getAssetLoader().loadTexture(enemyTexture,tileSize,tileSize))
                     .buildAndAttach(getGameWorld());
         }
 
