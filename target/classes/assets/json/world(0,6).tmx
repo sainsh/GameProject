@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="7">
+ <tileset firstgid="1" name="RPGpack_sheet" tilewidth="64" tileheight="64" tilecount="260" columns="20">
+  <image source="../../../../../../../../../Downloads/rpgAssets/Spritesheet/RPGpack_sheet.png" width="1280" height="832"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="15" height="10">
+  <data encoding="csv">
+32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
+32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
+32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
+32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
+32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,
+32,32,32,32,32,14,52,52,52,52,52,52,52,52,52,
+32,32,32,32,32,33,22,22,22,22,22,22,22,22,22,
+32,32,32,32,32,33,22,22,22,22,22,22,22,22,22,
+32,32,32,32,32,33,22,22,11,12,12,12,12,12,12,
+32,32,32,32,32,33,22,22,31,32,32,32,32,32,32
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="2" type="border" x="0" y="0" width="960" height="384"/>
+  <object id="3" type="border" x="0" y="384" width="384" height="256"/>
+  <object id="4" type="border" x="512" y="512" width="448" height="128"/>
+  <object id="5" type="warpS" x="384" y="576" width="64" height="64"/>
+  <object id="6" type="warpE" x="896" y="384" width="64" height="64"/>
+ </objectgroup>
+</map>

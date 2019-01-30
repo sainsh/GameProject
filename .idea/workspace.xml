@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="GameProject:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f5c38961-48fe-47a9-81a9-c65e5e308f7d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameProjectApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameProjectApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/greataxe.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/greataxe.PNG" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProjectApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#24969#24970#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameWorldEntities.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Armor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Brute.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/GameProjectType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/EquipPlace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Thug.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Professions/Warrior.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>playerControl</find>
+      <find>player</find>
+      <find>enemies</find>
+      <find>tempVar</find>
+      <find>index</find>
+      <find>playerin</find>
+      <find>system</find>
+      <find>asset</find>
+      <find>cir</find>
+      <find>createPla</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/MyEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Common/EnemyControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/StartOfGameEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Equipment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Armor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Human.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Race.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Warrior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Profession.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Common/PlayerControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Thug.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Cultist.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Brute.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/PlayerControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProjectType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/InventoryView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/EquipPlace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/EquipmentView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UI/InventoryView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameWorldEntities.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UI/EquipmentView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UI/BasicInfoView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/RaceComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/ProfessionComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Races/Race.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Races/Human.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Professions/Warrior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Professions/Profession.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Equipment/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Equipment/Equipment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/Equipment/Armor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyTypes/Thug.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyTypes/Cultist.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyTypes/Brute.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyTypes/Boss.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Common/GameProjectType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Common/EquipPlace.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Common/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProjectFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/PlayerComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Components/EnemyTypes/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProject/GameProjectApp.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Armor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameProjectApp.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\Users\kfsai\.m2\repository2" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="GameProject" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="GameProject" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="GameProject" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="EnemyTypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="Equipment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="Professions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="Races" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548679935191" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kfsai\OneDrive\Dokumenter\GitHub\GameProject\src\main\resources\assets" />
+      <recent name="C:\Users\kfsai\OneDrive\Dokumenter\GitHub\GameProject\src\main\resources\assets\textures" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="GameProjectApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameProjectApp" />
+      <module name="GameProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameProjectApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f5c38961-48fe-47a9-81a9-c65e5e308f7d" name="Default Changelist" comment="" />
+      <created>1546638016051</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1546638016051</updated>
+      <workItem from="1546638021018" duration="336000" />
+      <workItem from="1546841173841" duration="24385000" />
+      <workItem from="1546931436647" duration="26445000" />
+      <workItem from="1547018986299" duration="15876000" />
+      <workItem from="1547106133790" duration="183000" />
+      <workItem from="1547106677122" duration="12685000" />
+      <workItem from="1547192401579" duration="610000" />
+      <workItem from="1547193229905" duration="8807000" />
+      <workItem from="1547320603951" duration="198000" />
+      <workItem from="1547452396865" duration="18891000" />
+      <workItem from="1547537631891" duration="13537000" />
+      <workItem from="1547559318470" duration="333000" />
+      <workItem from="1547625473363" duration="7488000" />
+      <workItem from="1547642065186" duration="4514000" />
+      <workItem from="1547711562457" duration="12749000" />
+      <workItem from="1547816646690" duration="1162000" />
+      <workItem from="1548061731305" duration="11016000" />
+      <workItem from="1548230649171" duration="6768000" />
+      <workItem from="1548245479356" duration="6521000" />
+      <workItem from="1548316087458" duration="2690000" />
+      <workItem from="1548320061922" duration="9013000" />
+      <workItem from="1548403246092" duration="8529000" />
+      <workItem from="1548585679188" duration="7447000" />
+      <workItem from="1548593204167" duration="263000" />
+      <workItem from="1548593495167" duration="3276000" />
+      <workItem from="1548599690068" duration="2117000" />
+      <workItem from="1548601840557" duration="1128000" />
+      <workItem from="1548605504591" duration="1489000" />
+      <workItem from="1548662087256" duration="7532000" />
+      <workItem from="1548679242317" duration="1168000" />
+      <workItem from="1548748933978" duration="1468000" />
+      <workItem from="1548752518519" duration="6805000" />
+      <workItem from="1548787185470" duration="103000" />
+      <workItem from="1548836839272" duration="2638000" />
+    </task>
+    <task id="LOCAL-00001" summary="Project restart">
+      <created>1546638087314</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1546638087314</updated>
+    </task>
+    <task id="LOCAL-00002" summary="started getting familiar with FXGL">
+      <created>1546848253673</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1546848253674</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added enemy and added collision">
+      <created>1546853369663</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1546853369663</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added tab panel">
+      <created>1546857154764</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1546857154764</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added quest panel to panel, getting familiar with fxgl's collision, physics, attraction,">
+      <created>1546871364416</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1546871364416</updated>
+    </task>
+    <task id="LOCAL-00006" summary="end of monday 07, added attraction and return point for enemy">
+      <created>1546873787306</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1546873787306</updated>
+    </task>
+    <task id="LOCAL-00007" summary="trying to make a menu before game starts">
+      <created>1546953592125</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1546953592126</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added Player class, Equipment, Race and Profession interfaces, Warrior and Human classes&#10;added start Hbox to choose race, then another hbox to choose class&#10;only Human and Warrior are present">
+      <created>1546957046175</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1546957046175</updated>
+    </task>
+    <task id="LOCAL-00009" summary="start menus work, creates player object">
+      <created>1546961003605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1546961003605</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added first test lvl, played around with player controller, created Factory, added variable to Human and Warrior. stats are now shown on left. &#10;TODO: battlescreen on collision with enemy">
+      <created>1547046822829</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1547046822829</updated>
+    </task>
+    <task id="LOCAL-00011" summary="put playerinfo into method, changed player movement from linear velocity, to a vec2 with decay, to stop player from moving more than wanted,">
+      <created>1547109580273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1547109580274</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added border functionality to Factory, added BORDER to Type, started work on battle screen,">
+      <created>1547111722044</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1547111722045</updated>
+    </task>
+    <task id="LOCAL-00013" summary="working on battle mechanics,">
+      <created>1547129011024</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1547129011024</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added 3 enemy types(Brute/thug/cultist) added explosion on player attack&#10;have decided to make player profession and race into components,&#10;to make playerEntity and player the same instead of seperate. &#10;will do the same for enemies">
+      <created>1547468263684</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1547468263685</updated>
+    </task>
+    <task id="LOCAL-00015" summary="moved Professions, races and enemies to their own packages, made race-, &#10;and profession- Components act as intermedeates between the race and &#10;profession interface for playerEntity">
+      <created>1547471904945</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1547471904945</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Player class has merged with playerControl. fixed everything so it works&#10; like before merger. added setPosition to playerControl, to relocate &#10; player, when entering new screen/maps, like in battle">
+      <created>1547477902899</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1547477902899</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added armor value to enemy, added enemyComponent, &#10;added weapon to playerControl&#10;worked on battleEnd() which causes physicsWorld problems&#10;will work on Map travel">
+      <created>1547633430344</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1547633430345</updated>
+    </task>
+    <task id="LOCAL-00018" summary="playerControl: changed lvl up &#10;app: added Race,Profession, PlayerControl and PhysicsComponent, to variables, to have same values in between lvls&#10;added exp to playerInfo&#10;factory: added warp points&#10;type: added warp types&#10;assets: added 2 world lvls&#10;&#10;battleEnd now works, but now battle screen wont set playerEnt to point">
+      <created>1547646587030</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1547646587030</updated>
+    </task>
+    <task id="LOCAL-00019" summary="changed name of PlayerControl to PlayerComponent&#10;added return point from battle&#10;changed onUpdate to use physics to changed location of playerEnt&#10;added CHEST as type for entities&#10;added collision to CHEST&#10;added player location on current map, TODO change to world map location&#10;added chest to factory">
+      <created>1547734331700</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1547734331701</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added all overworld map files">
+      <created>1548065311517</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1548065311517</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added GameWorldEntities, to create enemy entities on map.&#10;added number to enemyComponent, to signify how many enemies an entity holds&#10;added worldTransition method to change maps, and allocate enemies on map">
+      <created>1548075603504</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1548075603505</updated>
+    </task>
+    <task id="LOCAL-00022" summary="changed GameWorldEntities to instead have an array of string lists for enemies&#10;changed the way enemies are loaded into maps, so collision now now always on for enemies, even when returning to an already visited map&#10;gave player and enemy attackBonus, to help hit&#10;now onto adding inventory management for player">
+      <created>1548237927267</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1548237927268</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added inventoryview to manage inventory. it shows your inventory, &#10;but as you dont get drops yet, it does nothing, but it works&#10;removed som variety of weapons since i couldn't find suitable textures&#10;changed equipment list in playerComponent to observablearraylist&#10;added armor and shield variables like weapon and changed armor bonus">
+      <created>1548251987978</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1548251987978</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added EquipmentView&#10;put inventoryView and EquipmentView in UI package&#10;put EquiptPlace and GameProjectType to Commen Package">
+      <created>1548324700829</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1548324700829</updated>
+    </task>
+    <task id="LOCAL-00025" summary="added basicInfoView, to show basic info like health and mana&#10;&#10;added simple integerProperties(health,mana, max) to bind, with basicInfo&#10;but it seems i'll have to change the health mana and maxes to this&#10;or add a listener of some kind to change the properties in my battleview">
+      <created>1548340777030</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1548340777030</updated>
+    </task>
+    <task id="LOCAL-00026" summary="added text to basicInfoView for exp armorBonus and attackBonus&#10;&#10;added simpleIntegerProperties to playerComponent for the above ints&#10;&#10;removed playerInfo as basicInfoView takes it's place&#10;&#10;removed item from battle menu, commented out magic, since it's not done&#10;&#10;added functionality to defend in battle menu, halves damage on next attack from enemy&#10;&#10;&#10;started adding enemies to gameWorldEntities">
+      <created>1548410839483</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1548410839483</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added Boss as a boss enemy&#10;&#10;added enemies to map">
+      <created>1548416489836</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1548416489836</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added comments to all classes&#10;&#10;removed Player class&#10;removed quest pane and input to open&#10;&#10;removed sout lines">
+      <created>1548591040648</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1548591040649</updated>
+    </task>
+    <task id="LOCAL-00029" summary="removed the last sout lines">
+      <created>1548591198656</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1548591198656</updated>
+    </task>
+    <task id="LOCAL-00030" summary="moved everything into gameproject package">
+      <created>1548601035531</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1548601035532</updated>
+    </task>
+    <task id="LOCAL-00031" summary="changed texture names, replacing spaces with underscore">
+      <created>1548749192558</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1548749192558</updated>
+    </task>
+    <task id="LOCAL-00032" summary="out commented innitBackground then the .jar worked">
+      <created>1548752681958</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1548752681958</updated>
+    </task>
+    <task id="LOCAL-00033" summary="renamed textures">
+      <created>1548756718300</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1548756718301</updated>
+    </task>
+    <task id="LOCAL-00034" summary="renamed textures">
+      <created>1548763313057</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1548763313057</updated>
+    </task>
+    <task id="LOCAL-00035" summary="textures">
+      <created>1548763361073</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1548763361073</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="228170000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17552084" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16084656" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32063493" />
+      <window_info anchor="bottom" id="TypeScript" order="13" weight="0.32936078" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.2496" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.5407098" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Maven-2 Build" order="9" weight="0.33333334" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36105034" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16576381" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32394367" />
+      <window_info anchor="bottom" id="TypeScript" order="13" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added first test lvl, played around with player controller, created Factory, added variable to Human and Warrior. stats are now shown on left. &#10;TODO: battlescreen on collision with enemy" />
+    <MESSAGE value="put playerinfo into method, changed player movement from linear velocity, to a vec2 with decay, to stop player from moving more than wanted," />
+    <MESSAGE value="added border functionality to Factory, added BORDER to Type, started work on battle screen," />
+    <MESSAGE value="working on battle mechanics," />
+    <MESSAGE value="added 3 enemy types(Brute/thug/cultist) added explosion on player attack&#10;have decided to make player profession and race into components,&#10;to make playerEntity and player the same instead of seperate. &#10;will do the same for enemies" />
+    <MESSAGE value="moved Professions, races and enemies to their own packages, made race-, &#10;and profession- Components act as intermedeates between the race and &#10;profession interface for playerEntity" />
+    <MESSAGE value="Player class has merged with playerControl. fixed everything so it works&#10; like before merger. added setPosition to playerControl, to relocate &#10; player, when entering new screen/maps, like in battle" />
+    <MESSAGE value="added armor value to enemy, added enemyComponent, &#10;added weapon to playerControl&#10;worked on battleEnd() which causes physicsWorld problems&#10;will work on Map travel" />
+    <MESSAGE value="playerControl: changed lvl up &#10;app: added Race,Profession, PlayerControl and PhysicsComponent, to variables, to have same values in between lvls&#10;added exp to playerInfo&#10;factory: added warp points&#10;type: added warp types&#10;assets: added 2 world lvls&#10;&#10;battleEnd now works, but now battle screen wont set playerEnt to point" />
+    <MESSAGE value="changed name of PlayerControl to PlayerComponent&#10;added return point from battle&#10;changed onUpdate to use physics to changed location of playerEnt&#10;added CHEST as type for entities&#10;added collision to CHEST&#10;added player location on current map, TODO change to world map location&#10;added chest to factory" />
+    <MESSAGE value="added all overworld map files" />
+    <MESSAGE value="added GameWorldEntities, to create enemy entities on map.&#10;added number to enemyComponent, to signify how many enemies an entity holds&#10;added worldTransition method to change maps, and allocate enemies on map" />
+    <MESSAGE value="changed GameWorldEntities to instead have an array of string lists for enemies&#10;changed the way enemies are loaded into maps, so collision now now always on for enemies, even when returning to an already visited map&#10;gave player and enemy attackBonus, to help hit&#10;now onto adding inventory management for player" />
+    <MESSAGE value="added inventoryview to manage inventory. it shows your inventory, &#10;but as you dont get drops yet, it does nothing, but it works&#10;removed som variety of weapons since i couldn't find suitable textures&#10;changed equipment list in playerComponent to observablearraylist&#10;added armor and shield variables like weapon and changed armor bonus" />
+    <MESSAGE value="added EquipmentView&#10;put inventoryView and EquipmentView in UI package&#10;put EquiptPlace and GameProjectType to Commen Package" />
+    <MESSAGE value="added basicInfoView, to show basic info like health and mana&#10;&#10;added simple integerProperties(health,mana, max) to bind, with basicInfo&#10;but it seems i'll have to change the health mana and maxes to this&#10;or add a listener of some kind to change the properties in my battleview" />
+    <MESSAGE value="added text to basicInfoView for exp armorBonus and attackBonus&#10;&#10;added simpleIntegerProperties to playerComponent for the above ints&#10;&#10;removed playerInfo as basicInfoView takes it's place&#10;&#10;removed item from battle menu, commented out magic, since it's not done&#10;&#10;added functionality to defend in battle menu, halves damage on next attack from enemy&#10;&#10;&#10;started adding enemies to gameWorldEntities" />
+    <MESSAGE value="added Boss as a boss enemy&#10;&#10;added enemies to map" />
+    <MESSAGE value="added comments to all classes&#10;&#10;removed Player class&#10;removed quest pane and input to open&#10;&#10;removed sout lines" />
+    <MESSAGE value="removed the last sout lines" />
+    <MESSAGE value="moved everything into gameproject package" />
+    <MESSAGE value="changed texture names, replacing spaces with underscore" />
+    <MESSAGE value="out commented innitBackground then the .jar worked" />
+    <MESSAGE value="renamed textures" />
+    <MESSAGE value="textures" />
+    <option name="LAST_COMMIT_MESSAGE" value="textures" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Events.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/MyEventHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Common/EnemyControl.java" />
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/physics/CollisionHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
+            <element signature="e#1157#1158#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/javafx-src.zip!/javafx/concurrent/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20408">
+          <caret line="1435" selection-start-line="1435" selection-end-line="1435" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/app/LoadingState.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/app/GameApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-574">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StartOfGameEvent.java" />
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/app/FXGL.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/entity/GameWorld.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/javafx-src.zip!/javafx/scene/control/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/json/secondTestMap.tmx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/json/RPGpack_sheet.tsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/json/firstTestMap.tmx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/json/firstTestMap.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/ui/UIFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/physics/PhysicsWorld.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="83" column="28" lean-forward="true" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/util/function/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/fxgl-0.5.4-uber.jar!/com/almasb/fxgl/ui/ProgressBar.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3895">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Components/Player.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Professions/Profession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Cultist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="60" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Boss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/textures/great_axe.PNG" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/textures/great_sword.png" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/textures/heavy_armor.png" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/textures/light_mace.png" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/textures/Map_of_Inner Saisjo.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameProjectFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-996">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/UI/InventoryView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1248">
+          <caret line="96" column="85" selection-start-line="96" selection-start-column="80" selection-end-line="96" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/UI/EquipmentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/UI/BasicInfoView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/RaceComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/ProfessionComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/PlayerComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3893">
+          <caret line="335" column="8" lean-forward="true" selection-start-line="335" selection-start-column="8" selection-end-line="335" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Races/Race.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Races/Human.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="8" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Equipment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Equipment/Armor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Brute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/GameProjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Common/EquipPlace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Thug.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/Professions/Warrior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameWorldEntities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProjectApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#24969#24970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor>
+            <show-content>
+              <type id="artifact" />
+              <type id="library" />
+              <type id="jpa-descriptors" />
+              <type id="javaee-facet-resources" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>GameProject:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8 (2)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>GameProject</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>fxgl-0.5.4-uber</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,553 @@
+10:10:13.257 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+10:10:13.267 [JavaFX Application Thread] DEBUG GameApplication      - Logging settings
+Title: New Earth
+Version: 0.1
+Width: 1440
+Height: 900
+Fullscreen: false
+Intro: false
+Menus: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.scene.SceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+10:10:13.268 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+10:10:13.274 [JavaFX Application Thread] INFO  FXGL                 - FXGL-0.5.4 on DESKTOP
+10:10:13.275 [JavaFX Application Thread] INFO  FXGL                 - Source code and latest versions at: https://github.com/AlmasB/FXGL
+10:10:13.275 [JavaFX Application Thread] INFO  FXGL                 -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+10:10:13.275 [JavaFX Application Thread] DEBUG FXGL                 - FXGL started
+10:10:13.275 [JavaFX Application Thread] DEBUG FXGL                 - Initializing FXGL
+10:10:13.336 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:10:13.429 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:10:13.947 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+10:10:13.997 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1440.0 x 900.0
+10:10:13.997 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1440.0 x 900.0
+10:10:13.997 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+10:10:14.002 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:10:14.007 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/fxgl_icon.png
+10:10:14.014 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+10:10:14.318 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (6.0, 29.0)
+10:10:14.318 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1440.0 x 900.0
+10:10:14.319 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+10:10:14.319 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1440.0 x 900.0
+10:10:14.319 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1446.0 x 929.0
+10:10:14.367 [ForkJoinPool.commonPool-worker-1] DEBUG FS                   - Loaded DesktopFSService
+10:10:14.367 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Loading FXGL system data
+10:10:14.377 [ForkJoinPool.commonPool-worker-1] DEBUG DesktopFSService     - Reading from: system\fxgl.bundle
+10:10:14.383 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - Logging bundle: FXGL
+10:10:14.383 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - FXGL.offline.timer.version.check=2019-01-28T13:44:04.730
+10:10:14.384 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Initializing state machine and application states
+10:10:14.386 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:10:14.396 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:10:14.401 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:10:14.408 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:10:14.415 [ForkJoinPool.commonPool-worker-1] DEBUG GameScene            - Game scene initialized: 1440x900
+10:10:14.423 [ForkJoinPool.commonPool-worker-1] DEBUG GameWorld            - Game world initialized
+10:10:14.500 [ForkJoinPool.commonPool-worker-1] DEBUG PhysicsWorld         - Physics world initialized: appHeight=900, physics.ppm=50,0
+10:10:14.524 [ForkJoinPool.commonPool-worker-1] DEBUG Input                - Registered new binding: Pause - Esc
+10:10:14.577 [JavaFX Application Thread] DEBUG FXGL                 - Running preInit()
+10:10:14.579 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+10:10:14.579 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+10:10:14.580 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+10:10:14.580 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+10:10:14.581 [JavaFX Application Thread] INFO  FXGL                 - FXGL initialization took: 1,306 sec
+10:10:14.581 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+10:10:14.584 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+10:10:14.584 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+10:10:14.584 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+10:10:14.586 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:10:14.593 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> LoadingState
+10:10:14.599 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+10:10:14.599 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing game world
+10:10:14.599 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Clearing physics world
+10:10:14.599 [FXGL Background Thread 1 ] DEBUG GameScene            - Clearing game scene
+10:10:14.600 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+10:10:14.618 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+10:10:14.619 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+10:10:14.624 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/roma-kupriyanov-14.jpg
+10:10:14.730 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+10:10:14.730 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 0,131 sec
+10:10:14.737 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+10:10:14.737 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:10:14.745 [JavaFX Application Thread] DEBUG AppStateMachine      - LoadingState -> PlayState
+10:10:15.403 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/tieflingsoldiermelee.jpg
+10:10:15.731 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/json/world(0,0).json
+10:10:16.009 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+10:10:16.009 [JavaFX Application Thread] DEBUG GameWorld            - Setting level from map
+10:10:16.026 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/RPGpack_sheet.png
+10:10:16.072 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.072 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.073 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.074 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.075 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.076 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.077 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.078 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.079 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.080 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.081 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.082 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.083 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.084 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.085 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.086 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.087 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.088 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.091 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.092 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.092 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.092 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.092 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.092 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.094 [JavaFX Application Thread] DEBUG GameScene            - Creating render group for layer: BACKGROUND(1000)
+10:10:16.118 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.119 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.120 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.121 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.122 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.123 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.124 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.125 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.125 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.126 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.127 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.128 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.129 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.130 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.131 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.132 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:16.161 [JavaFX Application Thread] DEBUG GameScene            - Creating render group for layer: DEFAULT(100000)
+10:10:16.169 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/hero.png
+10:10:16.173 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Left - Left
+10:10:16.173 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Right - Right
+10:10:16.173 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Up - Up
+10:10:16.173 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Down - Down
+10:10:16.176 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:10:16.177 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/greatsword.png
+10:10:16.180 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/mediumarmor.png
+10:10:16.308 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:10:16.321 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/mediumarmor.png
+10:10:16.322 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/greatsword.png
+10:10:16.324 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:10:18.976 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/json/world(1,0).json
+10:10:18.980 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+10:10:18.982 [JavaFX Application Thread] DEBUG GameWorld            - Setting level from map
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.983 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.984 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.985 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.986 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.987 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.988 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.989 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.990 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.991 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.992 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.993 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.994 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.995 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.996 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.996 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.996 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.997 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.998 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.999 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.999 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:18.999 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/RPGpack_sheet.png
+10:10:19.003 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/hero.png@64.0x64.0
+10:10:19.005 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/thug.png
+10:10:19.007 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/textures/thug.png@64.0x64.0
+10:11:17.294 [JavaFX Application Thread] DEBUG FXGL                 - Exiting FXGL
+10:11:17.294 [JavaFX Application Thread] DEBUG FXGL                 - Shutting down background threads
+10:11:17.294 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+10:11:17.296 [JavaFX Application Thread] DEBUG DesktopFSService     - Writing to: system\fxgl.bundle
+10:11:17.299 [JavaFX Application Thread] DEBUG FXGL                 - Closing logger and exiting JavaFX
