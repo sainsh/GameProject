@@ -241,7 +241,7 @@ public class GameProjectApp extends GameApplication {
         playerEnt = Entities.builder()
                 .type(GameProjectType.PLAYER)
                 .at(x, y)
-                .bbox(new HitBox("Player_body",BoundingShape.box(tileSize,tileSize)))
+                .bbox(new HitBox("Player_body",BoundingShape.box(tileSize/2,tileSize/2)))
                 .viewFromNode(getAssetLoader().loadTexture("hero.png",tileSize,tileSize))
                 .with(playerComponent)
                 .with(physicsComponent)

@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5c38961-48fe-47a9-81a9-c65e5e308f7d" name="Default Changelist" comment="">
+    <list default="true" id="f5c38961-48fe-47a9-81a9-c65e5e308f7d" name="Default Changelist" comment="added textures to enemies and the player">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameProjectApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameProjectApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/greataxe.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/greataxe.PNG" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,10 +37,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameProjectApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="243" column="84" selection-start-line="243" selection-start-column="84" selection-end-line="243" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#24941#24942#0" expanded="true" />
                 <element signature="e#24969#24970#0" expanded="true" />
               </folding>
             </state>
@@ -50,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameWorldEntities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+            <state relative-caret-position="595">
+              <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -260,13 +261,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="GameProject_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GameProject" type="b2602c69:ProjectViewProjectNode" />
@@ -393,7 +412,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -491,6 +510,8 @@
       <workItem from="1548752518519" duration="6805000" />
       <workItem from="1548787185470" duration="103000" />
       <workItem from="1548836839272" duration="2638000" />
+      <workItem from="1548839812251" duration="745000" />
+      <workItem from="1548865328567" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary="Project restart">
       <created>1546638087314</created>
@@ -737,16 +758,24 @@
       <option name="project" value="LOCAL" />
       <updated>1548763361073</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="added textures to enemies and the player">
+      <created>1548839890966</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1548839890966</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228170000" />
+    <option name="totallyTimeSpent" value="229529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17552084" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17552084" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -816,7 +845,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added first test lvl, played around with player controller, created Factory, added variable to Human and Warrior. stats are now shown on left. &#10;TODO: battlescreen on collision with enemy" />
     <MESSAGE value="put playerinfo into method, changed player movement from linear velocity, to a vec2 with decay, to stop player from moving more than wanted," />
     <MESSAGE value="added border functionality to Factory, added BORDER to Type, started work on battle screen," />
     <MESSAGE value="working on battle mechanics," />
@@ -841,7 +869,8 @@
     <MESSAGE value="out commented innitBackground then the .jar worked" />
     <MESSAGE value="renamed textures" />
     <MESSAGE value="textures" />
-    <option name="LAST_COMMIT_MESSAGE" value="textures" />
+    <MESSAGE value="added textures to enemies and the player" />
+    <option name="LAST_COMMIT_MESSAGE" value="added textures to enemies and the player" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1100,6 +1129,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProjectApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="243" column="84" selection-start-line="243" selection-start-column="84" selection-end-line="243" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#24941#24942#0" expanded="true" />
+            <element signature="e#24969#24970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameWorldEntities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/Components/EnemyTypes/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1153,27 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameProject/GameWorldEntities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="40" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameProjectApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="253" column="5" lean-forward="true" selection-start-line="253" selection-start-column="5" selection-end-line="253" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#24969#24970#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
